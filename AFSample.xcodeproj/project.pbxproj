@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C2A31B8E085F0F6F92C3C7C /* Pods_AFSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 621C5EB161B1526DD4DB5CD6 /* Pods_AFSample.framework */; };
 		FFECBA0A1D35898100FAC7F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFECBA091D35898100FAC7F1 /* AppDelegate.swift */; };
 		FFECBA0C1D35898100FAC7F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFECBA0B1D35898100FAC7F1 /* ViewController.swift */; };
 		FFECBA0F1D35898100FAC7F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFECBA0D1D35898100FAC7F1 /* Main.storyboard */; };
@@ -15,6 +16,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		16361C9D61C155EF85C833FE /* Pods-AFSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AFSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-AFSample/Pods-AFSample.release.xcconfig"; sourceTree = "<group>"; };
+		621C5EB161B1526DD4DB5CD6 /* Pods_AFSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AFSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3A30DE7238C3D9F1293482E /* Pods-AFSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AFSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AFSample/Pods-AFSample.debug.xcconfig"; sourceTree = "<group>"; };
 		FFECBA061D35898100FAC7F1 /* AFSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AFSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFECBA091D35898100FAC7F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFECBA0B1D35898100FAC7F1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,17 +33,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C2A31B8E085F0F6F92C3C7C /* Pods_AFSample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		87B1052DC608B5B740725DCB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E3A30DE7238C3D9F1293482E /* Pods-AFSample.debug.xcconfig */,
+				16361C9D61C155EF85C833FE /* Pods-AFSample.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E4955E86895BC95F7AE63FFF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				621C5EB161B1526DD4DB5CD6 /* Pods_AFSample.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FFECB9FD1D35898100FAC7F1 = {
 			isa = PBXGroup;
 			children = (
 				FFECBA081D35898100FAC7F1 /* AFSample */,
 				FFECBA071D35898100FAC7F1 /* Products */,
+				87B1052DC608B5B740725DCB /* Pods */,
+				E4955E86895BC95F7AE63FFF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FFECBA181D35898100FAC7F1 /* Build configuration list for PBXNativeTarget "AFSample" */;
 			buildPhases = (
+				7A1A505534FF19596B946D17 /* [CP] Check Pods Manifest.lock */,
 				FFECBA021D35898100FAC7F1 /* Sources */,
 				FFECBA031D35898100FAC7F1 /* Frameworks */,
 				FFECBA041D35898100FAC7F1 /* Resources */,
+				CE79974539D62C4C4BEC68B2 /* [CP] Embed Pods Frameworks */,
+				D671FDD4A68B5EB474C95E11 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -129,6 +156,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7A1A505534FF19596B946D17 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CE79974539D62C4C4BEC68B2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AFSample/Pods-AFSample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D671FDD4A68B5EB474C95E11 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AFSample/Pods-AFSample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FFECBA021D35898100FAC7F1 /* Sources */ = {
@@ -247,6 +322,7 @@
 		};
 		FFECBA191D35898100FAC7F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E3A30DE7238C3D9F1293482E /* Pods-AFSample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = AFSample/Info.plist;
@@ -258,6 +334,7 @@
 		};
 		FFECBA1A1D35898100FAC7F1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16361C9D61C155EF85C833FE /* Pods-AFSample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = AFSample/Info.plist;
@@ -286,6 +363,7 @@
 				FFECBA1A1D35898100FAC7F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

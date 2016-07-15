@@ -7,12 +7,84 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
+
+// let json = JSON(data: dataFromNetworking)
+// let json = JSON(jsonObject)
+//if let dataFromString = jsonString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
+//    let json = JSON(data: dataFromString)
+//}
 
 class ViewController: UIViewController {
 
+    
+    //@IBOutlet weak var loginButton: UIButton!
+    
+    @IBAction func likeButtonTapped(sender: AnyObject) {
+        if let url = NSURL(string: "https://accounts.spotify.com/authorize/?client_id=08058b3b809047579419282718defac6&response_type=code&redirect_uri=mixme%3A%2F%2Freturnafterlogin"){
+            UIApplication.sharedApplication().openURL(url)
+            
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        
+
+        var dictOfEverything = [String : Int]()
+        var arrOfNames = [String]()
+        var arrOfTimes = [Int]()
+        
+        Alamofire.request(.GET, "https://api.spotify.com/v1/artists/1uNFoZAHBGtllmzznpCI3s/top-tracks?country=US").validate().responseJSON { response in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    //print("JSON: \(json)")
+                    
+                    for (_, subJson) in json["tracks"] {
+                        if let name = subJson["name"].string {
+                            arrOfNames.append(name)
+                        }
+                    }
+                    
+                    for (_, subJson) in json["tracks"] {
+                        if let time = subJson["duration_ms"].int {
+                            arrOfTimes.append(time)
+                        }
+                    }
+                    
+                    for i in 0..<10 {
+                        let key = arrOfNames[i]
+                        let value = arrOfTimes[i]
+                        dictOfEverything[key] = value
+                    }
+                    
+                    // 35 mins, 2144503 ms
+                    print(dictOfEverything)
+                    
+                }
+            case .Failure(let error):
+                print(error)
+            }
+        }
+        
+       // let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+//        Alamofire.request(.POST, "https://accounts.spotify.com/api/token/?grant_type=authorization_code&code="+delegate.code+"&redirect_uri=mixme://returnafterlogin").validate().responseJSON { response in
+//            switch response.result {
+//            case .Success:
+//                if let value = response.result.value {
+//                    let json = JSON(value)
+//                    print("JSON: \(json)")
+//                }
+//            case .Failure(let error):
+//                print(error)
+//            }
+//        }
+        
     }
 
     override func didReceiveMemoryWarning() {
