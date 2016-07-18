@@ -40,22 +40,113 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             "client_id": "08058b3b809047579419282718defac6",
             "client_secret": "0d3414e646f54b7186a795ed559570b7"
         ]
+        // response.data
         
+        var accessToken: JSON = nil
+        var userID: String = ""
+        
+        func getUserID() {
+            
+            let apiURL = "https://api.spotify.com/v1/me"
+            let headers = [
+                "Authorization" : "Bearer \(accessToken.stringValue)"
+            ]
+            
+            Alamofire.request(.GET, apiURL, parameters: nil, encoding: .URL, headers: headers).responseJSON { response in
+                switch response.result {
+                case .Success:
+                    
+                    
+                    if let value = response.result.value {
+                        let json = JSON(value)
+                        
+                        userID = json["id"].stringValue
+                        createNewPlaylist()
+
+                    }
+                case .Failure(let error):
+                    print(error)
+                }
+            }
+            
+        }
+        
+        
+        func createNewPlaylist() {
+            
+            let apiURL = "https://api.spotify.com/v1/users/\(userID)playlists"
+            let headers = [
+                "Authorization" : "Bearer \(accessToken.stringValue)",
+                "Content-Type" : "application/json"
+            ]
+            
+            
+            Alamofire.request(.GET, apiURL, parameters: ["name":"the new playlist"], encoding: .URL, headers: headers).responseJSON { response in
+                switch response.result {
+                case .Success:
+                    
+                    if let value = response.result.value {
+                        let json = JSON(value)
+                        print(json["snapshot_id"])
+                        //userID = json["id"].stringValue
+                        //createNewPlaylist()
+                        
+                    }
+                case .Failure(let error):
+                    print(error)
+                }
+            }
+
+            
+        }
+
+        
+
         
         Alamofire.request(.POST, "https://accounts.spotify.com/api/token", parameters: parameters).validate().responseJSON { response in
             switch response.result {
             case .Success:
-                if let _ = response.result.value {
-                   print(response.data)
+                if let value = response.result.value {
+                   let json = JSON(value)
+                    
+                    
+                    accessToken = json["access_token"]
+                    getUserID()
+                    
+                    
+                    // let tokenType = json["token_type"]
+                    // let scope = json["scope"]
+                    // let expiration = json["expires_in"]
+                    // let refreshToken = json["refresh_token"]
+                    
                 }
             case .Failure(let error):
                 print(error)
             }
         }
+
+        
+        print("3")
+        
+        
+        // get the user's ID
+        //print("OK" + accessToken.stringValue)
+      
+        
+//        Alamofire.request(.GET, apiURL, parameters: nil, encoding: .URL, headers: headers)
+//            .responseJSON { response in
+//                
+//        }
+        
+        
+        
+        
+        
+        
+        
+        
      return true
     }
-    
-   
 
 }
 
