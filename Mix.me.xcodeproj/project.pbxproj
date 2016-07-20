@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		7C2A31B8E085F0F6F92C3C7C /* Pods_AFSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 621C5EB161B1526DD4DB5CD6 /* Pods_AFSample.framework */; };
+		FF3E22BD1D3E8FD900A1EAD6 /* HomeScreenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3E22BC1D3E8FD900A1EAD6 /* HomeScreenTableViewController.swift */; };
+		FF3E22BF1D3EA2EF00A1EAD6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3E22BE1D3EA2EF00A1EAD6 /* HomeViewController.swift */; };
+		FF3E22C11D3EA30000A1EAD6 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3E22C01D3EA30000A1EAD6 /* AddViewController.swift */; };
 		FFECBA0A1D35898100FAC7F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFECBA091D35898100FAC7F1 /* AppDelegate.swift */; };
 		FFECBA0C1D35898100FAC7F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFECBA0B1D35898100FAC7F1 /* ViewController.swift */; };
 		FFECBA0F1D35898100FAC7F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFECBA0D1D35898100FAC7F1 /* Main.storyboard */; };
@@ -19,7 +22,10 @@
 		16361C9D61C155EF85C833FE /* Pods-AFSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AFSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-AFSample/Pods-AFSample.release.xcconfig"; sourceTree = "<group>"; };
 		621C5EB161B1526DD4DB5CD6 /* Pods_AFSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AFSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3A30DE7238C3D9F1293482E /* Pods-AFSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AFSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AFSample/Pods-AFSample.debug.xcconfig"; sourceTree = "<group>"; };
-		FFECBA061D35898100FAC7F1 /* AFSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AFSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF3E22BC1D3E8FD900A1EAD6 /* HomeScreenTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenTableViewController.swift; sourceTree = "<group>"; };
+		FF3E22BE1D3EA2EF00A1EAD6 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		FF3E22C01D3EA30000A1EAD6 /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		FFECBA061D35898100FAC7F1 /* Mix.me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mix.me.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFECBA091D35898100FAC7F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFECBA0B1D35898100FAC7F1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FFECBA0E1D35898100FAC7F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -57,6 +63,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FF3E22BB1D3E8F9F00A1EAD6 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FF3E22BC1D3E8FD900A1EAD6 /* HomeScreenTableViewController.swift */,
+				FF3E22BE1D3EA2EF00A1EAD6 /* HomeViewController.swift */,
+				FF3E22C01D3EA30000A1EAD6 /* AddViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = SOURCE_ROOT;
+		};
 		FFECB9FD1D35898100FAC7F1 = {
 			isa = PBXGroup;
 			children = (
@@ -70,7 +86,7 @@
 		FFECBA071D35898100FAC7F1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FFECBA061D35898100FAC7F1 /* AFSample.app */,
+				FFECBA061D35898100FAC7F1 /* Mix.me.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -78,6 +94,7 @@
 		FFECBA081D35898100FAC7F1 /* AFSample */ = {
 			isa = PBXGroup;
 			children = (
+				FF3E22BB1D3E8F9F00A1EAD6 /* Controllers */,
 				FFECBA091D35898100FAC7F1 /* AppDelegate.swift */,
 				FFECBA0B1D35898100FAC7F1 /* ViewController.swift */,
 				FFECBA0D1D35898100FAC7F1 /* Main.storyboard */,
@@ -91,9 +108,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FFECBA051D35898100FAC7F1 /* AFSample */ = {
+		FFECBA051D35898100FAC7F1 /* Mix.me */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FFECBA181D35898100FAC7F1 /* Build configuration list for PBXNativeTarget "AFSample" */;
+			buildConfigurationList = FFECBA181D35898100FAC7F1 /* Build configuration list for PBXNativeTarget "Mix.me" */;
 			buildPhases = (
 				7A1A505534FF19596B946D17 /* [CP] Check Pods Manifest.lock */,
 				FFECBA021D35898100FAC7F1 /* Sources */,
@@ -106,9 +123,9 @@
 			);
 			dependencies = (
 			);
-			name = AFSample;
+			name = Mix.me;
 			productName = AFSample;
-			productReference = FFECBA061D35898100FAC7F1 /* AFSample.app */;
+			productReference = FFECBA061D35898100FAC7F1 /* Mix.me.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -123,10 +140,11 @@
 				TargetAttributes = {
 					FFECBA051D35898100FAC7F1 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = TMTCP7K8BJ;
 					};
 				};
 			};
-			buildConfigurationList = FFECBA011D35898100FAC7F1 /* Build configuration list for PBXProject "AFSample" */;
+			buildConfigurationList = FFECBA011D35898100FAC7F1 /* Build configuration list for PBXProject "Mix.me" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -139,7 +157,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FFECBA051D35898100FAC7F1 /* AFSample */,
+				FFECBA051D35898100FAC7F1 /* Mix.me */,
 			);
 		};
 /* End PBXProject section */
@@ -210,8 +228,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF3E22C11D3EA30000A1EAD6 /* AddViewController.swift in Sources */,
+				FF3E22BD1D3E8FD900A1EAD6 /* HomeScreenTableViewController.swift in Sources */,
 				FFECBA0C1D35898100FAC7F1 /* ViewController.swift in Sources */,
 				FFECBA0A1D35898100FAC7F1 /* AppDelegate.swift in Sources */,
+				FF3E22BF1D3EA2EF00A1EAD6 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,10 +346,13 @@
 			baseConfigurationReference = E3A30DE7238C3D9F1293482E /* Pods-AFSample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = AFSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = savionsample.com.AFSample;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Mix.me;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -337,17 +361,20 @@
 			baseConfigurationReference = 16361C9D61C155EF85C833FE /* Pods-AFSample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = AFSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = savionsample.com.AFSample;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Mix.me;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FFECBA011D35898100FAC7F1 /* Build configuration list for PBXProject "AFSample" */ = {
+		FFECBA011D35898100FAC7F1 /* Build configuration list for PBXProject "Mix.me" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FFECBA161D35898100FAC7F1 /* Debug */,
@@ -356,7 +383,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FFECBA181D35898100FAC7F1 /* Build configuration list for PBXNativeTarget "AFSample" */ = {
+		FFECBA181D35898100FAC7F1 /* Build configuration list for PBXNativeTarget "Mix.me" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FFECBA191D35898100FAC7F1 /* Debug */,

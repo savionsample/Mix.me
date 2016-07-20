@@ -17,20 +17,35 @@ import SwiftyJSON
 //}
 
 class ViewController: UIViewController {
+    
+    private var foregroundNotification: NSObjectProtocol!
 
     
     //@IBOutlet weak var loginButton: UIButton!
     
     @IBAction func likeButtonTapped(sender: AnyObject) {
-        if let url = NSURL(string: "https://accounts.spotify.com/authorize/?client_id=08058b3b809047579419282718defac6&response_type=code&redirect_uri=mixme%3A%2F%2Freturnafterlogin"){
+        if let url = NSURL(string: "https://accounts.spotify.com/authorize/?client_id=08058b3b809047579419282718defac6&response_type=code&redirect_uri=mixme%3A%2F%2Freturnafterlogin&scope=playlist-modify-public"){
             UIApplication.sharedApplication().openURL(url)
+            
+            foregroundNotification = NSNotificationCenter.defaultCenter().addObserverForName(UIApplicationWillEnterForegroundNotification, object: nil, queue: NSOperationQueue.mainQueue()) {
+                [unowned self] notification in
+                
+                
+                self.performSegueWithIdentifier("gotoTab", sender: nil)
+                
+                // do whatever you want when the app is brought back to the foreground
+                //let tabBarController = tabBarController
+                
+            }
             
         }
     }
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundCity.jpg")!)
         
 
         var dictOfEverything = [String : Int]()
@@ -63,7 +78,7 @@ class ViewController: UIViewController {
                     }
                     
                     // 35 mins, 2144503 ms
-                    print(dictOfEverything)
+                    //print(dictOfEverything)
                     
                 }
             case .Failure(let error):
@@ -71,19 +86,6 @@ class ViewController: UIViewController {
             }
         }
         
-       // let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        
-//        Alamofire.request(.POST, "https://accounts.spotify.com/api/token/?grant_type=authorization_code&code="+delegate.code+"&redirect_uri=mixme://returnafterlogin").validate().responseJSON { response in
-//            switch response.result {
-//            case .Success:
-//                if let value = response.result.value {
-//                    let json = JSON(value)
-//                    print("JSON: \(json)")
-//                }
-//            case .Failure(let error):
-//                print(error)
-//            }
-//        }
         
     }
 
