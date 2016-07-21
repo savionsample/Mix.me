@@ -15,6 +15,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var code: String = ""
+    var currentUser = User()
+    
+    var accessToken: JSON = nil
+    var userID: String = ""
+    
+    var num = 1
+    
+    func getNum() -> Int {
+        return num
+    }
+    
+    func getAccessToken() -> String {
+        return accessToken.stringValue
+    }
+    
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -37,8 +52,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             "client_secret": "0d3414e646f54b7186a795ed559570b7"
         ]
         
-        var accessToken: JSON = nil
-        var userID: String = ""
+        //var accessToken: JSON = nil
+        //var userID: String = ""
         
         
         // GET THE USER'S ID
@@ -57,10 +72,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     if let value = response.result.value {
                         let json = JSON(value)
                         
-                        userID = json["id"].stringValue
-                        // userPlaylists()
+                        self.userID = json["id"].stringValue
+                        //userPlaylists()
                         //createNewPlaylist()
-                        addTracksToPlaylist()
+                        //addTracksToPlaylist()
 
                     }
                 case .Failure(let error):
@@ -86,16 +101,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             ]
             
             let parameters: [String: AnyObject] = [
-                "name": "Rock Music",
-                "public": "true"
+                "name": "Rock Music"
             ]
 
-            Alamofire.request(.POST, apiURL, parameters: parameters, encoding: .URL, headers: headers).responseJSON { response in
+            Alamofire.request(.POST, apiURL, parameters: parameters, encoding: .JSON, headers: headers).responseJSON { response in
                 switch response.result {
                 case .Success:
                     if let value = response.result.value {
                         let json = JSON(value)
-                        print("JSON: \(json)")
+                        //print("JSON: \(json)")
     
                         //print(json["collaborative"])
                     }
@@ -125,8 +139,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     if let value = response.result.value {
                         let json = JSON(value)
                         //print("JSON: \(json)")
-                        
-                        //print(json["collaborative"])
                     }
                 case .Failure(let error):
                     print(error)
@@ -154,17 +166,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             ]
             
             Alamofire.request(.POST, apiURL, parameters: parameters, encoding: .JSON, headers: headers).responseJSON { response in
-                switch response.result {
-                case .Success:
-                    if let value = response.result.value {
-                        let json = JSON(value)
-                        //print("JSON: \(json)")
-                        
-                        print(json["collaborative"])
-                    }
-                case .Failure(let error):
-                    print(error)
-                }
             }
             
             
@@ -178,21 +179,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             case .Success:
                 if let value = response.result.value {
                    let json = JSON(value)
-                
-                    accessToken = json["access_token"]
-                    let scope = json["scope"]
-                    print("JSON: \(json)")
                     
-                    print("the scope" + scope.stringValue)
+                    self.accessToken = json["access_token"]
+                    let refreshToken = json["refresh_token"]
+                    
+    
+                   
+                    self.currentUser.setAccToken(self.accessToken.stringValue)
+                    self.currentUser.setAccToken(refreshToken.stringValue)
+                    //print(self.currentUser.accToken)
+                    //print("first")
+                    
                     getUserID()
                     
-                    
-                    // let tokenType = json["token_type"]
-                    
                     // let expiration = json["expires_in"]
-                    // let refreshToken = json["refresh_token"]
-                    
-                    
                     
                 }
             case .Failure(let error):

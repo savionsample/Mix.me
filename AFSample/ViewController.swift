@@ -19,12 +19,18 @@ import SwiftyJSON
 class ViewController: UIViewController {
     
     private var foregroundNotification: NSObjectProtocol!
-
+    
     
     //@IBOutlet weak var loginButton: UIButton!
     
+    
     @IBAction func likeButtonTapped(sender: AnyObject) {
-        if let url = NSURL(string: "https://accounts.spotify.com/authorize/?client_id=08058b3b809047579419282718defac6&response_type=code&redirect_uri=mixme%3A%2F%2Freturnafterlogin&scope=playlist-modify-public"){
+        if let url = NSURL(string: "https://accounts.spotify.com/authorize/" +
+        "?client_id=08058b3b809047579419282718defac6" +
+        "&response_type=code" +
+        "&redirect_uri=mixme%3A%2F%2Freturnafterlogin" +
+        "&scope=playlist-modify-public" +
+        "%20user-read-private"){
             UIApplication.sharedApplication().openURL(url)
             
             foregroundNotification = NSNotificationCenter.defaultCenter().addObserverForName(UIApplicationWillEnterForegroundNotification, object: nil, queue: NSOperationQueue.mainQueue()) {
@@ -47,7 +53,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundCity.jpg")!)
         
-
+        
         var dictOfEverything = [String : Int]()
         var arrOfNames = [String]()
         var arrOfTimes = [Int]()
@@ -88,12 +94,11 @@ class ViewController: UIViewController {
         
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
-

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeViewController: UIView {
+class HomeViewController: UIViewController {
 
     /*
     // Only override drawRect: if you perform custom drawing.
@@ -31,6 +31,7 @@ class HomeViewController: UIView {
 //            }
 //        }
 //    }
+    
 
 
 }

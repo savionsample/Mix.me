@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AFSample/AppDelegate.swift"
-            timestampString = "490682858.081584"
+            timestampString = "490730172.46062"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
             landmarkName = "application(_:openURL:options:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AFSample/AppDelegate.swift"
-            timestampString = "490682858.081584"
+            timestampString = "490730172.46062"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "getUserID()"
             landmarkType = "7">
          </BreakpointContent>
@@ -38,7 +38,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Controllers/HomeScreenTableViewController.swift"
@@ -51,14 +51,14 @@
             landmarkType = "3">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Mix_me.HomeScreenTableViewController.__deallocating_deinit"
                   moduleName = "Mix.me"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/savionsample/Desktop/MakeSchool/AFSample/Controllers/HomeScreenTableViewController.swift"
-                  timestampString = "490687020.833363"
+                  timestampString = "490743463.644306"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -66,14 +66,14 @@
                   offsetFromSymbolStart = "12">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Mix_me.HomeScreenTableViewController.init (style : __C.UITableViewStyle) -&gt; Mix_me.HomeScreenTableViewController"
                   moduleName = "Mix.me"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/savionsample/Desktop/MakeSchool/AFSample/Controllers/HomeScreenTableViewController.swift"
-                  timestampString = "490687020.833687"
+                  timestampString = "490743463.644641"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "11"
@@ -81,14 +81,14 @@
                   offsetFromSymbolStart = "84">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Mix_me.HomeScreenTableViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; Mix_me.HomeScreenTableViewController"
                   moduleName = "Mix.me"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/savionsample/Desktop/MakeSchool/AFSample/Controllers/HomeScreenTableViewController.swift"
-                  timestampString = "490687020.83389"
+                  timestampString = "490743463.644848"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "11"
@@ -96,14 +96,14 @@
                   offsetFromSymbolStart = "124">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Mix_me.HomeScreenTableViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Mix_me.HomeScreenTableViewController&gt;"
                   moduleName = "Mix.me"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/savionsample/Desktop/MakeSchool/AFSample/Controllers/HomeScreenTableViewController.swift"
-                  timestampString = "490687020.834083"
+                  timestampString = "490743463.645041"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "11"
@@ -120,77 +120,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AFSample/AppDelegate.swift"
-            timestampString = "490682858.081584"
+            timestampString = "490730172.46062"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
             landmarkName = "createNewPlaylist()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AFSample/AppDelegate.swift"
-            timestampString = "490686338.397474"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
-            landmarkName = "addTracksToPlaylist()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Mix_me.AppDelegate.(application (__ObjC.UIApplication, openURL : __ObjC.NSURL, options : Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;) -&gt; Swift.Bool).((addTracksToPlaylist #1) () -&gt; ()).(closure #1)"
-                  moduleName = "Mix.me"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/savionsample/Desktop/MakeSchool/AFSample/AFSample/AppDelegate.swift"
-                  timestampString = "490686338.607577"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "164"
-                  endingLineNumber = "164"
-                  offsetFromSymbolStart = "444">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Mix_me.AppDelegate.(application (__ObjC.UIApplication, openURL : __ObjC.NSURL, options : Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;) -&gt; Swift.Bool).((addTracksToPlaylist #1) () -&gt; ()).(closure #1)"
-                  moduleName = "Mix.me"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/savionsample/Desktop/MakeSchool/AFSample/AFSample/AppDelegate.swift"
-                  timestampString = "490686338.607807"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "164"
-                  endingLineNumber = "164"
-                  offsetFromSymbolStart = "580">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AFSample/AppDelegate.swift"
-            timestampString = "490686522.45199"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
-            landmarkName = "application(_:openURL:options:)"
-            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

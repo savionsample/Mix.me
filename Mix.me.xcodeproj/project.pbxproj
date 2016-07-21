@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		7C2A31B8E085F0F6F92C3C7C /* Pods_AFSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 621C5EB161B1526DD4DB5CD6 /* Pods_AFSample.framework */; };
-		FF3E22BD1D3E8FD900A1EAD6 /* HomeScreenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3E22BC1D3E8FD900A1EAD6 /* HomeScreenTableViewController.swift */; };
 		FF3E22BF1D3EA2EF00A1EAD6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3E22BE1D3EA2EF00A1EAD6 /* HomeViewController.swift */; };
 		FF3E22C11D3EA30000A1EAD6 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3E22C01D3EA30000A1EAD6 /* AddViewController.swift */; };
+		FF3E22C31D3FE42900A1EAD6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3E22C21D3FE42900A1EAD6 /* User.swift */; };
 		FFECBA0A1D35898100FAC7F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFECBA091D35898100FAC7F1 /* AppDelegate.swift */; };
 		FFECBA0C1D35898100FAC7F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFECBA0B1D35898100FAC7F1 /* ViewController.swift */; };
 		FFECBA0F1D35898100FAC7F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFECBA0D1D35898100FAC7F1 /* Main.storyboard */; };
@@ -22,9 +22,9 @@
 		16361C9D61C155EF85C833FE /* Pods-AFSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AFSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-AFSample/Pods-AFSample.release.xcconfig"; sourceTree = "<group>"; };
 		621C5EB161B1526DD4DB5CD6 /* Pods_AFSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AFSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3A30DE7238C3D9F1293482E /* Pods-AFSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AFSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AFSample/Pods-AFSample.debug.xcconfig"; sourceTree = "<group>"; };
-		FF3E22BC1D3E8FD900A1EAD6 /* HomeScreenTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenTableViewController.swift; sourceTree = "<group>"; };
 		FF3E22BE1D3EA2EF00A1EAD6 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		FF3E22C01D3EA30000A1EAD6 /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		FF3E22C21D3FE42900A1EAD6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FFECBA061D35898100FAC7F1 /* Mix.me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mix.me.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFECBA091D35898100FAC7F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFECBA0B1D35898100FAC7F1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -66,7 +66,6 @@
 		FF3E22BB1D3E8F9F00A1EAD6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FF3E22BC1D3E8FD900A1EAD6 /* HomeScreenTableViewController.swift */,
 				FF3E22BE1D3EA2EF00A1EAD6 /* HomeViewController.swift */,
 				FF3E22C01D3EA30000A1EAD6 /* AddViewController.swift */,
 			);
@@ -97,6 +96,7 @@
 				FF3E22BB1D3E8F9F00A1EAD6 /* Controllers */,
 				FFECBA091D35898100FAC7F1 /* AppDelegate.swift */,
 				FFECBA0B1D35898100FAC7F1 /* ViewController.swift */,
+				FF3E22C21D3FE42900A1EAD6 /* User.swift */,
 				FFECBA0D1D35898100FAC7F1 /* Main.storyboard */,
 				FFECBA101D35898100FAC7F1 /* Assets.xcassets */,
 				FFECBA121D35898100FAC7F1 /* LaunchScreen.storyboard */,
@@ -229,7 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF3E22C11D3EA30000A1EAD6 /* AddViewController.swift in Sources */,
-				FF3E22BD1D3E8FD900A1EAD6 /* HomeScreenTableViewController.swift in Sources */,
+				FF3E22C31D3FE42900A1EAD6 /* User.swift in Sources */,
 				FFECBA0C1D35898100FAC7F1 /* ViewController.swift in Sources */,
 				FFECBA0A1D35898100FAC7F1 /* AppDelegate.swift in Sources */,
 				FF3E22BF1D3EA2EF00A1EAD6 /* HomeViewController.swift in Sources */,
