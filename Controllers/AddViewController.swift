@@ -13,7 +13,8 @@ import SwiftyJSON
 class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     var accToken = ""
-    
+    var artistID = ""
+    var userID = ""
     
 
     
@@ -38,19 +39,16 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         let replaced = String(artist.characters.map {
             $0 == " " ? "+" : $0
         })
-        print(replaced)
-        
-        
-        var artistID = ""
-        
+        //print(replaced)
+
         // GET ARTIST'S ID
         Alamofire.request(.GET, "https://api.spotify.com/v1/search?q=\(replaced)&type=artist").validate().responseJSON { response in
             switch response.result {
             case .Success:
                 if let value = response.result.value {
                     let json = JSON(value)
-                    artistID = json["artists"]["items"][0]["id"].stringValue
-
+                    self.artistID = json["artists"]["items"][0]["id"].stringValue
+                    self.retrieveUriOfArtistsTracks()
                     
                 }
             case .Failure(let error):
@@ -58,42 +56,34 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             }
         }
         
+        //print(artistID)
+    
         
-        ////////////////////////
+    }
+    
+    var arrOfURI = [String]()
+    
+    func retrieveUriOfArtistsTracks() {
         
-        
-        var dictOfEverything = [String : Int]()
-        var arrOfNames = [String]()
-        var arrOfTimes = [Int]()
+        // var dictOfEverything = [String : Int]()
+        // var arrOfNames = [String]()
+        //var arrOfURI = [String]()
         
         Alamofire.request(.GET, "https://api.spotify.com/v1/artists/\(artistID)/top-tracks?country=US").validate().responseJSON { response in
             switch response.result {
             case .Success:
                 if let value = response.result.value {
                     let json = JSON(value)
-                    //print("JSON: \(json)")
-                    
+
                     for (_, subJson) in json["tracks"] {
-                        if let name = subJson["name"].string {
-                            arrOfNames.append(name)
+                        if let uri = subJson["uri"].string {
+                            self.arrOfURI.append(uri)
                         }
                     }
                     
-                    for (_, subJson) in json["tracks"] {
-                        if let time = subJson["duration_ms"].int {
-                            arrOfTimes.append(time)
-                        }
-                    }
+                    self.getUserID()
                     
-                    for i in 0..<10 {
-                        let key = arrOfNames[i]
-                        let value = arrOfTimes[i]
-                        dictOfEverything[key] = value
-                    }
-                    
-                    // 35 mins, 2144503 ms
-                    //print(dictOfEverything)
-                    
+                                                            
                 }
             case .Failure(let error):
                 print(error)
@@ -101,13 +91,93 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         }
         
 
-
+    }
+    
+    
+    func getUserID() {
         
+        let apiURL = "https://api.spotify.com/v1/me"
+        let headers = [
+            "Authorization" : "Bearer \(accToken)"
+        ]
         
-        
-        
+        Alamofire.request(.GET, apiURL, parameters: nil, encoding: .URL, headers: headers).responseJSON { response in
+            switch response.result {
+            case .Success:
+                
+                
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    
+                    self.userID = json["id"].stringValue
+                    self.addTracksToPlaylistUsingUri()
+                    //self.createPlaylist()
+                    
+                }
+            case .Failure(let error):
+                print(error)
+            }
+        }
         
     }
+    
+    
+    func createPlaylist() {
+        let apiURL = "https://api.spotify.com/v1/users/\(userID)/playlists"
+        let headers = [
+            "Authorization": "Bearer " + accToken,
+            "Content-Type": "application/json"
+        ]
+        
+        let parameters: [String: AnyObject] = [
+            "name": "Rock Music"
+        ]
+        
+        Alamofire.request(.POST, apiURL, parameters: parameters, encoding: .JSON, headers: headers).responseJSON { response in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    
+                    self.addTracksToPlaylistUsingUri()
+                        
+                    
+                }
+            case .Failure(let error):
+                print(error)
+            }
+        }
+        
+    }
+    
+    
+    func addTracksToPlaylistUsingUri() {
+        
+        let apiURL = "https://api.spotify.com/v1/users/\(userID)/playlists/15y711eyGYKzleFvUQwrth/tracks"
+        let headers = [
+            "Authorization" : "Bearer " + accToken
+        ]
+        let parameters: [String: AnyObject] = [
+            "uris": arrOfURI
+        ]
+        
+        let parameters2: [String: AnyObject] = [
+            "uris": [
+                "spotify:track:4iV5W9uYEdYUVa79Axb7Rh",
+                "spotify:track:1301WleyT98MSxVHPZCA6M"]
+        ]
+
+        
+        Alamofire.request(.POST, apiURL, parameters: parameters, encoding: .JSON, headers: headers).responseJSON { response in
+        }
+
+        
+    }
+    
+    
+    
+    
+    
     
     var pickerData = ["1 minute", "2 minutes", "2 minutes", "4 minutes", "5 minutes", "6 minutes", "7 minutes", "8 minutes", "9 minutes", "10 minutes", "11 minutes", "12 minutes", "13 minutes", "14 minutes", "15 minutes", "16 minutes", "17 minutes", "18 minutes", "19 minutes", "20 minutes", "21 minutes", "22 minutes", "23 minutes", "24 minutes", "25 minutes", "26 minutes", "27 minutes", "28 minutes", "29 minutes", "30 minutes", "31 minutes", "32 minutes", "33 minutes", "34 minutes", "35 minutes", "36 minutes"]
     
