@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "thelogoDark.png",
+      "filename" : "reloadplaylists2.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "thelogoDark-1.png",
+      "filename" : "reloadplaylists2-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "thelogoDark-2.png",
+      "filename" : "reloadplaylists2-2.png",
       "scale" : "3x"
     }
   ],

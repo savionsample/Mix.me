@@ -11,6 +11,7 @@
 		FF3E22BF1D3EA2EF00A1EAD6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3E22BE1D3EA2EF00A1EAD6 /* HomeViewController.swift */; };
 		FF3E22C11D3EA30000A1EAD6 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3E22C01D3EA30000A1EAD6 /* AddViewController.swift */; };
 		FF3E22C31D3FE42900A1EAD6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3E22C21D3FE42900A1EAD6 /* User.swift */; };
+		FFBF22071D427A070060FE1D /* HomeScrollTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBF22061D427A060060FE1D /* HomeScrollTableViewController.swift */; };
 		FFECBA0A1D35898100FAC7F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFECBA091D35898100FAC7F1 /* AppDelegate.swift */; };
 		FFECBA0C1D35898100FAC7F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFECBA0B1D35898100FAC7F1 /* ViewController.swift */; };
 		FFECBA0F1D35898100FAC7F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFECBA0D1D35898100FAC7F1 /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 		FF3E22BE1D3EA2EF00A1EAD6 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		FF3E22C01D3EA30000A1EAD6 /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		FF3E22C21D3FE42900A1EAD6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		FFBF22061D427A060060FE1D /* HomeScrollTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScrollTableViewController.swift; sourceTree = "<group>"; };
 		FFECBA061D35898100FAC7F1 /* Mix.me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mix.me.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFECBA091D35898100FAC7F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFECBA0B1D35898100FAC7F1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 			children = (
 				FF3E22BE1D3EA2EF00A1EAD6 /* HomeViewController.swift */,
 				FF3E22C01D3EA30000A1EAD6 /* AddViewController.swift */,
+				FFBF22061D427A060060FE1D /* HomeScrollTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = SOURCE_ROOT;
@@ -233,6 +236,7 @@
 				FFECBA0C1D35898100FAC7F1 /* ViewController.swift in Sources */,
 				FFECBA0A1D35898100FAC7F1 /* AppDelegate.swift in Sources */,
 				FF3E22BF1D3EA2EF00A1EAD6 /* HomeViewController.swift in Sources */,
+				FFBF22071D427A070060FE1D /* HomeScrollTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,30 +15,39 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     var accToken = ""
     var artistID = ""
     var userID = ""
+    var playlistName = ""
+    var arrOfURI = [String]()
     
 
     
     @IBOutlet weak var userTextField: UITextField!
+    @IBOutlet weak var userTextField2: UITextField!
     @IBOutlet weak var myTimePicker: UIPickerView!
+    
     @IBAction func hideKeyboard(sender: AnyObject) {
         userTextField.resignFirstResponder()
     }
     
-    
-    @IBAction func hiddenButton(sender: AnyObject) {
+    @IBAction func hideKeyBoard2(sender: AnyObject) {
         userTextField.resignFirstResponder()
     }
-    
-  
+
+    @IBAction func hiddenButton(sender: AnyObject) {
+        userTextField.resignFirstResponder()
+        userTextField2.resignFirstResponder()
+    }
     
     
     @IBAction func playlistButtonPressed(sender: AnyObject) {
         
         let artist = self.userTextField.text!
+        playlistName = self.userTextField2.text!
         
         let replaced = String(artist.characters.map {
             $0 == " " ? "+" : $0
         })
+        
+        
         //print(replaced)
 
         // GET ARTIST'S ID
@@ -60,8 +69,6 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     
         
     }
-    
-    var arrOfURI = [String]()
     
     func retrieveUriOfArtistsTracks() {
         
@@ -93,7 +100,6 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 
     }
     
-    
     func getUserID() {
         
         let apiURL = "https://api.spotify.com/v1/me"
@@ -110,8 +116,8 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                     let json = JSON(value)
                     
                     self.userID = json["id"].stringValue
-                    self.addTracksToPlaylistUsingUri()
-                    //self.createPlaylist()
+                    //self.addTracksToPlaylistUsingUri()
+                    self.createPlaylist()
                     
                 }
             case .Failure(let error):
@@ -121,6 +127,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         
     }
     
+    var newPlaylistID = ""
     
     func createPlaylist() {
         let apiURL = "https://api.spotify.com/v1/users/\(userID)/playlists"
@@ -130,7 +137,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         ]
         
         let parameters: [String: AnyObject] = [
-            "name": "Rock Music"
+            "name": playlistName
         ]
         
         Alamofire.request(.POST, apiURL, parameters: parameters, encoding: .JSON, headers: headers).responseJSON { response in
@@ -139,9 +146,8 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 if let value = response.result.value {
                     let json = JSON(value)
                     
+                    self.newPlaylistID = json["id"].stringValue
                     self.addTracksToPlaylistUsingUri()
-                        
-                    
                 }
             case .Failure(let error):
                 print(error)
@@ -153,7 +159,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     
     func addTracksToPlaylistUsingUri() {
         
-        let apiURL = "https://api.spotify.com/v1/users/\(userID)/playlists/15y711eyGYKzleFvUQwrth/tracks"
+        let apiURL = "https://api.spotify.com/v1/users/\(userID)/playlists/\(newPlaylistID)/tracks"
         let headers = [
             "Authorization" : "Bearer " + accToken
         ]
@@ -161,14 +167,8 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             "uris": arrOfURI
         ]
         
-        let parameters2: [String: AnyObject] = [
-            "uris": [
-                "spotify:track:4iV5W9uYEdYUVa79Axb7Rh",
-                "spotify:track:1301WleyT98MSxVHPZCA6M"]
-        ]
-
-        
         Alamofire.request(.POST, apiURL, parameters: parameters, encoding: .JSON, headers: headers).responseJSON { response in
+            ///
         }
 
         
@@ -211,28 +211,6 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         print(pickerData[row])
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
 
 
