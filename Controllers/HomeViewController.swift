@@ -12,6 +12,7 @@ import SwiftyJSON
 
 class HomeViewController: UIViewController {
     
+    
     var accToken = ""
     var userID = ""
     var code = ""
@@ -21,10 +22,15 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
 
     }
     
+    
+    
     var arrOfPlaylists = [String]()
+    var arrOfSongs = [String]()
     @IBAction func buttonPressed(sender: AnyObject) {
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -49,9 +55,16 @@ class HomeViewController: UIViewController {
                         if let name = subJson["name"].string {
                             self.arrOfPlaylists.append(name)
                             self.numberOfSongs += 1
-                            self.doNextThing()
+                            //self.getAllPlaylists()
                         }
                     }
+                    
+//                    for (_, subJson) in json["items"] {
+//                        if let name = subJson["name"].string {
+//                            self.arrOfSongs.append(name)
+//                            //self.numberOfSongs += 1
+//                        }
+//                    }
                 }
             case .Failure(let error):
                 print(error)
@@ -60,10 +73,35 @@ class HomeViewController: UIViewController {
 
     }
     
-    // ["the stuff", "g", "troye", "Beyonce", "euphemism", "anecdote", "techtonic"]
-    func doNextThing() {
-        
-    }
-    
+//    
+//    // ["the stuff", "g", "troye", "Beyonce", "euphemism", "anecdote", "techtonic"]
+//    func getAllPlaylists() {
+//        
+//        let apiURL = "https://api.spotify.com/v1/users/\(userID)/playlists/{playlist_id}/tracks"
+//        let headers = [
+//            "Authorization" : "Bearer \(accToken)"
+//        ]
+//        
+//        Alamofire.request(.GET, apiURL, parameters: nil, encoding: .URL, headers: headers).responseJSON { response in
+//            switch response.result {
+//            case .Success:
+//                
+//                
+//                if let value = response.result.value {
+//                    let json = JSON(value)
+//                    
+//                    self.userID = json["id"].stringValue
+//                    //self.addTracksToPlaylistUsingUri()
+//                    self.createPlaylist()
+//                    
+//                }
+//            case .Failure(let error):
+//                print(error)
+//            }
+//        }
+//
+//        
+//    }
+//    
 
 }

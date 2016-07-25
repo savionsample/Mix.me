@@ -23,6 +23,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var userTextField2: UITextField!
     @IBOutlet weak var myTimePicker: UIPickerView!
+    @IBOutlet weak var theScrollView: UIScrollView!
     
     @IBAction func hideKeyboard(sender: AnyObject) {
         userTextField.resignFirstResponder()
@@ -40,6 +41,11 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     
     @IBAction func playlistButtonPressed(sender: AnyObject) {
         
+        
+        
+        
+        
+        
         let artist = self.userTextField.text!
         playlistName = self.userTextField2.text!
         
@@ -55,26 +61,41 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             switch response.result {
             case .Success:
                 if let value = response.result.value {
+                    
                     let json = JSON(value)
-                    self.artistID = json["artists"]["items"][0]["id"].stringValue
-                    self.retrieveUriOfArtistsTracks()
+                    
+                    if (json["artists"]["items"][0]["id"].stringValue != "") {
+                        
+                        let alertController = UIAlertController(title: "iOScreator", message:
+                            "Spotify playlist created!", preferredStyle: UIAlertControllerStyle.Alert)
+                        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                        self.presentViewController(alertController, animated: true, completion: nil)
+                        
+                        self.artistID = json["artists"]["items"][0]["id"].stringValue
+                        print(json["artists"]["items"][0]["id"].stringValue)
+                        self.retrieveUriOfArtistsTracks()
+                    }
+                    else
+                    {
+                        let alertController = UIAlertController(title: "iOScreator", message:
+                            "Make sure there's a valid artist and a name for the playlist", preferredStyle: UIAlertControllerStyle.Alert)
+                        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                        self.presentViewController(alertController, animated: true, completion: nil)
+                    }
                     
                 }
             case .Failure(let error):
-                print(error)
+                let alertController = UIAlertController(title: "iOScreator", message:
+                    "There was an error in creating your playlist. Please try again.", preferredStyle: UIAlertControllerStyle.Alert)
+                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                
+                self.presentViewController(alertController, animated: true, completion: nil)
             }
         }
-        
-        //print(artistID)
-    
         
     }
     
     func retrieveUriOfArtistsTracks() {
-        
-        // var dictOfEverything = [String : Int]()
-        // var arrOfNames = [String]()
-        //var arrOfURI = [String]()
         
         Alamofire.request(.GET, "https://api.spotify.com/v1/artists/\(artistID)/top-tracks?country=US").validate().responseJSON { response in
             switch response.result {
@@ -170,6 +191,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         Alamofire.request(.POST, apiURL, parameters: parameters, encoding: .JSON, headers: headers).responseJSON { response in
             ///
         }
+        arrOfURI = []
 
         
     }
@@ -179,16 +201,23 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     
     
     
-    var pickerData = ["1 minute", "2 minutes", "2 minutes", "4 minutes", "5 minutes", "6 minutes", "7 minutes", "8 minutes", "9 minutes", "10 minutes", "11 minutes", "12 minutes", "13 minutes", "14 minutes", "15 minutes", "16 minutes", "17 minutes", "18 minutes", "19 minutes", "20 minutes", "21 minutes", "22 minutes", "23 minutes", "24 minutes", "25 minutes", "26 minutes", "27 minutes", "28 minutes", "29 minutes", "30 minutes", "31 minutes", "32 minutes", "33 minutes", "34 minutes", "35 minutes", "36 minutes"]
+    var pickerData = ["1 minute", "2 minutes", "3 minutes", "4 minutes", "5 minutes", "6 minutes", "7 minutes", "8 minutes", "9 minutes", "10 minutes", "11 minutes", "12 minutes", "13 minutes", "14 minutes", "15 minutes", "16 minutes", "17 minutes", "18 minutes", "19 minutes", "20 minutes", "21 minutes", "22 minutes", "23 minutes", "24 minutes", "25 minutes", "26 minutes", "27 minutes", "28 minutes", "29 minutes", "30 minutes", "31 minutes", "32 minutes", "33 minutes", "34 minutes", "35 minutes", "36 minutes"]
     
     override func viewDidLoad() {
+        //myTimePicker.setValue(UIColor.whiteColor(), forKeyPath: "textColor")
         super.viewDidLoad()
 
+        
+        
         self.myTimePicker.delegate = self
         self.myTimePicker.dataSource = self
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         accToken = appDelegate.getAccessToken()
+        
+        
+        
+        theScrollView.contentSize.height = 700
         
     }
     
@@ -211,6 +240,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         print(pickerData[row])
     }
+    
     
 
 

@@ -101,7 +101,6 @@ import SwiftyJSON
                     
                     self.accessToken = json["access_token"]
                     let refreshToken = json["refresh_token"]
-                    print("first")
     
                    
                     self.currentUser.setAccToken(self.accessToken.stringValue)
