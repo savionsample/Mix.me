@@ -18,6 +18,8 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     var playlistName = ""
     var arrOfURI = [String]()
     
+    private var foregroundNotification: NSObjectProtocol!
+    
 
     
     @IBOutlet weak var userTextField: UITextField!
@@ -40,11 +42,6 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     
     
     @IBAction func playlistButtonPressed(sender: AnyObject) {
-        
-        
-        
-        
-        
         
         let artist = self.userTextField.text!
         playlistName = self.userTextField2.text!
@@ -72,7 +69,6 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                         self.presentViewController(alertController, animated: true, completion: nil)
                         
                         self.artistID = json["artists"]["items"][0]["id"].stringValue
-                        print(json["artists"]["items"][0]["id"].stringValue)
                         self.retrieveUriOfArtistsTracks()
                     }
                     else
@@ -84,7 +80,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                     }
                     
                 }
-            case .Failure(let error):
+            case .Failure(_):
                 let alertController = UIAlertController(title: "iOScreator", message:
                     "There was an error in creating your playlist. Please try again.", preferredStyle: UIAlertControllerStyle.Alert)
                 alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
@@ -138,7 +134,8 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                     
                     self.userID = json["id"].stringValue
                     //self.addTracksToPlaylistUsingUri()
-                    self.createPlaylist()
+                    //self.createPlaylist()
+                    self.getUsersPlaylists()
                     
                 }
             case .Failure(let error):
@@ -146,6 +143,29 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             }
         }
         
+    }
+    
+    
+    func getUsersPlaylists() {
+        let apiURL = "https://api.spotify.com/v1/users/\(userID)/playlists"
+        let headers = [
+            "Authorization" : "Bearer \(accToken)"
+        ]
+        
+        Alamofire.request(.GET, apiURL, parameters: nil, encoding: .URL, headers: headers).responseJSON { response in
+            switch response.result {
+            case .Success:
+                
+                
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    print(json["total"])
+                    
+                }
+            case .Failure(let error):
+                print(error)
+            }
+        }
     }
     
     var newPlaylistID = ""
@@ -195,6 +215,9 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 
         
     }
+    
+    
+    
     
     
     

@@ -8,37 +8,51 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
 		</dict>
-		<key>Pods-AFSample.xcscheme</key>
+		<key>LiquidFloatingActionButton-LiquidFloatingActionButton.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
+		</dict>
+		<key>LiquidFloatingActionButton.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Mix.me.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>122F72BBCE98E4CE80725CF806EE1AEE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2E4A37C88D68A62EA5C1BC7A2A4D19AE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9637CA3D73185972E74E20F38571351A</key>
+		<key>8607D23F798601BB83AA9FA1EA79DEFC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DCBB34C6A588C069EBEE7D54737720A0</key>
+		<key>ECB4143196184B0E0EA02182DB2B9CCA</key>
 		<dict>
 			<key>primary</key>
 			<true/>

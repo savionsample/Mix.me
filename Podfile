@@ -1,7 +1,8 @@
 platform :ios, '8.0'
 use_frameworks!
 
-target ‘AFSample’ do
+target ‘Mix.me’ do
     pod 'SwiftyJSON'
     pod ‘Alamofire’
+pod 'LiquidFloatingActionButton', :git => 'https://github.com/yoavlt/LiquidFloatingActionButton', :branch => 'swift-2.0'
 end

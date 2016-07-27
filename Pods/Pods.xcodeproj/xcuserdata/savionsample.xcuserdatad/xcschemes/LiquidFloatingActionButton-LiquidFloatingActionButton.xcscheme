@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '8607D23F798601BB83AA9FA1EA79DEFC'
-               BlueprintName = 'SwiftyJSON'
+               BlueprintIdentifier = '2E4A37C88D68A62EA5C1BC7A2A4D19AE'
+               BlueprintName = 'LiquidFloatingActionButton-LiquidFloatingActionButton'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'SwiftyJSON.framework'>
+               BuildableName = 'LiquidFloatingActionButton.bundle'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

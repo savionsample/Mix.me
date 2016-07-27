@@ -1,15 +1,28 @@
 PODS:
   - Alamofire (3.4.1)
+  - LiquidFloatingActionButton (0.1.1)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
   - Alamofire
+  - LiquidFloatingActionButton (from `https://github.com/yoavlt/LiquidFloatingActionButton`, branch `swift-2.0`)
   - SwiftyJSON
+
+EXTERNAL SOURCES:
+  LiquidFloatingActionButton:
+    :branch: swift-2.0
+    :git: https://github.com/yoavlt/LiquidFloatingActionButton
+
+CHECKOUT OPTIONS:
+  LiquidFloatingActionButton:
+    :commit: 25de77f23df84e0a0981193abecced8afc2ed9c7
+    :git: https://github.com/yoavlt/LiquidFloatingActionButton
 
 SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
+  LiquidFloatingActionButton: dcdae1e59eb07eccbf60c027001a4d6731c345c9
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: 4c015b6f3c6d8962576c10e99a8058ccc9ebfff0
+PODFILE CHECKSUM: c70e01dc977f8f924f37d7cbbf82b1547c42d9e0
 
 COCOAPODS: 1.0.1
