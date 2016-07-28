@@ -1,11 +1,10 @@
 //
 //  Episode.swift
-//  Duc Blog
+//  Mix.me
 //
-//  Created by Duc Tran on 4/3/16.
-//  Copyright © 2016 Developers Academy. All rights reserved.
+//  Created by Savion Sample on 7/19/16.
+//  Copyright © 2016 StereoLabs. All rights reserved.
 //
-
 import Foundation
 import Alamofire
 import SwiftyJSON

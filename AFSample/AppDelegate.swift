@@ -45,6 +45,15 @@ import SwiftyJSON
     
     func application(application: UIApplication, openURL: NSURL, options: [String: AnyObject]) -> Bool {
         
+        UIApplication.sharedApplication().statusBarHidden = false
+        UIApplication.sharedApplication().statusBarStyle = .Default
+        
+        //let backImg: UIImage = UIImage(named: "exit")!
+        //UIBarButtonItem.appearance().setBackButtonBackgroundImage(backImg, forState: .Normal, barMetrics: .Default)
+        
+        
+
+        
         // get only the "code" part of the returned URL required for Spotify Authentification
         returnLink = openURL.absoluteString
         let indexStartOfText = returnLink.startIndex.advancedBy(31)

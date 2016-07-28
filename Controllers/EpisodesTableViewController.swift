@@ -1,9 +1,9 @@
 //
-//  EpisodesTableViewController.swift
-//  Duc Blog
+//  EpisodeTableViewController.swift
+//  Mix.me
 //
-//  Created by Duc Tran on 4/3/16.
-//  Copyright © 2016 Developers Academy. All rights reserved.
+//  Created by Savion Sample on 7/19/16.
+//  Copyright © 2016 StereoLabs. All rights reserved.
 //
 
 import UIKit
@@ -20,6 +20,8 @@ class EpisodesTableViewController: UITableViewController
     {
         super.viewDidLoad()
         
+        UIApplication.sharedApplication().statusBarStyle = .Default
+        
         createFloatingButton()
         
         tableView.estimatedRowHeight = tableView.rowHeight
@@ -29,28 +31,31 @@ class EpisodesTableViewController: UITableViewController
         self.episodes = Episode.downloadAllEpisodes()
         self.tableView.reloadData()
         self.tableView.backgroundColor = UIColor(red: 240/255.0, green: 240/255.0, blue: 240/255.0, alpha: 1.0)
+        
+        
+        
+        
     }
     
-    private func createFloatingButton() {
+    private func createFloatingButton()
+    {
         cells.append(createButtonCell("addFromPlaylist"))
         cells.append(createButtonCell("addFromArtist"))
         cells.append(createButtonCell("ic_place"))
-        
-        
-        
+
         let floatingFrame = CGRect(x: self.view.frame.width - 56 - 16, y: self.view.frame.height - 56 - 16, width: 56, height: 56)
         let floatingButton = createButton(floatingFrame, style: .Up)
         self.view.addSubview(floatingButton)
         self.floatingActionButton = floatingButton
     }
     
-    
-    private func createButtonCell(iconName: String) -> LiquidFloatingCell {
+    private func createButtonCell(iconName: String) -> LiquidFloatingCell
+    {
         return LiquidFloatingCell(icon: UIImage(named: iconName)!)
     }
     
-    
-    private func createButton(frame: CGRect, style: LiquidFloatingActionButtonAnimateStyle) -> LiquidFloatingActionButton {
+    private func createButton(frame: CGRect, style: LiquidFloatingActionButtonAnimateStyle) -> LiquidFloatingActionButton
+    {
         let floatingActionButton = LiquidFloatingActionButton(frame: frame)
         
         floatingActionButton.animateStyle = style
@@ -60,13 +65,10 @@ class EpisodesTableViewController: UITableViewController
         return floatingActionButton
     }
     
-    
-    
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override func preferredStatusBarStyle() -> UIStatusBarStyle
+    {
+        return .Default
     }
-    
-    // MARK: - Table view data source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
@@ -138,45 +140,6 @@ class EpisodesTableViewController: UITableViewController
 //        self.floatingActionButton.close()
 //    }
 //}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

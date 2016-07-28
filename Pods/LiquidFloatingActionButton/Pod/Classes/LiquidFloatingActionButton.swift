@@ -54,7 +54,7 @@ public class LiquidFloatingActionButton : UIView {
     }
     public private(set) var isClosed: Bool = true
     
-    @IBInspectable public var color: UIColor = UIColor(red: 82 / 255.0, green: 112 / 255.0, blue: 235 / 255.0, alpha: 1.0) {
+    @IBInspectable public var color: UIColor = UIColor(red: 36 / 255.0, green: 42 / 255.0, blue: 70 / 255.0, alpha: 1.0) {
         didSet {
             baseView.color = color
         }
@@ -272,7 +272,7 @@ class CircleLiquidBaseView : ActionBarBaseView {
     let closeDuration: CGFloat = 0.2
     let viscosity: CGFloat     = 0.65
     var animateStyle: LiquidFloatingActionButtonAnimateStyle = .Up
-    var color: UIColor = UIColor(red: 82 / 255.0, green: 112 / 255.0, blue: 235 / 255.0, alpha: 1.0) {
+    var color: UIColor = UIColor(red: 49 / 255.0, green: 55 / 255.0, blue: 66 / 255.0, alpha: 1.0) {
         didSet {
             engine?.color = color
             bigEngine?.color = color

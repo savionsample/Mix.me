@@ -27,7 +27,7 @@ class ViewController: UIViewController {
             foregroundNotification = NSNotificationCenter.defaultCenter().addObserverForName(UIApplicationWillEnterForegroundNotification, object: nil, queue: NSOperationQueue.mainQueue()) {
                 [unowned self] notification in
 
-                self.performSegueWithIdentifier("gotoTab", sender: nil)
+                self.performSegueWithIdentifier("gotoTab3", sender: nil)
             }
         }
     }
