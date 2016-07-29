@@ -174,23 +174,16 @@
                                     </textField>
                                     <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cog-2J-YP9">
                                         <rect key="frame" x="20" y="317" width="600" height="201"/>
-                                        <color key="backgroundColor" red="0.79384816749999998" green="0.78222190179999995" blue="0.79378701760000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="160" id="Dnb-cv-3hG"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                                <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="value" red="0.12941176470588237" green="0.14117647058823529" blue="0.16078431372549021" alpha="1" colorSpace="calibratedRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </pickerView>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JW3-mQ-VmF" userLabel="playlistButton">
-                                        <rect key="frame" x="221" y="521" width="199" height="50"/>
-                                        <state key="normal" image="createPlaylist"/>
-                                        <connections>
-                                            <action selector="playlistButtonPressed:" destination="XzH-xP-taT" eventType="touchUpInside" id="xpX-ET-NzF"/>
-                                        </connections>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="create a playlist of any artist's top tracks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Mx-79-4cS">
                                         <rect key="frame" x="137" y="80" width="366" height="26"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
@@ -220,11 +213,18 @@
                                             <action selector="hideKeyBoard2:" destination="XzH-xP-taT" eventType="editingDidEndOnExit" id="o99-KL-ORW"/>
                                         </connections>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JW3-mQ-VmF" userLabel="playlistButton">
+                                        <rect key="frame" x="221" y="541" width="199" height="50"/>
+                                        <state key="normal" image="createPlaylist"/>
+                                        <connections>
+                                            <action selector="playlistButtonPressed:" destination="XzH-xP-taT" eventType="touchUpInside" id="xpX-ET-NzF"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Cog-2J-YP9" firstAttribute="top" secondItem="ftg-CR-0hR" secondAttribute="bottom" constant="13" id="2Y7-mR-jYg"/>
                                     <constraint firstItem="6gI-yT-hYP" firstAttribute="top" secondItem="PGA-Ei-XLa" secondAttribute="top" constant="84" id="4eM-Mh-bnt"/>
-                                    <constraint firstItem="Cog-2J-YP9" firstAttribute="top" secondItem="PGA-Ei-XLa" secondAttribute="top" constant="381" id="7r8-pE-gPH"/>
+                                    <constraint firstItem="Cog-2J-YP9" firstAttribute="top" secondItem="PGA-Ei-XLa" secondAttribute="top" constant="250" id="7r8-pE-gPH"/>
                                     <constraint firstAttribute="trailing" secondItem="6gI-yT-hYP" secondAttribute="trailing" constant="20" id="86e-T8-A9B"/>
                                     <constraint firstItem="8Iy-yd-DnC" firstAttribute="centerX" secondItem="6gI-yT-hYP" secondAttribute="centerX" id="AGX-NB-V7Q"/>
                                     <constraint firstItem="6gI-yT-hYP" firstAttribute="centerX" secondItem="PGA-Ei-XLa" secondAttribute="centerX" id="Awi-aF-wKK"/>
@@ -234,7 +234,7 @@
                                     <constraint firstItem="6gI-yT-hYP" firstAttribute="leading" secondItem="Cog-2J-YP9" secondAttribute="leading" id="W6X-4W-Csj"/>
                                     <constraint firstItem="6gI-yT-hYP" firstAttribute="centerX" secondItem="JW3-mQ-VmF" secondAttribute="centerX" id="agK-CU-IYH"/>
                                     <constraint firstItem="7Mx-79-4cS" firstAttribute="top" secondItem="PGA-Ei-XLa" secondAttribute="top" id="beS-Jr-Rcz"/>
-                                    <constraint firstItem="JW3-mQ-VmF" firstAttribute="top" secondItem="Cog-2J-YP9" secondAttribute="bottom" constant="3" id="bwd-HX-7It"/>
+                                    <constraint firstItem="JW3-mQ-VmF" firstAttribute="top" secondItem="Cog-2J-YP9" secondAttribute="bottom" constant="50" id="bwd-HX-7It"/>
                                     <constraint firstItem="6gI-yT-hYP" firstAttribute="centerX" secondItem="7Mx-79-4cS" secondAttribute="centerX" id="cWh-26-JDR"/>
                                     <constraint firstItem="6gI-yT-hYP" firstAttribute="trailing" secondItem="Cog-2J-YP9" secondAttribute="trailing" id="gFr-8Z-Eub"/>
                                     <constraint firstItem="v4P-9x-ST4" firstAttribute="centerX" secondItem="6gI-yT-hYP" secondAttribute="centerX" id="m3D-ez-fUG"/>
@@ -563,6 +563,16 @@
                     </view>
                     <navigationItem key="navigationItem" title=" " id="WMT-EN-9mR">
                         <barButtonItem key="backBarButtonItem" title=" " id="Eiy-Tv-UsM"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="x2K-wx-GaP">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="PtL-Le-nRd">
+                                <rect key="frame" x="555" y="9" width="25" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="reload"/>
+                                <connections>
+                                    <action selector="reloadButton:" destination="brM-CC-ETD" eventType="touchUpInside" id="CGf-J9-bIe"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="vbc-zE-yaP" id="Ba7-wj-LSg"/>
@@ -645,6 +655,7 @@
         <image name="duc" width="396" height="385"/>
         <image name="loginButton" width="488" height="88"/>
         <image name="logo" width="488" height="488"/>
+        <image name="reload" width="25" height="25"/>
         <image name="thumbnail" width="235" height="235"/>
     </resources>
     <inferredMetricsTieBreakers>

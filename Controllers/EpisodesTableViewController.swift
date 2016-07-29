@@ -28,7 +28,7 @@ class EpisodesTableViewController: UITableViewController
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.separatorStyle = .None
         
-        self.episodes = Episode.downloadAllEpisodes()
+        //self.episodes = Episode.downloadAllEpisodes()
         self.tableView.reloadData()
         self.tableView.backgroundColor = UIColor(red: 240/255.0, green: 240/255.0, blue: 240/255.0, alpha: 1.0)
         

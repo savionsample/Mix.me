@@ -12,6 +12,8 @@ import LiquidFloatingActionButton
 
 class EpisodesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
+    var count = 0
+    
     var episodes = [Episode]()
     var cells = [LiquidFloatingCell]() // data source
     
@@ -20,6 +22,24 @@ class EpisodesViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBAction func reloadButton(sender: AnyObject)
+    {
+        count += 1
+        
+        let ep = Episode(title: "",description: "",thumbnailURL: NSURL(fileURLWithPath: "a"),createdAt: "",author: "")
+        
+        ep.getAccToken()
+        ep.getUserID()
+        
+        Episode.downloadAllEpisodes(ep.returnAccToken(), id: ep.returnID()) { (episodes: [Episode]) in
+            self.episodes = episodes
+            
+            if (self.count == 1) {
+              self.goToNext()
+            }
+        }
+    }
+
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -27,18 +47,19 @@ class EpisodesViewController: UIViewController, UITableViewDelegate, UITableView
         UIApplication.sharedApplication().statusBarStyle = .Default
         self.navigationController!.navigationBar.frame = CGRectMake(0, 0, self.view.frame.size.width, 100.0)
         
-        
-        
-        
         createFloatingButton()
         
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.separatorStyle = .None
 
-        self.episodes = Episode.downloadAllEpisodes()
+    }
+    
+    
+    func goToNext() {
         self.tableView.reloadData()
         self.tableView.backgroundColor = UIColor(red: 240/255.0, green: 240/255.0, blue: 240/255.0, alpha: 1.0)
+        
     }
     
     private func createFloatingButton()

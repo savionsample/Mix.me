@@ -57,16 +57,22 @@ import SwiftyJSON
         //let backImg: UIImage = UIImage(named: "exit")!
         //UIBarButtonItem.appearance().setBackButtonBackgroundImage(backImg, forState: .Normal, barMetrics: .Default)
         
-        
 
         
         // get only the "code" part of the returned URL required for Spotify Authentification
+        
+        func theID() {
+            returnLink = openURL.absoluteString
+            let indexStartOfText = returnLink.startIndex.advancedBy(31)
+            code = returnLink.substringFromIndex(indexStartOfText)
+
+        }
         returnLink = openURL.absoluteString
         let indexStartOfText = returnLink.startIndex.advancedBy(31)
         code = returnLink.substringFromIndex(indexStartOfText)
 
         let parameters: [String: AnyObject] = [
-            "grant_type" : "authorization_code",
+            "grant_type": "authorization_code",
             "code" : code,
             "redirect_uri": "mixme://returnafterlogin",
             "client_id": "08058b3b809047579419282718defac6",

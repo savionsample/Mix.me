@@ -56,56 +56,30 @@ class Episode
         
     }
     
+    func getAccToken()
+    {
+        let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        self.accToken = delegate.getAccessToken()
+    }
+    
+    func getUserID()
+    {
+        let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        self.userID = delegate.getUserID()
+    }
+    
+    
+    func returnAccToken() -> String
+    {
+        return accToken
+    }
+    
+    func returnID() -> String
+    {
+        return userID
+    }
+    
 
-    
-    func getAccToken() {
-        
-        let app = AppDelegate()
-        let code = app.getCode()
-        let parameters: [String: AnyObject] = [
-            "grant_type" : "authorization_code",
-            "code" : code,
-            "redirect_uri": "mixme://returnafterlogin",
-            "client_id": "08058b3b809047579419282718defac6",
-            "client_secret": "0d3414e646f54b7186a795ed559570b7"
-        ]
-        
-        Alamofire.request(.POST, "https://accounts.spotify.com/api/token", parameters: parameters).validate().responseJSON { response in
-            switch response.result {
-            case .Success:
-                if let value = response.result.value {
-                    let json = JSON(value)
-                    self.accToken = json["access_token"].stringValue
-                }
-            case .Failure(let error):
-                print(error)
-            }
-        }
-        
-    }
-    
-    func getUserID() {
-        
-        let apiURL = "https://api.spotify.com/v1/me"
-        let headers = [
-            "Authorization" : "Bearer \(accToken)"
-        ]
-        
-        Alamofire.request(.GET, apiURL, parameters: nil, encoding: .URL, headers: headers).responseJSON { response in
-            switch response.result {
-            case .Success:
-                if let value = response.result.value {
-                    let json = JSON(value)
-                    
-                    self.userID = json["id"].stringValue
-                    self.getUsersPlaylists()
-                }
-            case .Failure(let error):
-                print(error)
-            }
-        }
-    }
-    
     func getUsersPlaylists() {
         let apiURL = "https://api.spotify.com/v1/users/\(userID)/playlists"
         let headers = [
@@ -117,55 +91,35 @@ class Episode
             case .Success:
                 if let value = response.result.value {
                     let json = JSON(value)
-                    print(json)
-                }
-            case .Failure(let error):
-                print(error)
-            }
-        }
-    }
-    
-    static func downloadAllEpisodes() -> [Episode]
-    {
-        let apiURL = "https://api.spotify.com/v1/users/" + theUserID() + "/playlists"
-        let headers = [
-            "Authorization" : "Bearer " + theAccToken()
-        ]
-        
-        Alamofire.request(.GET, apiURL, parameters: nil, encoding: .URL, headers: headers).responseJSON { response in
-            switch response.result {
-            case .Success:
-                
-                if let value = response.result.value {
-                    //let json = JSON(value)
                     //print(json)
-                    
-                    //let x = jsonToNSData(json)
                 }
-                
             case .Failure(let error):
                 print(error)
             }
-            
         }
-        
-        
-        var episodes = [Episode]()
-        
-        let jsonFile = NSBundle.mainBundle().pathForResource("DucBlog", ofType: "json")
-        let jsonData = NSData(contentsOfFile: jsonFile!)
-        
-        if let jsonDictionary = NetworkService.parseJSONFromData(jsonData) {
-            let espDictionaries = jsonDictionary["items"] as! [EpisodeDictionary]
-            for dict in espDictionaries {
-                let episode = Episode(espDictionary: dict)
-                episodes.append(episode)
-            }
-        }
-        
-        return episodes
     }
 
+    
+    static func downloadAllEpisodes(acc: String, id: String, completionBlock: ([Episode]) -> Void)
+    {
+        let apiURL = "https://api.spotify.com/v1/users/" + id + "/playlists"
+        let headers = [
+            "Authorization" : "Bearer " + acc
+        ]
+        
+        Alamofire.request(.GET, apiURL, headers: headers).response { _, _, data, _ in
+            var episodes = [Episode]()
+            if let jsonDictionary = NetworkService.parseJSONFromData(data) {
+                let espDictionaries = jsonDictionary["items"] as! [EpisodeDictionary]
+                for dict in espDictionaries {
+                    let episode = Episode(espDictionary: dict)
+                    episodes.append(episode)
+                }
+            }
+            
+            completionBlock(episodes)
+        }
+    }
 
 }
 

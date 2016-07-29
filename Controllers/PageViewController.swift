@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class PageViewController: UIViewController, UIPageViewControllerDataSource {
     
@@ -38,25 +39,44 @@ class PageViewController: UIViewController, UIPageViewControllerDataSource {
         
     }
     
-    
      private var foregroundNotification: NSObjectProtocol!
-    @IBAction func likeButtonTapped(sender: AnyObject) {
-        if let url = NSURL(string: "https://accounts.spotify.com/authorize/" +
+    
+    @IBAction func likeButtonTapped(sender: AnyObject)
+    {
+        
+        let pageURL = "https://accounts.spotify.com/authorize/" +
             "?client_id=08058b3b809047579419282718defac6" +
             "&response_type=code" +
             "&redirect_uri=mixme%3A%2F%2Freturnafterlogin" +
             "&scope=playlist-modify-public" +
-            "%20user-read-private") {
+            "%20user-read-private"
+        
+        if let url = NSURL(string: pageURL)
+        {
             UIApplication.sharedApplication().openURL(url)
-            
+
             // perform segue to next View when returning after signing in
             foregroundNotification = NSNotificationCenter.defaultCenter().addObserverForName(UIApplicationWillEnterForegroundNotification, object: nil, queue: NSOperationQueue.mainQueue()) {
                 [unowned self] notification in
                 
                 self.performSegueWithIdentifier("gotoTabFromMultiView", sender: nil)
             }
+            
+   
         }
+        
+    
     }
+    
+//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+//    {
+//        // import SafariServices
+//        let safariVC = SFSafariViewController(URL: NSURL(string: "https://accounts.spotify.com/authorize/?client_id=08058b3b809047579419282718defac6&response_type=code&redirect_uri=mixme%3A%2F%2Freturnafterlogin&scope=playlist-modify-public")!)
+//
+//        safariVC.view.tintColor = UIColor(red: 248/255.0, green: 47/255.0, blue: 38/255.0, alpha: 1.0)
+//        safariVC.delegate = self
+//        self.presentViewController(safariVC, animated: true, completion: nil)
+//    }
    
     
     override func didReceiveMemoryWarning() {
@@ -135,4 +155,12 @@ class PageViewController: UIViewController, UIPageViewControllerDataSource {
     }
     
 }
+
+extension EpisodesTableViewController : SFSafariViewControllerDelegate
+{
+    func safariViewControllerDidFinish(controller: SFSafariViewController) {
+        controller.dismissViewControllerAnimated(true, completion: nil)
+    }
+}
+
 

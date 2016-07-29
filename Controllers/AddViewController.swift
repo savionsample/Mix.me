@@ -126,7 +126,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                     
                     self.userID = json["id"].stringValue
                     //self.addTracksToPlaylistUsingUri()
-                    //self.createPlaylist()
+                    self.createPlaylist()
                     self.getUsersPlaylists()
                     
                 }
@@ -150,7 +150,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 
                 if let value = response.result.value {
                     let json = JSON(value)
-                        print(json)
+                        //print(json)
                     
                 }
             case .Failure(let error):
