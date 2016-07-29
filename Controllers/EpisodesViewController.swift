@@ -27,6 +27,9 @@ class EpisodesViewController: UIViewController, UITableViewDelegate, UITableView
         UIApplication.sharedApplication().statusBarStyle = .Default
         self.navigationController!.navigationBar.frame = CGRectMake(0, 0, self.view.frame.size.width, 100.0)
         
+        
+        
+        
         createFloatingButton()
         
         tableView.estimatedRowHeight = tableView.rowHeight
@@ -142,34 +145,6 @@ extension EpisodesViewController: LiquidFloatingActionButtonDelegate
         self.floatingActionButton.close()
     }
 }
-
-//extension EpisodesViewController: UITableViewDataSource
-//{
-//    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return episodes.count
-//    }
-//    
-//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        
-//        let cell = tableView.dequeueReusableCellWithIdentifier("Episode Cell", forIndexPath: indexPath) as! EpisodeTableViewCell
-//        let episode = self.episodes[indexPath.row]
-//        cell.episode = episode
-//        
-//        return cell
-//    }
-//}
-
-//extension EpisodesViewController: UITableViewDelegate
-//{
-//    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath)
-//    {
-//        
-//        episodes.targetWillDisplayEntry(indexPath.row)
-//    }
-//    
-//}
-
-
 
 
 

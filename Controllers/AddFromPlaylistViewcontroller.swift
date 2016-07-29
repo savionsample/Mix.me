@@ -226,6 +226,8 @@ class AddFromPlaylistViewController: UIViewController, UIPickerViewDelegate, UIP
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         accToken = appDelegate.getAccessToken()
         
+        self.title = "Add From Playlist"
+        
         self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "exit")
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "exit")
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)

@@ -127,27 +127,27 @@ class Episode
     
     static func downloadAllEpisodes() -> [Episode]
     {
-//        let apiURL = "https://api.spotify.com/v1/users/" + theUserID() + "/playlists"
-//        let headers = [
-//            "Authorization" : "Bearer " + theAccToken()
-//        ]
-//        
-//        Alamofire.request(.GET, apiURL, parameters: nil, encoding: .URL, headers: headers).responseJSON { response in
-//            switch response.result {
-//            case .Success:
-//                
-//                if let value = response.result.value {
-//                    //let json = JSON(value)
-//                    //print(json)
-//                    
-//                    //let x = jsonToNSData(json)
-//                }
-//                
-//            case .Failure(let error):
-//                print(error)
-//            }
-//            
-//        }
+        let apiURL = "https://api.spotify.com/v1/users/" + theUserID() + "/playlists"
+        let headers = [
+            "Authorization" : "Bearer " + theAccToken()
+        ]
+        
+        Alamofire.request(.GET, apiURL, parameters: nil, encoding: .URL, headers: headers).responseJSON { response in
+            switch response.result {
+            case .Success:
+                
+                if let value = response.result.value {
+                    //let json = JSON(value)
+                    //print(json)
+                    
+                    //let x = jsonToNSData(json)
+                }
+                
+            case .Failure(let error):
+                print(error)
+            }
+            
+        }
         
         
         var episodes = [Episode]()

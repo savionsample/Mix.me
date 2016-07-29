@@ -12,6 +12,9 @@
 		FF3E22C31D3FE42900A1EAD6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3E22C21D3FE42900A1EAD6 /* User.swift */; };
 		FF7EFA3B1D4954BD00261B24 /* EpisodesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7EFA3A1D4954BD00261B24 /* EpisodesViewController.swift */; };
 		FFBC13FB1D4ABB890060FEA7 /* AddFromPlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBC13FA1D4ABB890060FEA7 /* AddFromPlaylistViewController.swift */; };
+		FFBC13FD1D4B0F3A0060FEA7 /* TimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBC13FC1D4B0F3A0060FEA7 /* TimeTableViewController.swift */; };
+		FFBC13FF1D4B188A0060FEA7 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBC13FE1D4B188A0060FEA7 /* ContentViewController.swift */; };
+		FFBC14011D4B19970060FEA7 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBC14001D4B19970060FEA7 /* PageViewController.swift */; };
 		FFBF220F1D46AA2E0060FE1D /* DucBlog.json in Resources */ = {isa = PBXBuildFile; fileRef = FFBF220C1D46AA2E0060FE1D /* DucBlog.json */; };
 		FFBF22101D46AA2E0060FE1D /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBF220D1D46AA2E0060FE1D /* Episode.swift */; };
 		FFBF22111D46AA2E0060FE1D /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBF220E1D46AA2E0060FE1D /* NetworkService.swift */; };
@@ -32,6 +35,9 @@
 		FF3E22C21D3FE42900A1EAD6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FF7EFA3A1D4954BD00261B24 /* EpisodesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodesViewController.swift; sourceTree = "<group>"; };
 		FFBC13FA1D4ABB890060FEA7 /* AddFromPlaylistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFromPlaylistViewController.swift; sourceTree = "<group>"; };
+		FFBC13FC1D4B0F3A0060FEA7 /* TimeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeTableViewController.swift; sourceTree = "<group>"; };
+		FFBC13FE1D4B188A0060FEA7 /* ContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
+		FFBC14001D4B19970060FEA7 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		FFBF220C1D46AA2E0060FE1D /* DucBlog.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DucBlog.json; sourceTree = "<group>"; };
 		FFBF220D1D46AA2E0060FE1D /* Episode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		FFBF220E1D46AA2E0060FE1D /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -82,6 +88,9 @@
 				FF7EFA3A1D4954BD00261B24 /* EpisodesViewController.swift */,
 				FF3E22C01D3EA30000A1EAD6 /* AddViewController.swift */,
 				FFBC13FA1D4ABB890060FEA7 /* AddFromPlaylistViewController.swift */,
+				FFBC13FC1D4B0F3A0060FEA7 /* TimeTableViewController.swift */,
+				FFBC14001D4B19970060FEA7 /* PageViewController.swift */,
+				FFBC13FE1D4B188A0060FEA7 /* ContentViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = SOURCE_ROOT;
@@ -267,10 +276,13 @@
 				FFBF22141D46AA3D0060FE1D /* EpisodeTableViewCell.swift in Sources */,
 				FF3E22C11D3EA30000A1EAD6 /* AddViewController.swift in Sources */,
 				FF3E22C31D3FE42900A1EAD6 /* User.swift in Sources */,
+				FFBC13FF1D4B188A0060FEA7 /* ContentViewController.swift in Sources */,
 				FFBF22111D46AA2E0060FE1D /* NetworkService.swift in Sources */,
 				FFBF22101D46AA2E0060FE1D /* Episode.swift in Sources */,
 				FFECBA0C1D35898100FAC7F1 /* ViewController.swift in Sources */,
 				FFECBA0A1D35898100FAC7F1 /* AppDelegate.swift in Sources */,
+				FFBC13FD1D4B0F3A0060FEA7 /* TimeTableViewController.swift in Sources */,
+				FFBC14011D4B19970060FEA7 /* PageViewController.swift in Sources */,
 				FFBF22161D46AA870060FE1D /* EpisodesTableViewController.swift in Sources */,
 				FFBC13FB1D4ABB890060FEA7 /* AddFromPlaylistViewController.swift in Sources */,
 			);

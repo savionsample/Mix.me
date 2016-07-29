@@ -126,7 +126,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                     
                     self.userID = json["id"].stringValue
                     //self.addTracksToPlaylistUsingUri()
-                    self.createPlaylist()
+                    //self.createPlaylist()
                     self.getUsersPlaylists()
                     
                 }
@@ -150,7 +150,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 
                 if let value = response.result.value {
                     let json = JSON(value)
-                    //print(json["total"])
+                        print(json)
                     
                 }
             case .Failure(let error):
@@ -218,6 +218,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         accToken = appDelegate.getAccessToken()
         
         theScrollView.contentSize.height = 700
+        self.title = "Add From Artist"
         
         self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "exit")
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "exit")
