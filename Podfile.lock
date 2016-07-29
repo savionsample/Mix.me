@@ -2,11 +2,13 @@ PODS:
   - Alamofire (3.4.1)
   - LiquidFloatingActionButton (0.1.1)
   - SwiftyJSON (2.3.2)
+  - TextFieldEffects (1.2.0)
 
 DEPENDENCIES:
   - Alamofire
   - LiquidFloatingActionButton (from `https://github.com/yoavlt/LiquidFloatingActionButton`, branch `swift-2.0`)
   - SwiftyJSON
+  - TextFieldEffects
 
 EXTERNAL SOURCES:
   LiquidFloatingActionButton:
@@ -22,7 +24,8 @@ SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
   LiquidFloatingActionButton: dcdae1e59eb07eccbf60c027001a4d6731c345c9
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  TextFieldEffects: bc4fd3bd557321bd61a0762f3f50965477a36f62
 
-PODFILE CHECKSUM: 89c92b6f17fae01285b0ac3bed8a376be1516d34
+PODFILE CHECKSUM: 9d9ff6b74f70a5023a81adccde45b27749c8aa5f
 
 COCOAPODS: 1.0.1

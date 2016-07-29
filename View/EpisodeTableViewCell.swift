@@ -26,9 +26,7 @@ class EpisodeTableViewCell: UITableViewCell
     func updateUI()
     {
         titleLabel.text = episode.title
-        authorImageView.image = UIImage(named: "duc")
         descriptionLabel.text = episode.description
-        //createdAtLabel.text = "Duc Tran | \(episode.createdAt!)"
         
         //let thumbnailURL = episode.thumbnailURL
 //        let networkService = NetworkService(url: thumbnailURL!)
@@ -39,10 +37,7 @@ class EpisodeTableViewCell: UITableViewCell
 //            })
 //        }
         
-        authorImageView.layer.cornerRadius = authorImageView.bounds.width / 2.0
-        authorImageView.layer.masksToBounds = true
-        authorImageView.layer.borderColor = UIColor.whiteColor().CGColor
-        authorImageView.layer.borderWidth = 1.0
+
         
         backgroundCardView.backgroundColor = UIColor.whiteColor()
         contentView.backgroundColor = UIColor(red: 240/255.0, green: 240/255.0, blue: 240/255.0, alpha: 1.0)

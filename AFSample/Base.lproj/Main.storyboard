@@ -186,10 +186,10 @@
             </objects>
             <point key="canvasLocation" x="2429" y="-226"/>
         </scene>
-        <!--View Controller-->
+        <!--Add From Playlist View Controller-->
         <scene sceneID="VON-3a-J6v">
             <objects>
-                <viewController id="73t-zh-cEE" sceneMemberID="viewController">
+                <viewController id="73t-zh-cEE" customClass="AddFromPlaylistViewController" customModule="Mix_me" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3Gh-g8-h3L"/>
                         <viewControllerLayoutGuide type="bottom" id="gcG-wk-BUH"/>
@@ -197,8 +197,134 @@
                     <view key="view" contentMode="scaleToFill" id="IDd-fG-a63">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Existing Playlist's Name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="KGN-Rn-1QQ" userLabel="Text Existing" customClass="AkiraTextField" customModule="TextFieldEffects">
+                                <rect key="frame" x="167" y="122" width="267" height="57"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="6Mj-Kt-Ocl"/>
+                                    <constraint firstAttribute="width" constant="267" id="ALj-9K-RSs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.16862745100000001" green="0.18823529410000001" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" red="0.16862745100000001" green="0.18823529410000001" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Playlist's Name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9BL-Ng-Okk" userLabel="Text New" customClass="AkiraTextField" customModule="TextFieldEffects">
+                                <rect key="frame" x="167" y="187" width="267" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="267" id="6zV-a8-6Ch"/>
+                                    <constraint firstAttribute="height" constant="52" id="kIb-aD-Q0i"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.16862745100000001" green="0.18823529410000001" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" red="0.16862745100000001" green="0.18823529410000001" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Length" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3He-vP-KRE" customClass="AkiraTextField" customModule="TextFieldEffects">
+                                <rect key="frame" x="167" y="247" width="267" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="267" id="MUB-eY-Sdn"/>
+                                    <constraint firstAttribute="height" constant="52" id="RUh-ap-EM3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.16862745100000001" green="0.18823529410000001" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" red="0.16862745100000001" green="0.18823529410000001" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L9y-2B-vBo">
+                                <rect key="frame" x="277" y="531" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PyM-Om-QsX">
+                                <rect key="frame" x="20" y="325" width="560" height="184"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="184" id="2Kz-Tm-SSo"/>
+                                    <constraint firstAttribute="width" constant="560" id="Vh5-Dm-eMH"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="wpj-0r-uaS">
+                                        <rect key="frame" x="0.0" y="28" width="560" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wpj-0r-uaS" id="SH9-ID-eGx">
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="hKm-ep-HFt">
+                                        <rect key="frame" x="0.0" y="72" width="560" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hKm-ep-HFt" id="sCD-AW-7Ax">
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="oP4-Ue-xze">
+                                        <rect key="frame" x="0.0" y="116" width="560" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oP4-Ue-xze" id="YmA-Ti-nkj">
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9BL-Ng-Okk" firstAttribute="centerX" secondItem="IDd-fG-a63" secondAttribute="centerX" id="2CJ-2G-96u"/>
+                            <constraint firstItem="PyM-Om-QsX" firstAttribute="centerX" secondItem="IDd-fG-a63" secondAttribute="centerX" id="9fK-4W-xBg"/>
+                            <constraint firstItem="L9y-2B-vBo" firstAttribute="centerX" secondItem="IDd-fG-a63" secondAttribute="centerX" id="KTU-Pf-Ftf"/>
+                            <constraint firstItem="3He-vP-KRE" firstAttribute="top" secondItem="9BL-Ng-Okk" secondAttribute="bottom" constant="8" id="LN7-zQ-Dcj"/>
+                            <constraint firstItem="9BL-Ng-Okk" firstAttribute="top" secondItem="KGN-Rn-1QQ" secondAttribute="bottom" constant="8" id="MRJ-9q-J7e"/>
+                            <constraint firstItem="3He-vP-KRE" firstAttribute="centerX" secondItem="IDd-fG-a63" secondAttribute="centerX" id="Vgv-2r-VaV"/>
+                            <constraint firstItem="KGN-Rn-1QQ" firstAttribute="top" secondItem="3Gh-g8-h3L" secondAttribute="bottom" constant="85" id="aqR-Pm-L4q"/>
+                            <constraint firstItem="KGN-Rn-1QQ" firstAttribute="centerX" secondItem="IDd-fG-a63" secondAttribute="centerX" id="dTG-FU-7t1"/>
+                            <constraint firstItem="KGN-Rn-1QQ" firstAttribute="top" secondItem="3Gh-g8-h3L" secondAttribute="bottom" constant="58" id="fU0-f3-cdl"/>
+                            <constraint firstItem="PyM-Om-QsX" firstAttribute="top" secondItem="3He-vP-KRE" secondAttribute="bottom" constant="26" id="kdF-1i-6FY"/>
+                            <constraint firstItem="L9y-2B-vBo" firstAttribute="top" secondItem="3He-vP-KRE" secondAttribute="bottom" constant="101" id="tCG-Bw-RkN"/>
+                            <constraint firstItem="KGN-Rn-1QQ" firstAttribute="centerX" secondItem="IDd-fG-a63" secondAttribute="centerX" id="ugd-ut-Sq6"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="aqR-Pm-L4q"/>
+                                <exclude reference="dTG-FU-7t1"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="PyM-Om-QsX" id="0e2-ob-n3h"/>
+                        <outlet property="textExisting" destination="9BL-Ng-Okk" id="J7W-Gb-tkz"/>
+                        <outlet property="textLength" destination="3He-vP-KRE" id="BSf-fe-781"/>
+                        <outlet property="textNew" destination="KGN-Rn-1QQ" id="oYx-34-59y"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5aJ-RC-xUt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
