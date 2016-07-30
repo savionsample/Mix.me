@@ -26,6 +26,7 @@ class EpisodesViewController: UIViewController, UITableViewDelegate, UITableView
     {
         count += 1
         
+        
         let ep = Episode(title: "",description: "",thumbnailURL: NSURL(fileURLWithPath: "a"),createdAt: "",author: "")
         
         ep.getAccToken()
@@ -52,6 +53,7 @@ class EpisodesViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.separatorStyle = .None
+        
 
     }
     

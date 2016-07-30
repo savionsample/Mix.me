@@ -8,6 +8,8 @@
 
 import UIKit
 import SafariServices
+import Alamofire
+import SwiftyJSON
 
 class PageViewController: UIViewController, UIPageViewControllerDataSource {
     
@@ -15,9 +17,23 @@ class PageViewController: UIViewController, UIPageViewControllerDataSource {
     var pageTitles: NSArray!
     var pageImages: NSArray!
     
+    var accToken: String = ""
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        //refreshView()
+        if accToken.characters.count > 0
+        {
+            print("aldkfadfkl")
+            foregroundNotification = NSNotificationCenter.defaultCenter().addObserverForName(UIApplicationWillEnterForegroundNotification, object: nil, queue: NSOperationQueue.mainQueue()) {
+            [unowned self] notification in
+            
+            self.performSegueWithIdentifier("gotoTabFromMultiView", sender: nil)
+            }
+            
+        }
         
         self.pageTitles = NSArray(objects: "Explore", "Keep your playlists updated", "")
         self.pageImages = NSArray(objects: "page1", "page2", "backgroundCity")
@@ -152,6 +168,60 @@ class PageViewController: UIViewController, UIPageViewControllerDataSource {
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int
     {
         return 0
+    }
+    
+    
+    func refreshView()
+    {
+        let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let refresh = delegate.getRefreshToken()
+        
+        let apiURL = "https://accounts.spotify.com/api/token"
+        
+        let parameters: [String: AnyObject] = [
+            "grant_type": "refresh_token",
+            "refresh_token": refresh,
+            "client_id": "08058b3b809047579419282718defac6",
+            "client_secret": "0d3414e646f54b7186a795ed559570b7"
+        ]
+        
+        
+        Alamofire.request(.POST, apiURL, parameters: parameters, encoding: .JSON).responseJSON { response in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    self.accToken = json["access_token"].stringValue
+                    print(json)
+                }
+            case .Failure(let error):
+                print(error)
+            }
+        }
+        
+
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        var subViews: NSArray = view.subviews
+        var scrollView: UIScrollView? = nil
+        var pageControl: UIPageControl? = nil
+        
+        for view in subViews {
+            if view.isKindOfClass(UIScrollView) {
+                scrollView = view as? UIScrollView
+            }
+            else if view.isKindOfClass(UIPageControl) {
+                pageControl = view as? UIPageControl
+            }
+        }
+        
+        if (scrollView != nil && pageControl != nil) {
+            scrollView?.frame = view.bounds
+            view.bringSubviewToFront(pageControl!)
+        }
     }
     
 }

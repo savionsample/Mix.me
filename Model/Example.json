@@ -3,7 +3,116 @@
     "limit" : 20,
     "items" : [
                {
-               "id" : "33 tracks",
+               "id" : "6ZvB7ftEH95KgiVvBU9vW5",
+               "public" : true,
+               "snapshot_id" : "PoMnBdPcBhBa0rohGrgwftMOXkpUZ8EDWsSpUwEu5JXukZtrkkBN1HTpPS9V8En1",
+               "tracks" : {
+                   "total" : 10,
+                   "href" : "https:\/\/api.spotify.com\/v1\/users\/savionsample\/playlists\/6ZvB7ftEH95KgiVvBU9vW5\/tracks"
+               },
+               "uri" : "spotify:user:savionsample:playlist:6ZvB7ftEH95KgiVvBU9vW5",
+               "href" : "https:\/\/api.spotify.com\/v1\/users\/savionsample\/playlists\/6ZvB7ftEH95KgiVvBU9vW5",
+               "owner" : {
+               "id" : "savionsample",
+               "external_urls" : {
+               "spotify" : "http:\/\/open.spotify.com\/user\/savionsample"
+               },
+               "href" : "https:\/\/api.spotify.com\/v1\/users\/savionsample",
+               "type" : "user",
+               "uri" : "spotify:user:savionsample"
+               },
+               "type" : "playlist",
+               "collaborative" : false,
+               "images" : [
+                           {
+                           "url" : "https:\/\/mosaic.scdn.co\/640\/fd3cac76a8f1f3cab516f06873eeec16977efdf0dc6f04be7adf3ed5355ef230ea4fa06ec80ccc8b12092a0558433cbaccd51301daeb6b31d9f70f9ec0e82a0ac0d70ee54089f6d4cb36749c2d870a8d",
+                           "width" : 640,
+                           "height" : 640
+                           },
+                           {
+                           "url" : "https:\/\/mosaic.scdn.co\/300\/fd3cac76a8f1f3cab516f06873eeec16977efdf0dc6f04be7adf3ed5355ef230ea4fa06ec80ccc8b12092a0558433cbaccd51301daeb6b31d9f70f9ec0e82a0ac0d70ee54089f6d4cb36749c2d870a8d",
+                           "width" : 300,
+                           "height" : 300
+                           },
+                           {
+                           "url" : "https:\/\/mosaic.scdn.co\/60\/fd3cac76a8f1f3cab516f06873eeec16977efdf0dc6f04be7adf3ed5355ef230ea4fa06ec80ccc8b12092a0558433cbaccd51301daeb6b31d9f70f9ec0e82a0ac0d70ee54089f6d4cb36749c2d870a8d",
+                           "width" : 60,
+                           "height" : 60
+                           }
+                           ],
+               "external_urls" : {
+               "spotify" : "http:\/\/open.spotify.com\/user\/savionsample\/playlist\/6ZvB7ftEH95KgiVvBU9vW5"
+               },
+               "name" : "ndne"
+               },
+               {
+               "id" : "4m6tC6Bf8l5g0csczPcows",
+               "public" : true,
+               "snapshot_id" : "1BQG0AK2VNoj221TlyvwwcbLM8yz1zzPw63OwoGtGVMdN67sALPM+iWyStxi0Pzf",
+               "tracks" : {
+                   "total" : 10,
+                   "href" : "https:\/\/api.spotify.com\/v1\/users\/savionsample\/playlists\/4m6tC6Bf8l5g0csczPcows\/tracks"
+               },
+               "uri" : "spotify:user:savionsample:playlist:4m6tC6Bf8l5g0csczPcows",
+               "href" : "https:\/\/api.spotify.com\/v1\/users\/savionsample\/playlists\/4m6tC6Bf8l5g0csczPcows",
+               "owner" : {
+               "id" : "savionsample",
+               "external_urls" : {
+               "spotify" : "http:\/\/open.spotify.com\/user\/savionsample"
+               },
+               "href" : "https:\/\/api.spotify.com\/v1\/users\/savionsample",
+               "type" : "user",
+               "uri" : "spotify:user:savionsample"
+               },
+               "type" : "playlist",
+               "collaborative" : false,
+               "images" : [
+                           {
+                           "url" : "https:\/\/i.scdn.co\/image\/f96947dffe790a60fdf7f2a88549dc4c6f28fcef",
+                           "width" : 640,
+                           "height" : 640
+                           }
+                           ],
+               "external_urls" : {
+               "spotify" : "http:\/\/open.spotify.com\/user\/savionsample\/playlist\/4m6tC6Bf8l5g0csczPcows"
+               },
+               "name" : "hhhhhh"
+               },
+               {
+               "id" : "0ZxyQIPmqn9lXGLJs5jemj",
+               "public" : true,
+               "snapshot_id" : "AQgfEw\/l6zRwCr\/koIQUwfvuKbtBLeEk7LC+RuVzvDPc9pUDmAI\/dvCKpeUxPWp4",
+               "tracks" : {
+               "total" : 10,
+               "href" : "https:\/\/api.spotify.com\/v1\/users\/savionsample\/playlists\/0ZxyQIPmqn9lXGLJs5jemj\/tracks"
+               },
+               "uri" : "spotify:user:savionsample:playlist:0ZxyQIPmqn9lXGLJs5jemj",
+               "href" : "https:\/\/api.spotify.com\/v1\/users\/savionsample\/playlists\/0ZxyQIPmqn9lXGLJs5jemj",
+               "owner" : {
+               "id" : "savionsample",
+               "external_urls" : {
+               "spotify" : "http:\/\/open.spotify.com\/user\/savionsample"
+               },
+               "href" : "https:\/\/api.spotify.com\/v1\/users\/savionsample",
+               "type" : "user",
+               "uri" : "spotify:user:savionsample"
+               },
+               "type" : "playlist",
+               "collaborative" : false,
+               "images" : [
+                           {
+                           "url" : "https:\/\/i.scdn.co\/image\/3351b3a7b5d7b6dbef01e58e120fae3f9619da06",
+                           "width" : 640,
+                           "height" : 640
+                           }
+                           ],
+               "external_urls" : {
+               "spotify" : "http:\/\/open.spotify.com\/user\/savionsample\/playlist\/0ZxyQIPmqn9lXGLJs5jemj"
+               },
+               "name" : "test 123456"
+               },
+               {
+               "id" : "2ZyXKfCCGTi8PmemeyFd64",
                "public" : true,
                "snapshot_id" : "yEj3+uVchVSjbdQ9jQgOnZv2Ez5a82H8KLU8xp4s6iZn2sDJ+uwUwCZi+Zy32FH+",
                "tracks" : {
@@ -36,7 +145,7 @@
                "name" : "troye"
                },
                {
-               "id" : "21 tracks",
+               "id" : "1QT46jx1BB1sNM6yvu7Jdz",
                "public" : true,
                "snapshot_id" : "gM6Ri2ugsFxeaA0jNiXCsQ07CCfIViQOmbaiV1aEfx3OBFsP44oiP\/gbD0j2wnuF",
                "tracks" : {
@@ -79,7 +188,7 @@
                "name" : "euphemism"
                },
                {
-               "id" : "14  tracks",
+               "id" : "1wW97b58vNRWqYUCMJe2L6",
                "public" : true,
                "snapshot_id" : "TOS\/fCBwIVXnNjaPOXne54Hzi3WaJY4U0o5rC2Nu4XNPI5in52JSiG6xxodCMhU3",
                "tracks" : {
@@ -122,7 +231,7 @@
                "name" : "anecdote"
                },
                {
-               "id" : "98 tracks",
+               "id" : "6csUOus39D9wIskzemn1LK",
                "public" : true,
                "snapshot_id" : "PbZk31YSzpYG4RqB0XFk6ls1OObczhF2dXDbZbzXzVml2\/5yyFhKAtX\/Ugd683F6",
                "tracks" : {
@@ -165,7 +274,7 @@
                "name" : "techtonic"
                },
                {
-               "id" : "1 track",
+               "id" : "7DZArl8kVmurHNr6x4qkto",
                "public" : true,
                "snapshot_id" : "LFR3h3ws4j498h\/SV4JOIJT\/NfvX4AZk7Sx\/qIlxeEivw1TP6rg9hYJe707iShP3",
                "tracks" : {
@@ -208,7 +317,7 @@
                "name" : "musicalitis"
                },
                {
-               "id" : "45 tracks",
+               "id" : "1e4AgLe0aMwodM2HHDvOAb",
                "public" : true,
                "snapshot_id" : "WMtFvjJcoo0ZuAMPxoxgQCzYUU2EhcqIBBfxPs5W2THlfg2fzud\/NYZ4GEXHJVHy",
                "tracks" : {
@@ -251,7 +360,7 @@
                "name" : "melodrama"
                },
                {
-               "id" : "0 tracks",
+               "id" : "7eDXNZzt4aOaoYiuJfhK5N",
                "public" : true,
                "snapshot_id" : "AQ8VnW1arkxP+rYUPbiHQW887CED3nzthXHx51RA9VhkO4iv+Bt\/rkdkgg3QezcS",
                "tracks" : {
@@ -294,7 +403,7 @@
                "name" : "symphonism"
                },
                {
-               "id" : "11 tracks",
+               "id" : "4sJJG3g8UcXi41OjrkhP6T",
                "public" : true,
                "snapshot_id" : "1Xa2aKrLN9xvn\/\/TQKriHMLCEC8UvIHj95bO2O09ZEmHU0vKPyJ5aukwQNsHjnbs",
                "tracks" : {
@@ -476,7 +585,7 @@
                }
                ],
     "previous" : null,
-    "total" : 12,
+    "total" : 15,
     "offset" : 0,
     "href" : "https:\/\/api.spotify.com\/v1\/users\/savionsample\/playlists?offset=0&limit=20"
 }

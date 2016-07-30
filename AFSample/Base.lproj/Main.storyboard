@@ -149,7 +149,7 @@
                                         <color key="textColor" red="0.16862745100000001" green="0.18823529410000001" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of Artist" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="v4P-9x-ST4" customClass="AkiraTextField" customModule="TextFieldEffects">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of Artist" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v4P-9x-ST4" customClass="AkiraTextField" customModule="TextFieldEffects">
                                         <rect key="frame" x="187" y="124" width="267" height="54"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="267" id="CeX-8k-PCb"/>
@@ -190,7 +190,7 @@
                                         <color key="textColor" red="0.16862745100000001" green="0.18823529410000001" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of New Playlist" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8Iy-yd-DnC" customClass="AkiraTextField" customModule="TextFieldEffects">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of New Playlist" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Iy-yd-DnC" customClass="AkiraTextField" customModule="TextFieldEffects">
                                         <rect key="frame" x="187" y="216" width="267" height="54"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="57" id="NEq-eX-HTC"/>
@@ -279,7 +279,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Existing Playlist's Name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="KGN-Rn-1QQ" userLabel="Text Existing" customClass="AkiraTextField" customModule="TextFieldEffects">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Existing Playlist's Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KGN-Rn-1QQ" userLabel="Text Existing" customClass="AkiraTextField" customModule="TextFieldEffects">
                                 <rect key="frame" x="167" y="122" width="267" height="57"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="6Mj-Kt-Ocl"/>
@@ -299,7 +299,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Playlist's Name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9BL-Ng-Okk" userLabel="Text New" customClass="AkiraTextField" customModule="TextFieldEffects">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Playlist's Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9BL-Ng-Okk" userLabel="Text New" customClass="AkiraTextField" customModule="TextFieldEffects">
                                 <rect key="frame" x="167" y="187" width="267" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="267" id="6zV-a8-6Ch"/>
@@ -659,6 +659,6 @@
         <image name="thumbnail" width="235" height="235"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OCl-52-jxI"/>
+        <segue reference="nLg-Sc-DtS"/>
     </inferredMetricsTieBreakers>
 </document>

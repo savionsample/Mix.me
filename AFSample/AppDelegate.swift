@@ -18,6 +18,7 @@ import SwiftyJSON
     
     var accessToken: JSON = nil
     var userID: String = ""
+    var refreshToken: String = ""
     
     var returnLink = ""
     
@@ -35,6 +36,10 @@ import SwiftyJSON
     
     func getCode() -> String {
         return code
+    }
+    
+    func getRefreshToken() -> String {
+        return refreshToken
     }
     
     

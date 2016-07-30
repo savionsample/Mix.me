@@ -13,7 +13,7 @@ import SwiftyJSON
 class Episode
 {
     var title: String?
-    var description: String?
+    var description: String
     var thumbnailURL: NSURL?
     var createdAt: String?
     var author: String?
@@ -40,9 +40,12 @@ class Episode
     init(espDictionary: EpisodeDictionary)
     {
         self.title = espDictionary["name"] as? String
-
-        self.description = espDictionary["id"] as? String
-        //print(description)
+        
+        let total = espDictionary["tracks"]!["total"]!
+        let totalString = String(total)
+        
+        self.description = totalString ?? ""
+        
         
         //self.thumbnailURL = espDictionary["url"] as? String
         //self.thumbnailURL = NSURL(string: espDictionary["images"]!["url"] as! String)

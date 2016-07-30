@@ -160,7 +160,7 @@ class AddFromPlaylistViewController: UIViewController, UIPickerViewDelegate, UIP
                 
                 if let value = response.result.value {
                     let json = JSON(value)
-                    //print(json["total"])
+                    print(json)
                     
                 }
             case .Failure(let error):
