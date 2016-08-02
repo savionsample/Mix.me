@@ -42,9 +42,18 @@ class Episode
         self.title = espDictionary["name"] as? String
         
         let total = espDictionary["tracks"]!["total"]!
-        let totalString = String(total)
         
-        self.description = totalString ?? ""
+        let totalString = String(total!)
+        
+        if totalString == "1"
+        {
+         self.description = totalString + " track"
+        }
+        else
+        {
+            self.description = totalString + " tracks"
+        }
+        
         
         
         //self.thumbnailURL = espDictionary["url"] as? String

@@ -28,17 +28,6 @@ class EpisodeTableViewCell: UITableViewCell
         titleLabel.text = episode.title
         descriptionLabel.text = episode.description
         
-        //let thumbnailURL = episode.thumbnailURL
-//        let networkService = NetworkService(url: thumbnailURL!)
-//        networkService.downloadImage { (imageData) in
-//            let image = UIImage(data: imageData)
-//            dispatch_async(dispatch_get_main_queue(), {
-//                self.thumbnailImageView.image = image
-//            })
-//        }
-        
-
-        
         backgroundCardView.backgroundColor = UIColor.whiteColor()
         contentView.backgroundColor = UIColor(red: 240/255.0, green: 240/255.0, blue: 240/255.0, alpha: 1.0)
         
