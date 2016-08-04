@@ -202,22 +202,8 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                         self.double[self.arrOfURIPlaylist[i]] = self.arrOfTracks[i]
                     }
                     print(self.double)
-                    
-                    
-                    
-                    
-                    
-                    
-                    /// oohh you can light my candleeeeeeeeeee it went out again
-                    // gentlemen, we gather here today 
-
-                    //print(self.arrOfURIPlaylist)
-                    //print(self.arrOfTracks)
-
-                    // let fol = self.calculateClosestTime(amount: 600000, coins: self.arrOfTracks)
-                    //let fol = self.calculateClosestTime(amount: 20, coins: [1,2,3])
-
-                    //print(fol)
+                    self.calculateClosestTime()
+                    print("okay")
                 }
             case .Failure(let error):
                 print(error)
@@ -231,13 +217,14 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     
     func calculateClosestTime()
     {
-        let padding = 20000
-        
-        
+        let padding = 60000
         var finalDict = [Int]()
         
-        let low = currentPickerItem - padding
-        let high = currentPickerItem + padding
+//        let low = currentPickerItem - padding
+//        let high = currentPickerItem + padding
+        
+        let low = 800000 - padding
+        let high = 800000 + padding
         var totalTime = 0
         
         var arrOfIndexes = [Int]()
@@ -248,18 +235,18 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         {
             if !(totalTime + arrOfTracks[i] > high)
             {
-                finalDict.append(arrOfTracks[i])
+                totalTime += arrOfTracks[i]
+                
+                // add the index of the song
                 arrOfIndexes.append(i)
             }
             i += 1
             
         }
+        print(arrOfIndexes)
+        print("akldjfsalf")
         
-        
-        
-        
-    
-    
+        createPlaylist()
     
     
     }

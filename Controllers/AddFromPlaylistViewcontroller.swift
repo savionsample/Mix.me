@@ -9,114 +9,78 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
-import TextFieldEffects
 
-class AddFromPlaylistViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
+class AddFromPlaylistViewController: UIViewController
 {
     var accToken = ""
     var artistID = ""
     var userID = ""
     var playlistName = ""
-    var arrOfURI = [String]()
+    var length = 0
     
-    //@IBOutlet weak var userTextField: JiroTextField!
+    var arrOfURIPlaylist = [String]()
+    var finalUriToAdd = [String]()
+    var arrOfTracks = [Int]()
+    var arrOfIndexes = [Int]()
+    var dictUriMS = [String: Int]()
+    
     private var foregroundNotification: NSObjectProtocol!
-
-
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var textExisting: UITextField!
-    @IBOutlet weak var textNew: UITextField!
-    @IBOutlet weak var textLength: UITextField!
     
+    @IBOutlet weak var existingPlaylistName: UITextField!
+    @IBOutlet weak var newPlaylistName: UITextField!
+    @IBOutlet weak var lengthText: UITextField!
     
-//    @IBAction func textExistingAction(sender: AnyObject) {
-//        textNew.resignFirstResponder()
-//    }
-//
-//
-//    @IBAction func textNewAction(sender: UITextField) {
-//        textExisting.resignFirstResponder()
-//    }
-//    
-//    
-//    @IBAction func textLengthAction(sender: UITextField) {
-//        textLength.resignFirstResponder()
-//    }
-    
-    
-    
-    
-    
-
-//    @IBAction func playlistButtonPressed(sender: AnyObject) {
-//        
-//        let artist = self.userTextField.text!
-//        playlistName = self.userTextField2.text!
-//        
-//        let replaced = String(artist.characters.map {
-//            $0 == " " ? "+" : $0
-//            })
-//        
-//        // GET ARTIST'S ID
-//        Alamofire.request(.GET, "https://api.spotify.com/v1/search?q=\(replaced)&type=artist").validate().responseJSON { response in
-//            switch response.result {
-//            case .Success:
-//                if let value = response.result.value {
-//                    
-//                    let json = JSON(value)
-//                    
-//                    if (json["artists"]["items"][0]["id"].stringValue != "") {
-//                        
-//                        let alertController = UIAlertController(title: "iOScreator", message:
-//                            "Spotify playlist created!", preferredStyle: UIAlertControllerStyle.Alert)
-//                        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
-//                        self.presentViewController(alertController, animated: true, completion: nil)
-//                        
-//                        self.artistID = json["artists"]["items"][0]["id"].stringValue
-//                        self.retrieveUriOfArtistsTracks()
-//                    }
-//                    else
-//                    {
-//                        let alertController = UIAlertController(title: "iOScreator", message:
-//                            "Make sure there's a valid artist and a name for the playlist", preferredStyle: UIAlertControllerStyle.Alert)
-//                        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
-//                        self.presentViewController(alertController, animated: true, completion: nil)
-//                    }
-//                    
-//                }
-//            case .Failure(_):
-//                let alertController = UIAlertController(title: "iOScreator", message:
-//                    "There was an error in creating your playlist. Please try again.", preferredStyle: UIAlertControllerStyle.Alert)
-//                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
-//                
-//                self.presentViewController(alertController, animated: true, completion: nil)
-//            }
-//        }
-//        
-//    }
-    
-    func retrieveUriOfArtistsTracks()
+    @IBAction func hideText(sender: AnyObject)
     {
-        Alamofire.request(.GET, "https://api.spotify.com/v1/artists/\(artistID)/top-tracks?country=US").validate().responseJSON { response in
+        existingPlaylistName.resignFirstResponder()
+        newPlaylistName.resignFirstResponder()
+        lengthText.resignFirstResponder()
+    }
+    
+    @IBAction func playlistButtonPressed(sender: AnyObject)
+    {
+        let artist = self.existingPlaylistName.text!
+        playlistName = self.newPlaylistName.text!
+        length = Int(self.lengthText.text!)!
+        
+        let replaced = String(artist.characters.map {
+            $0 == " " ? "+" : $0
+        })
+        
+        // GET ARTIST'S ID
+        Alamofire.request(.GET, "https://api.spotify.com/v1/search?q=\(replaced)&type=artist").validate().responseJSON { response in
             switch response.result {
             case .Success:
-                if let value = response.result.value {
+                if let value = response.result.value
+                {
                     let json = JSON(value)
                     
-                    for (_, subJson) in json["tracks"] {
-                        if let uri = subJson["uri"].string {
-                            self.arrOfURI.append(uri)
-                        }
+                    if (json["artists"]["items"][0]["id"].stringValue != "")
+                    {
+                        self.sendAlert("Spotify playlist created!")
+                        self.artistID = json["artists"]["items"][0]["id"].stringValue
+                        self.getUserID()
+                    }
+                    else
+                    {
+                        self.sendAlert("Make sure there's a valid artist and a name for the playlist")
                     }
                     
-                    self.getUserID()
-                    
-                    
                 }
-            case .Failure(let error):
-                print(error)
+            case .Failure(_):
+                self.sendAlert("There was an error in creating your playlist. Please try again.")
             }
         }
+        
+    }
+    
+    // ????
+    func textView(textView: UITextView!, shouldChangeTextInRange: NSRange, replacementText: NSString!) -> Bool {
+        if(replacementText == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
     }
     
     func getUserID()
@@ -135,9 +99,7 @@ class AddFromPlaylistViewController: UIViewController, UIPickerViewDelegate, UIP
                     let json = JSON(value)
                     
                     self.userID = json["id"].stringValue
-                    //self.addTracksToPlaylistUsingUri()
-                    self.createPlaylist()
-                    self.getUsersPlaylists()
+                    self.getPlaylistsTracks()
                     
                 }
             case .Failure(let error):
@@ -156,11 +118,9 @@ class AddFromPlaylistViewController: UIViewController, UIPickerViewDelegate, UIP
         Alamofire.request(.GET, apiURL, parameters: nil, encoding: .URL, headers: headers).responseJSON { response in
             switch response.result {
             case .Success:
-                
-                
                 if let value = response.result.value {
                     let json = JSON(value)
-                    print(json)
+                    //print(json)
                     
                 }
             case .Failure(let error):
@@ -169,9 +129,101 @@ class AddFromPlaylistViewController: UIViewController, UIPickerViewDelegate, UIP
         }
     }
     
+    
+    
+    func getPlaylistsTracks()
+    {
+        let apiURL = "https://api.spotify.com/v1/users/\(userID)/playlists/1QT46jx1BB1sNM6yvu7Jdz/tracks"
+        let headers = [
+            "Authorization" : "Bearer \(accToken)"
+        ]
+        
+        Alamofire.request(.GET, apiURL, parameters: nil, encoding: .URL, headers: headers).responseJSON { response in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let parentJSON = JSON(value)
+                    guard let json = parentJSON["items"].array else { print("\(parentJSON) not an array"); return }
+                    
+                    
+                    self.arrOfURIPlaylist = json.flatMap { subJSON in
+                        let trackJSON = subJSON["track"]
+                        return trackJSON["uri"].string
+                    }
+                    
+                    self.arrOfTracks = json.flatMap { subJSON in
+                        let trackJSON = subJSON["track"]
+                        return trackJSON["duration_ms"].int
+                    }
+                    
+                    self.dictUriMS = [String: Int]()
+
+                    for i in 0..<self.arrOfURIPlaylist.count
+                    {
+                        self.dictUriMS[self.arrOfURIPlaylist[i]] = self.arrOfTracks[i]
+                    }
+
+                    print(self.dictUriMS)
+                    let f = self.dictUriMS.shuffle()
+                    print(f)
+
+                    
+                    
+                    self.calculateClosestTime()
+                }
+            case .Failure(let error):
+                print(error)
+            }
+        }
+        
+        
+        
+    }
+    
+
+
+    
+    func calculateClosestTime()
+    {
+        let padding = 10000
+        let low = (length * 60000) - padding
+        let high = (length * 60000) + padding
+
+        var totalTime = 0
+        
+        var i = 0
+        while i != dictUriMS.count && (  totalTime < low || totalTime > high  )
+        {
+            let songLength = Int(Array(dictUriMS.values)[i])
+            let songURI = Array(dictUriMS.keys)[i]
+            
+            if i == dictUriMS.count - 1
+            {
+                let totalWithLastSong = totalTime + songLength
+                if abs(length - totalWithLastSong) < abs(length - totalTime)
+                {
+                    finalUriToAdd.append(songURI)
+                }
+            }
+            if !(totalTime + songLength > high)
+            {
+                totalTime += songLength
+                finalUriToAdd.append(songURI)
+            }
+            i += 1
+            
+        }
+        createPlaylist()
+    }
+    
+
+    
     var newPlaylistID = ""
     
     func createPlaylist() {
+        
+
+        
         let apiURL = "https://api.spotify.com/v1/users/\(userID)/playlists"
         let headers = [
             "Authorization": "Bearer " + accToken,
@@ -200,57 +252,68 @@ class AddFromPlaylistViewController: UIViewController, UIPickerViewDelegate, UIP
     
     func addTracksToPlaylistUsingUri()
     {
+        
         let apiURL = "https://api.spotify.com/v1/users/\(userID)/playlists/\(newPlaylistID)/tracks"
         let headers = [
             "Authorization" : "Bearer " + accToken
         ]
         let parameters: [String: AnyObject] = [
-            "uris": arrOfURI
+            "uris": finalUriToAdd
         ]
         
         Alamofire.request(.POST, apiURL, parameters: parameters, encoding: .JSON, headers: headers).responseJSON { response in
             ///
         }
-        arrOfURI = []
+        arrOfURIPlaylist = []
+        finalUriToAdd = []
+        //getPlaylistsTracks()
     }
     
-    var pickerData = ["1 minute", "2 minutes", "3 minutes", "4 minutes", "5 minutes", "6 minutes", "7 minutes", "8 minutes", "9 minutes", "10 minutes", "11 minutes", "12 minutes", "13 minutes", "14 minutes", "15 minutes", "16 minutes", "17 minutes", "18 minutes", "19 minutes", "20 minutes", "21 minutes", "22 minutes", "23 minutes", "24 minutes", "25 minutes", "26 minutes", "27 minutes", "28 minutes", "29 minutes", "30 minutes", "31 minutes", "32 minutes", "33 minutes", "34 minutes", "35 minutes", "36 minutes"]
+    func sendAlert(message: String)
+    {
+        let alertController = UIAlertController(title: "Proccess completed", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
     
     override func viewDidLoad()
     {
         //myTimePicker.setValue(UIColor.whiteColor(), forKeyPath: "textColor")
         super.viewDidLoad()
         
-        tableView.alwaysBounceVertical = false
-
+        
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         accToken = appDelegate.getAccessToken()
         
-        self.title = "Add From Playlist"
+        //theScrollView.contentSize.height = 700
+        self.title = "Add From Artist"
         
         self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "exit")
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "exit")
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
     }
-    
-    // The number of columns of data
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1
+}
+
+
+extension CollectionType {
+    /// Return a copy of `self` with its elements shuffled
+    func shuffle() -> [Generator.Element] {
+        var list = Array(self)
+        list.shuffleInPlace()
+        return list
     }
-    
-    // The number of rows of data
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData.count
+}
+
+extension MutableCollectionType where Index == Int {
+    /// Shuffle the elements of `self` in-place.
+    mutating func shuffleInPlace() {
+        // empty and single-element collections don't shuffle
+        if count < 2 { return }
+        
+        for i in 0..<count - 1 {
+            let j = Int(arc4random_uniform(UInt32(count - i))) + i
+            guard i != j else { continue }
+            swap(&self[i], &self[j])
+        }
     }
-    
-    // The data to return for the row and component (column) that's being passed in
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerData[row]
-    }
-    
-    // the data returned when chosen
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print(pickerData[row])
-    }
-    
 }
