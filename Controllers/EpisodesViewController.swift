@@ -19,11 +19,15 @@ class EpisodesViewController: UIViewController, UITableViewDelegate, UITableView
     
     var floatingActionButton: LiquidFloatingActionButton!
 
+
+    @IBOutlet weak var spinner: UIButton!
+
     
     @IBOutlet weak var tableView: UITableView!
     
     @IBAction func reloadButton(sender: AnyObject)
     {
+        self.spinner.rotate360Degrees()
         count += 1
         
         let ep = Episode(title: "",description: "",thumbnailURL: NSURL(fileURLWithPath: "a"),createdAt: "",author: "")

@@ -18,11 +18,17 @@ class AddFromPlaylistViewController: UIViewController
     var playlistName = ""
     var length = 0
     
+    struct SongLink {
+        let uri: String
+        let songLength: Int
+    }
+    
     var arrOfURIPlaylist = [String]()
     var finalUriToAdd = [String]()
     var arrOfTracks = [Int]()
     var arrOfIndexes = [Int]()
     var dictUriMS = [String: Int]()
+    var songLinks = [SongLink]()
     
     private var foregroundNotification: NSObjectProtocol!
     
@@ -73,6 +79,12 @@ class AddFromPlaylistViewController: UIViewController
         }
         
     }
+    
+    func shuffle()
+    {
+        songLinks.sortInPlace { _, _ in arc4random() > arc4random() }
+    }
+    
     
     // ????
     func textView(textView: UITextView!, shouldChangeTextInRange: NSRange, replacementText: NSString!) -> Bool {
@@ -160,15 +172,11 @@ class AddFromPlaylistViewController: UIViewController
 
                     for i in 0..<self.arrOfURIPlaylist.count
                     {
-                        self.dictUriMS[self.arrOfURIPlaylist[i]] = self.arrOfTracks[i]
+                        self.songLinks.append(SongLink(uri: self.arrOfURIPlaylist[i], songLength: self.arrOfTracks[i]))
+                        //self.dictUriMS[self.arrOfURIPlaylist[i]] = self.arrOfTracks[i]
                     }
 
-                    print(self.dictUriMS)
-                    let f = self.dictUriMS.shuffle()
-                    print(f)
-
-                    
-                    
+                    self.shuffle()
                     self.calculateClosestTime()
                 }
             case .Failure(let error):
@@ -181,8 +189,6 @@ class AddFromPlaylistViewController: UIViewController
     }
     
 
-
-    
     func calculateClosestTime()
     {
         let padding = 10000
@@ -192,12 +198,15 @@ class AddFromPlaylistViewController: UIViewController
         var totalTime = 0
         
         var i = 0
-        while i != dictUriMS.count && (  totalTime < low || totalTime > high  )
+        while i != songLinks.count && (  totalTime < low || totalTime > high  )
         {
-            let songLength = Int(Array(dictUriMS.values)[i])
-            let songURI = Array(dictUriMS.keys)[i]
+            //let songLength = Int(Array(dictUriMS.values)[i])
+            //let songURI = Array(dictUriMS.keys)[i]
             
-            if i == dictUriMS.count - 1
+            let songLength = songLinks[i].songLength
+            let songURI = songLinks[i].uri
+            
+            if i == songLinks.count - 1
             {
                 let totalWithLastSong = totalTime + songLength
                 if abs(length - totalWithLastSong) < abs(length - totalTime)
@@ -205,7 +214,7 @@ class AddFromPlaylistViewController: UIViewController
                     finalUriToAdd.append(songURI)
                 }
             }
-            if !(totalTime + songLength > high)
+            else if !(totalTime + songLength > high)
             {
                 totalTime += songLength
                 finalUriToAdd.append(songURI)
@@ -295,25 +304,20 @@ class AddFromPlaylistViewController: UIViewController
 }
 
 
-extension CollectionType {
-    /// Return a copy of `self` with its elements shuffled
-    func shuffle() -> [Generator.Element] {
-        var list = Array(self)
-        list.shuffleInPlace()
-        return list
-    }
-}
 
-extension MutableCollectionType where Index == Int {
-    /// Shuffle the elements of `self` in-place.
-    mutating func shuffleInPlace() {
-        // empty and single-element collections don't shuffle
-        if count < 2 { return }
+
+
+
+extension UIView {
+    func rotate360Degrees(duration: CFTimeInterval = 1.0, completionDelegate: AnyObject? = nil) {
+        let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
+        rotateAnimation.fromValue = 0.0
+        rotateAnimation.toValue = CGFloat(M_PI * 2.0)
+        rotateAnimation.duration = duration
         
-        for i in 0..<count - 1 {
-            let j = Int(arc4random_uniform(UInt32(count - i))) + i
-            guard i != j else { continue }
-            swap(&self[i], &self[j])
+        if let delegate: AnyObject = completionDelegate {
+            rotateAnimation.delegate = delegate
         }
+        self.layer.addAnimation(rotateAnimation, forKey: nil)
     }
 }

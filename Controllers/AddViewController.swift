@@ -44,50 +44,45 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         userTextField2.resignFirstResponder()
     }
     
-    @IBAction func playlistButtonPressed(sender: AnyObject) {
+    @IBAction func playlistButtonPressed(sender: AnyObject)
+    {
+        
         
         let artist = self.userTextField.text!
         playlistName = self.userTextField2.text!
         
+
+        
         let replaced = String(artist.characters.map {
             $0 == " " ? "+" : $0
-        })
-
+            })
+        
         // GET ARTIST'S ID
         Alamofire.request(.GET, "https://api.spotify.com/v1/search?q=\(replaced)&type=artist").validate().responseJSON { response in
             switch response.result {
             case .Success:
-                if let value = response.result.value {
-                    
+                if let value = response.result.value
+                {
                     let json = JSON(value)
                     
-                    if (json["artists"]["items"][0]["id"].stringValue != "") {
-                        
-                        let alertController = UIAlertController(title: "iOScreator", message:
-                            "Spotify playlist created!", preferredStyle: UIAlertControllerStyle.Alert)
-                        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
-                        self.presentViewController(alertController, animated: true, completion: nil)
-                        
+                    if (json["artists"]["items"][0]["id"].stringValue != "")
+                    {
+                        self.sendAlert("Spotify playlist created!")
                         self.artistID = json["artists"]["items"][0]["id"].stringValue
-                        self.retrieveUriOfArtistsTracks()
+                        self.getUserID()
                     }
                     else
                     {
-                        let alertController = UIAlertController(title: "iOScreator", message:
-                            "Make sure there's a valid artist and a name for the playlist", preferredStyle: UIAlertControllerStyle.Alert)
-                        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
-                        self.presentViewController(alertController, animated: true, completion: nil)
+                        self.sendAlert("Make sure there's a valid artist and a name for the playlist")
                     }
                     
                 }
             case .Failure(_):
-                let alertController = UIAlertController(title: "iOScreator", message:
-                    "There was an error in creating your playlist. Please try again.", preferredStyle: UIAlertControllerStyle.Alert)
-                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
-                
-                self.presentViewController(alertController, animated: true, completion: nil)
+                self.sendAlert("There was an error in creating your playlist. Please try again.")
             }
         }
+        
+
         
     }
     
@@ -104,11 +99,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                             self.arrOfURIArtist.append(uri)
                         }
                     }
-                    
-                    
                     self.getUserID()
-                    
-                                                            
                 }
             case .Failure(let error):
                 print(error)
@@ -349,6 +340,13 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         arrOfURIArtist = []
         
         getPlaylistsTracks()
+    }
+    
+    func sendAlert(message: String)
+    {
+        let alertController = UIAlertController(title: "Proccess completed", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
 

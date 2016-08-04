@@ -587,6 +587,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="spinner" destination="PtL-Le-nRd" id="5Es-Dw-IsS"/>
                         <outlet property="tableView" destination="vbc-zE-yaP" id="Ba7-wj-LSg"/>
                         <segue destination="XzH-xP-taT" kind="show" identifier="gotoAddFromArtist" id="8OO-Th-BNf"/>
                         <segue destination="73t-zh-cEE" kind="show" identifier="gotoAddFromPlaylist" id="ZXm-De-8tV"/>
