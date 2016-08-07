@@ -21,8 +21,6 @@ class EpisodesViewController: UIViewController, UITableViewDelegate, UITableView
 
 
     @IBOutlet weak var spinner: UIButton!
-
-    
     @IBOutlet weak var tableView: UITableView!
     
     @IBAction func reloadButton(sender: AnyObject)
@@ -47,6 +45,9 @@ class EpisodesViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        tableView.allowsSelection = true
+        //cell.selectionStyle = UITableViewCellSelectionStyle.None
         
         UIApplication.sharedApplication().statusBarStyle = .Default
         self.navigationController!.navigationBar.frame = CGRectMake(0, 0, self.view.frame.size.width, 100.0)

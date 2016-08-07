@@ -10,9 +10,9 @@
 		95CEB03C99B19B86260DA5C4 /* Pods_Mix_me.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38486CB4E688B603FB5BCCD2 /* Pods_Mix_me.framework */; };
 		FF3E22C11D3EA30000A1EAD6 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3E22C01D3EA30000A1EAD6 /* AddViewController.swift */; };
 		FF3E22C31D3FE42900A1EAD6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3E22C21D3FE42900A1EAD6 /* User.swift */; };
+		FF5BF5511D57C8F100A5FED1 /* ListPlaylistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5BF5501D57C8F100A5FED1 /* ListPlaylistTableViewController.swift */; };
 		FF7EFA3B1D4954BD00261B24 /* EpisodesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7EFA3A1D4954BD00261B24 /* EpisodesViewController.swift */; };
 		FFBC13FB1D4ABB890060FEA7 /* AddFromPlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBC13FA1D4ABB890060FEA7 /* AddFromPlaylistViewController.swift */; };
-		FFBC13FD1D4B0F3A0060FEA7 /* TimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBC13FC1D4B0F3A0060FEA7 /* TimeTableViewController.swift */; };
 		FFBC13FF1D4B188A0060FEA7 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBC13FE1D4B188A0060FEA7 /* ContentViewController.swift */; };
 		FFBC14011D4B19970060FEA7 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBC14001D4B19970060FEA7 /* PageViewController.swift */; };
 		FFBC14031D4FB7850060FEA7 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBC14021D4FB7850060FEA7 /* File.swift */; };
@@ -34,9 +34,9 @@
 		89E436D4F3C9B2A793E293DB /* Pods-Mix.me.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mix.me.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mix.me/Pods-Mix.me.release.xcconfig"; sourceTree = "<group>"; };
 		FF3E22C01D3EA30000A1EAD6 /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		FF3E22C21D3FE42900A1EAD6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		FF5BF5501D57C8F100A5FED1 /* ListPlaylistTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListPlaylistTableViewController.swift; sourceTree = "<group>"; };
 		FF7EFA3A1D4954BD00261B24 /* EpisodesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodesViewController.swift; sourceTree = "<group>"; };
 		FFBC13FA1D4ABB890060FEA7 /* AddFromPlaylistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFromPlaylistViewController.swift; sourceTree = "<group>"; };
-		FFBC13FC1D4B0F3A0060FEA7 /* TimeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeTableViewController.swift; sourceTree = "<group>"; };
 		FFBC13FE1D4B188A0060FEA7 /* ContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		FFBC14001D4B19970060FEA7 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		FFBC14021D4FB7850060FEA7 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
@@ -90,10 +90,10 @@
 				FF7EFA3A1D4954BD00261B24 /* EpisodesViewController.swift */,
 				FF3E22C01D3EA30000A1EAD6 /* AddViewController.swift */,
 				FFBC13FA1D4ABB890060FEA7 /* AddFromPlaylistViewController.swift */,
-				FFBC13FC1D4B0F3A0060FEA7 /* TimeTableViewController.swift */,
 				FFBC14001D4B19970060FEA7 /* PageViewController.swift */,
 				FFBC13FE1D4B188A0060FEA7 /* ContentViewController.swift */,
 				FFBC14021D4FB7850060FEA7 /* File.swift */,
+				FF5BF5501D57C8F100A5FED1 /* ListPlaylistTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = SOURCE_ROOT;
@@ -282,10 +282,10 @@
 				FFBC13FF1D4B188A0060FEA7 /* ContentViewController.swift in Sources */,
 				FFBF22111D46AA2E0060FE1D /* NetworkService.swift in Sources */,
 				FFBF22101D46AA2E0060FE1D /* Episode.swift in Sources */,
+				FF5BF5511D57C8F100A5FED1 /* ListPlaylistTableViewController.swift in Sources */,
 				FFECBA0C1D35898100FAC7F1 /* ViewController.swift in Sources */,
 				FFECBA0A1D35898100FAC7F1 /* AppDelegate.swift in Sources */,
 				FFBC14031D4FB7850060FEA7 /* File.swift in Sources */,
-				FFBC13FD1D4B0F3A0060FEA7 /* TimeTableViewController.swift in Sources */,
 				FFBC14011D4B19970060FEA7 /* PageViewController.swift in Sources */,
 				FFBF22161D46AA870060FE1D /* EpisodesTableViewController.swift in Sources */,
 				FFBC13FB1D4ABB890060FEA7 /* AddFromPlaylistViewController.swift in Sources */,

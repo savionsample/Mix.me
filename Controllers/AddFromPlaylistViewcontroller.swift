@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import Whisper
 
 class AddFromPlaylistViewController: UIViewController
 {
@@ -16,12 +17,12 @@ class AddFromPlaylistViewController: UIViewController
     var artistID = ""
     var userID = ""
     var playlistName = ""
-    var length = 0
+    var playlistId = ""
+    var existingPlaylistName = ""
+    var newPlaylistName = ""
+    var newPlaylistID = ""
     
-    struct SongLink {
-        let uri: String
-        let songLength: Int
-    }
+    var length = 0
     
     var arrOfURIPlaylist = [String]()
     var finalUriToAdd = [String]()
@@ -29,70 +30,39 @@ class AddFromPlaylistViewController: UIViewController
     var arrOfIndexes = [Int]()
     var dictUriMS = [String: Int]()
     var songLinks = [SongLink]()
+    var trackLinks = [TrackLink]()
     
     private var foregroundNotification: NSObjectProtocol!
     
-    @IBOutlet weak var existingPlaylistName: UITextField!
-    @IBOutlet weak var newPlaylistName: UITextField!
+    struct TrackLink {
+        let id: String
+        let name: String
+    }
+    
+    struct SongLink {
+        let uri: String
+        let songLength: Int
+    }
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var existingPlaylistTextField: UITextField!
+    @IBOutlet weak var newPlaylistTextField: UITextField!
     @IBOutlet weak var lengthText: UITextField!
     
     @IBAction func hideText(sender: AnyObject)
     {
-        existingPlaylistName.resignFirstResponder()
-        newPlaylistName.resignFirstResponder()
+        existingPlaylistTextField.resignFirstResponder()
+        newPlaylistTextField.resignFirstResponder()
         lengthText.resignFirstResponder()
     }
     
     @IBAction func playlistButtonPressed(sender: AnyObject)
     {
-        let artist = self.existingPlaylistName.text!
-        playlistName = self.newPlaylistName.text!
+        existingPlaylistName = self.existingPlaylistTextField.text!
+        newPlaylistName = self.newPlaylistTextField.text!
         length = Int(self.lengthText.text!)!
-        
-        let replaced = String(artist.characters.map {
-            $0 == " " ? "+" : $0
-        })
-        
-        // GET ARTIST'S ID
-        Alamofire.request(.GET, "https://api.spotify.com/v1/search?q=\(replaced)&type=artist").validate().responseJSON { response in
-            switch response.result {
-            case .Success:
-                if let value = response.result.value
-                {
-                    let json = JSON(value)
-                    
-                    if (json["artists"]["items"][0]["id"].stringValue != "")
-                    {
-                        self.sendAlert("Spotify playlist created!")
-                        self.artistID = json["artists"]["items"][0]["id"].stringValue
-                        self.getUserID()
-                    }
-                    else
-                    {
-                        self.sendAlert("Make sure there's a valid artist and a name for the playlist")
-                    }
-                    
-                }
-            case .Failure(_):
-                self.sendAlert("There was an error in creating your playlist. Please try again.")
-            }
-        }
-        
-    }
-    
-    func shuffle()
-    {
-        songLinks.sortInPlace { _, _ in arc4random() > arc4random() }
-    }
-    
-    
-    // ????
-    func textView(textView: UITextView!, shouldChangeTextInRange: NSRange, replacementText: NSString!) -> Bool {
-        if(replacementText == "\n") {
-            textView.resignFirstResponder()
-            return false
-        }
-        return true
+
+        self.getUserID()
     }
     
     func getUserID()
@@ -105,14 +75,11 @@ class AddFromPlaylistViewController: UIViewController
         Alamofire.request(.GET, apiURL, parameters: nil, encoding: .URL, headers: headers).responseJSON { response in
             switch response.result {
             case .Success:
-                
-                
                 if let value = response.result.value {
                     let json = JSON(value)
                     
                     self.userID = json["id"].stringValue
-                    self.getPlaylistsTracks()
-                    
+                    self.getUsersPlaylists()
                 }
             case .Failure(let error):
                 print(error)
@@ -131,9 +98,49 @@ class AddFromPlaylistViewController: UIViewController
             switch response.result {
             case .Success:
                 if let value = response.result.value {
-                    let json = JSON(value)
-                    //print(json)
+                    let parentJSON = JSON(value)
                     
+                    var arrOfNames = [String]()
+                    var arrOfId = [String]()
+                    
+                    
+                    for (_, subJson) in parentJSON["items"] {
+                        if let name = subJson["name"].string {
+                            arrOfNames.append(name)
+                        }
+                    }
+                    
+                    for (_, subJson) in parentJSON["items"] {
+                        if let id = subJson["id"].string {
+                            arrOfId.append(id)
+                        }
+                    }
+
+                    // append the name/id pairing
+                    for i in 0..<arrOfNames.count
+                    {
+                        self.trackLinks.append(TrackLink(id: arrOfId[i], name: arrOfNames[i]))
+                    }
+                    
+                    // assign the playlist id the user wants
+                    for playlist in self.trackLinks
+                    {
+                        if self.existingPlaylistName == playlist.name
+                        {
+                            self.playlistId = playlist.id
+                        }
+                    }
+                    
+                    // don't continue if the user entered an invalid playlist name
+                    if self.playlistId == ""
+                    {
+                        self.whisperMessage("Invalid playlist name")
+                    }
+                    else
+                    {
+                        self.whisperMessage("Spotify playlist created!")
+                        self.getPlaylistsTracks()
+                    }
                 }
             case .Failure(let error):
                 print(error)
@@ -141,11 +148,9 @@ class AddFromPlaylistViewController: UIViewController
         }
     }
     
-    
-    
     func getPlaylistsTracks()
     {
-        let apiURL = "https://api.spotify.com/v1/users/\(userID)/playlists/1QT46jx1BB1sNM6yvu7Jdz/tracks"
+        let apiURL = "https://api.spotify.com/v1/users/\(userID)/playlists/\(playlistId)/tracks"
         let headers = [
             "Authorization" : "Bearer \(accToken)"
         ]
@@ -157,7 +162,6 @@ class AddFromPlaylistViewController: UIViewController
                     let parentJSON = JSON(value)
                     guard let json = parentJSON["items"].array else { print("\(parentJSON) not an array"); return }
                     
-                    
                     self.arrOfURIPlaylist = json.flatMap { subJSON in
                         let trackJSON = subJSON["track"]
                         return trackJSON["uri"].string
@@ -167,15 +171,12 @@ class AddFromPlaylistViewController: UIViewController
                         let trackJSON = subJSON["track"]
                         return trackJSON["duration_ms"].int
                     }
-                    
-                    self.dictUriMS = [String: Int]()
-
+                    print("die")
                     for i in 0..<self.arrOfURIPlaylist.count
                     {
                         self.songLinks.append(SongLink(uri: self.arrOfURIPlaylist[i], songLength: self.arrOfTracks[i]))
-                        //self.dictUriMS[self.arrOfURIPlaylist[i]] = self.arrOfTracks[i]
                     }
-
+                    
                     self.shuffle()
                     self.calculateClosestTime()
                 }
@@ -183,18 +184,14 @@ class AddFromPlaylistViewController: UIViewController
                 print(error)
             }
         }
-        
-        
-        
     }
     
-
     func calculateClosestTime()
     {
         let padding = 10000
         let low = (length * 60000) - padding
         let high = (length * 60000) + padding
-
+        
         var totalTime = 0
         
         var i = 0
@@ -206,6 +203,7 @@ class AddFromPlaylistViewController: UIViewController
             let songLength = songLinks[i].songLength
             let songURI = songLinks[i].uri
             
+            // when it gets to the last song, see if it's closer to just add the song or leave it out
             if i == songLinks.count - 1
             {
                 let totalWithLastSong = totalTime + songLength
@@ -220,19 +218,12 @@ class AddFromPlaylistViewController: UIViewController
                 finalUriToAdd.append(songURI)
             }
             i += 1
-            
         }
         createPlaylist()
     }
     
-
-    
-    var newPlaylistID = ""
-    
-    func createPlaylist() {
-        
-
-        
+    func createPlaylist()
+    {
         let apiURL = "https://api.spotify.com/v1/users/\(userID)/playlists"
         let headers = [
             "Authorization": "Bearer " + accToken,
@@ -240,7 +231,7 @@ class AddFromPlaylistViewController: UIViewController
         ]
         
         let parameters: [String: AnyObject] = [
-            "name": playlistName
+            "name": newPlaylistName
         ]
         
         Alamofire.request(.POST, apiURL, parameters: parameters, encoding: .JSON, headers: headers).responseJSON { response in
@@ -248,7 +239,6 @@ class AddFromPlaylistViewController: UIViewController
             case .Success:
                 if let value = response.result.value {
                     let json = JSON(value)
-                    
                     self.newPlaylistID = json["id"].stringValue
                     self.addTracksToPlaylistUsingUri()
                 }
@@ -258,38 +248,41 @@ class AddFromPlaylistViewController: UIViewController
         }
     }
     
-    
     func addTracksToPlaylistUsingUri()
     {
-        
+        print(newPlaylistID)
         let apiURL = "https://api.spotify.com/v1/users/\(userID)/playlists/\(newPlaylistID)/tracks"
         let headers = [
             "Authorization" : "Bearer " + accToken
         ]
+        print("Hi")
         let parameters: [String: AnyObject] = [
             "uris": finalUriToAdd
         ]
         
         Alamofire.request(.POST, apiURL, parameters: parameters, encoding: .JSON, headers: headers).responseJSON { response in
-            ///
+            // don't remove comment or else will self destruct
         }
         arrOfURIPlaylist = []
         finalUriToAdd = []
-        //getPlaylistsTracks()
+    }
+
+    func whisperMessage(message: String)
+    {
+        let message = Message(title: message, backgroundColor: UIColor(red: 110/255.0, green: 185/255.0, blue: 159/255.0, alpha: 1.0))
+        Whisper(message, to: navigationController!, action: .Show)
     }
     
-    func sendAlert(message: String)
+    // shuffle the array of songs in the playlist
+    func shuffle()
     {
-        let alertController = UIAlertController(title: "Proccess completed", message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
-        self.presentViewController(alertController, animated: true, completion: nil)
+        songLinks.sortInPlace { _, _ in arc4random() > arc4random() }
     }
     
     override func viewDidLoad()
     {
-        //myTimePicker.setValue(UIColor.whiteColor(), forKeyPath: "textColor")
         super.viewDidLoad()
-        
+        tableView.scrollEnabled = false
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         accToken = appDelegate.getAccessToken()
@@ -302,11 +295,6 @@ class AddFromPlaylistViewController: UIViewController
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
     }
 }
-
-
-
-
-
 
 extension UIView {
     func rotate360Degrees(duration: CFTimeInterval = 1.0, completionDelegate: AnyObject? = nil) {
@@ -321,3 +309,5 @@ extension UIView {
         self.layer.addAnimation(rotateAnimation, forKey: nil)
     }
 }
+
+
