@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SafariServices
 import Alamofire
 import SwiftyJSON
 
@@ -23,25 +22,13 @@ class PageViewController: UIViewController, UIPageViewControllerDataSource {
     {
         super.viewDidLoad()
         
-        //refreshView()
-        if accToken.characters.count > 0
-        {
-            print("aldkfadfkl")
-            foregroundNotification = NSNotificationCenter.defaultCenter().addObserverForName(UIApplicationWillEnterForegroundNotification, object: nil, queue: NSOperationQueue.mainQueue()) {
-            [unowned self] notification in
-            
-            self.performSegueWithIdentifier("gotoTabFromMultiView", sender: nil)
-            }
-            
-        }
-        
         self.pageTitles = NSArray(objects: "Explore", "Keep your playlists updated", "")
         self.pageImages = NSArray(objects: "page1", "page2", "backgroundCity")
         
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
         self.pageViewController.dataSource = self
         
-        let startVC = self.viewControllerAtIndex(0) as ContentViewController
+        let startVC = self.viewControllerAtIndex(0) as PageViewContentViewController
         let viewControllers = NSArray(object: startVC)
         
         self.pageViewController.setViewControllers(viewControllers as? [UIViewController], direction: .Forward, animated: true, completion: nil)
@@ -59,6 +46,8 @@ class PageViewController: UIViewController, UIPageViewControllerDataSource {
     
     @IBAction func likeButtonTapped(sender: AnyObject)
     {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.spotifyDelegate = self
         
         let pageURL = "https://accounts.spotify.com/authorize/" +
             "?client_id=08058b3b809047579419282718defac6" +
@@ -70,30 +59,8 @@ class PageViewController: UIViewController, UIPageViewControllerDataSource {
         if let url = NSURL(string: pageURL)
         {
             UIApplication.sharedApplication().openURL(url)
-
-            // perform segue to next View when returning after signing in
-            foregroundNotification = NSNotificationCenter.defaultCenter().addObserverForName(UIApplicationWillEnterForegroundNotification, object: nil, queue: NSOperationQueue.mainQueue()) {
-                [unowned self] notification in
-                
-                self.performSegueWithIdentifier("gotoTabFromMultiView", sender: nil)
-            }
-            
-   
         }
-        
-    
     }
-    
-//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
-//    {
-//        // import SafariServices
-//        let safariVC = SFSafariViewController(URL: NSURL(string: "https://accounts.spotify.com/authorize/?client_id=08058b3b809047579419282718defac6&response_type=code&redirect_uri=mixme%3A%2F%2Freturnafterlogin&scope=playlist-modify-public")!)
-//
-//        safariVC.view.tintColor = UIColor(red: 248/255.0, green: 47/255.0, blue: 38/255.0, alpha: 1.0)
-//        safariVC.delegate = self
-//        self.presentViewController(safariVC, animated: true, completion: nil)
-//    }
-   
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -101,13 +68,13 @@ class PageViewController: UIViewController, UIPageViewControllerDataSource {
     }
     
     
-    func viewControllerAtIndex(index: Int) -> ContentViewController
+    func viewControllerAtIndex(index: Int) -> PageViewContentViewController
     {
         if ((self.pageTitles.count == 0) || (index >= self.pageTitles.count)) {
-            return ContentViewController()
+            return PageViewContentViewController()
         }
         
-        let vc: ContentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ContentViewController") as! ContentViewController
+        let vc: PageViewContentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewContentViewController") as! PageViewContentViewController
         
         vc.imageFile = self.pageImages[index] as! String
         vc.titleText = self.pageTitles[index] as! String
@@ -124,7 +91,7 @@ class PageViewController: UIViewController, UIPageViewControllerDataSource {
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController?
     {
         
-        let vc = viewController as! ContentViewController
+        let vc = viewController as! PageViewContentViewController
         var index = vc.pageIndex as Int
         
         
@@ -141,7 +108,7 @@ class PageViewController: UIViewController, UIPageViewControllerDataSource {
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         
-        let vc = viewController as! ContentViewController
+        let vc = viewController as! PageViewContentViewController
         var index = vc.pageIndex as Int
         
         if (index == NSNotFound)
@@ -185,7 +152,6 @@ class PageViewController: UIViewController, UIPageViewControllerDataSource {
             "client_secret": "0d3414e646f54b7186a795ed559570b7"
         ]
         
-        
         Alamofire.request(.POST, apiURL, parameters: parameters, encoding: .JSON).responseJSON { response in
             switch response.result {
             case .Success:
@@ -198,14 +164,12 @@ class PageViewController: UIViewController, UIPageViewControllerDataSource {
                 print(error)
             }
         }
-        
-
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        var subViews: NSArray = view.subviews
+        let subViews: NSArray = view.subviews
         var scrollView: UIScrollView? = nil
         var pageControl: UIPageControl? = nil
         
@@ -226,11 +190,14 @@ class PageViewController: UIViewController, UIPageViewControllerDataSource {
     
 }
 
-extension EpisodesTableViewController : SFSafariViewControllerDelegate
-{
-    func safariViewControllerDidFinish(controller: SFSafariViewController) {
-        controller.dismissViewControllerAnimated(true, completion: nil)
+extension PageViewController: SpotifyDelegate {
+    func didGetAccessToken(accessToken: String?) {
+        if accessToken != ""
+        {
+            self.performSegueWithIdentifier("gotoTabFromMultiView", sender: nil)
+        }
     }
 }
+
 
 

@@ -10,11 +10,17 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
+protocol SpotifyDelegate
+{
+    func didGetAccessToken(accessToken: String?) -> Void
+}
+
 @UIApplicationMain class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var code: String = ""
-    var currentUser = User()
+    
+    var spotifyDelegate: SpotifyDelegate!
     
     var accessToken: JSON = nil
     var userID: String = ""
@@ -23,6 +29,10 @@ import SwiftyJSON
     var returnLink = ""
     
     func getAccessToken() -> String {
+        return accessToken.stringValue
+    }
+    
+    func getAccessTokenOptional() -> String? {
         return accessToken.stringValue
     }
     
@@ -46,7 +56,7 @@ import SwiftyJSON
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        var pageController = UIPageControl.appearance()
+        let pageController = UIPageControl.appearance()
         pageController.pageIndicatorTintColor = UIColor.lightGrayColor()
         pageController.currentPageIndicatorTintColor = UIColor.blackColor()
         pageController.backgroundColor = UIColor.whiteColor()
@@ -58,11 +68,6 @@ import SwiftyJSON
         
         UIApplication.sharedApplication().statusBarHidden = false
         UIApplication.sharedApplication().statusBarStyle = .Default
-        
-        //let backImg: UIImage = UIImage(named: "exit")!
-        //UIBarButtonItem.appearance().setBackButtonBackgroundImage(backImg, forState: .Normal, barMetrics: .Default)
-        
-
         
         // get only the "code" part of the returned URL required for Spotify Authentification
         
@@ -86,7 +91,6 @@ import SwiftyJSON
         
         // GET THE USER'S ID
         func getUserID() {
-            
             let apiURL = "https://api.spotify.com/v1/me"
             let headers = [
                 "Authorization" : "Bearer \(accessToken.stringValue)"
@@ -104,19 +108,19 @@ import SwiftyJSON
                         //userPlaylists()
                         //createNewPlaylist()
                         //addTracksToPlaylist()
-
+                        
+                        self.spotifyDelegate.didGetAccessToken(self.accessToken.string)
+                    } else {
+                        self.spotifyDelegate.didGetAccessToken(nil)
                     }
                 case .Failure(let error):
                     print(error)
+                    self.spotifyDelegate.didGetAccessToken(nil)
                 }
             }
-            
         }
         
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        
+        // GET ACCESSTOKEN FROM SPOTIFY API
 
         Alamofire.request(.POST, "https://accounts.spotify.com/api/token", parameters: parameters).validate().responseJSON { response in
             switch response.result {
@@ -126,18 +130,20 @@ import SwiftyJSON
                     
                     self.accessToken = json["access_token"]
                     let refreshToken = json["refresh_token"]
+                    refreshToken //whatever
     
-                   
-                    self.currentUser.setAccToken(self.accessToken.stringValue)
-                    self.currentUser.setAccToken(refreshToken.stringValue)
 
                     getUserID()
                     
                     // let expiration = json["expires_in"]
                     
+                } else {
+                    self.spotifyDelegate.didGetAccessToken(nil)
                 }
+                
             case .Failure(let error):
                 print(error)
+                self.spotifyDelegate.didGetAccessToken(nil)
             }
         }
         

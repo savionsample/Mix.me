@@ -9,20 +9,17 @@
 /* Begin PBXBuildFile section */
 		95CEB03C99B19B86260DA5C4 /* Pods_Mix_me.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38486CB4E688B603FB5BCCD2 /* Pods_Mix_me.framework */; };
 		FF3E22C11D3EA30000A1EAD6 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3E22C01D3EA30000A1EAD6 /* AddViewController.swift */; };
-		FF3E22C31D3FE42900A1EAD6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3E22C21D3FE42900A1EAD6 /* User.swift */; };
-		FF5BF5511D57C8F100A5FED1 /* ListPlaylistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5BF5501D57C8F100A5FED1 /* ListPlaylistTableViewController.swift */; };
-		FF7EFA3B1D4954BD00261B24 /* EpisodesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7EFA3A1D4954BD00261B24 /* EpisodesViewController.swift */; };
+		FF5BF5591D5A4A3700A5FED1 /* PageViewContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5BF5581D5A4A3700A5FED1 /* PageViewContentViewController.swift */; };
+		FF5BF55D1D5B89F600A5FED1 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5BF55C1D5B89F600A5FED1 /* Track.swift */; };
+		FF5BF55F1D5B89FD00A5FED1 /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5BF55E1D5B89FD00A5FED1 /* TrackTableViewCell.swift */; };
+		FF5BF5611D5B8A1600A5FED1 /* TracksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5BF5601D5B8A1600A5FED1 /* TracksViewController.swift */; };
+		FF7EFA3B1D4954BD00261B24 /* PlaylistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7EFA3A1D4954BD00261B24 /* PlaylistsViewController.swift */; };
 		FFBC13FB1D4ABB890060FEA7 /* AddFromPlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBC13FA1D4ABB890060FEA7 /* AddFromPlaylistViewController.swift */; };
-		FFBC13FF1D4B188A0060FEA7 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBC13FE1D4B188A0060FEA7 /* ContentViewController.swift */; };
 		FFBC14011D4B19970060FEA7 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBC14001D4B19970060FEA7 /* PageViewController.swift */; };
-		FFBC14031D4FB7850060FEA7 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBC14021D4FB7850060FEA7 /* File.swift */; };
-		FFBF220F1D46AA2E0060FE1D /* Example.json in Resources */ = {isa = PBXBuildFile; fileRef = FFBF220C1D46AA2E0060FE1D /* Example.json */; };
-		FFBF22101D46AA2E0060FE1D /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBF220D1D46AA2E0060FE1D /* Episode.swift */; };
+		FFBF22101D46AA2E0060FE1D /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBF220D1D46AA2E0060FE1D /* Playlist.swift */; };
 		FFBF22111D46AA2E0060FE1D /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBF220E1D46AA2E0060FE1D /* NetworkService.swift */; };
-		FFBF22141D46AA3D0060FE1D /* EpisodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBF22131D46AA3D0060FE1D /* EpisodeTableViewCell.swift */; };
-		FFBF22161D46AA870060FE1D /* EpisodesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBF22151D46AA870060FE1D /* EpisodesTableViewController.swift */; };
+		FFBF22141D46AA3D0060FE1D /* PlaylistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBF22131D46AA3D0060FE1D /* PlaylistTableViewCell.swift */; };
 		FFECBA0A1D35898100FAC7F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFECBA091D35898100FAC7F1 /* AppDelegate.swift */; };
-		FFECBA0C1D35898100FAC7F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFECBA0B1D35898100FAC7F1 /* ViewController.swift */; };
 		FFECBA0F1D35898100FAC7F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFECBA0D1D35898100FAC7F1 /* Main.storyboard */; };
 		FFECBA111D35898100FAC7F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFECBA101D35898100FAC7F1 /* Assets.xcassets */; };
 		FFECBA141D35898100FAC7F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFECBA121D35898100FAC7F1 /* LaunchScreen.storyboard */; };
@@ -33,21 +30,18 @@
 		54D9E0430C63E559ECB596B6 /* Pods-Mix.me.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mix.me.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mix.me/Pods-Mix.me.debug.xcconfig"; sourceTree = "<group>"; };
 		89E436D4F3C9B2A793E293DB /* Pods-Mix.me.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mix.me.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mix.me/Pods-Mix.me.release.xcconfig"; sourceTree = "<group>"; };
 		FF3E22C01D3EA30000A1EAD6 /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
-		FF3E22C21D3FE42900A1EAD6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		FF5BF5501D57C8F100A5FED1 /* ListPlaylistTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListPlaylistTableViewController.swift; sourceTree = "<group>"; };
-		FF7EFA3A1D4954BD00261B24 /* EpisodesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodesViewController.swift; sourceTree = "<group>"; };
+		FF5BF5581D5A4A3700A5FED1 /* PageViewContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewContentViewController.swift; sourceTree = "<group>"; };
+		FF5BF55C1D5B89F600A5FED1 /* Track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		FF5BF55E1D5B89FD00A5FED1 /* TrackTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
+		FF5BF5601D5B8A1600A5FED1 /* TracksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TracksViewController.swift; sourceTree = "<group>"; };
+		FF7EFA3A1D4954BD00261B24 /* PlaylistsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistsViewController.swift; sourceTree = "<group>"; };
 		FFBC13FA1D4ABB890060FEA7 /* AddFromPlaylistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFromPlaylistViewController.swift; sourceTree = "<group>"; };
-		FFBC13FE1D4B188A0060FEA7 /* ContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		FFBC14001D4B19970060FEA7 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
-		FFBC14021D4FB7850060FEA7 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
-		FFBF220C1D46AA2E0060FE1D /* Example.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Example.json; sourceTree = "<group>"; };
-		FFBF220D1D46AA2E0060FE1D /* Episode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		FFBF220D1D46AA2E0060FE1D /* Playlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		FFBF220E1D46AA2E0060FE1D /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		FFBF22131D46AA3D0060FE1D /* EpisodeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodeTableViewCell.swift; sourceTree = "<group>"; };
-		FFBF22151D46AA870060FE1D /* EpisodesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodesTableViewController.swift; sourceTree = "<group>"; };
+		FFBF22131D46AA3D0060FE1D /* PlaylistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistTableViewCell.swift; sourceTree = "<group>"; };
 		FFECBA061D35898100FAC7F1 /* Mix.me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mix.me.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFECBA091D35898100FAC7F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FFECBA0B1D35898100FAC7F1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FFECBA0E1D35898100FAC7F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FFECBA101D35898100FAC7F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFECBA131D35898100FAC7F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -86,14 +80,12 @@
 		FF3E22BB1D3E8F9F00A1EAD6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FFBF22151D46AA870060FE1D /* EpisodesTableViewController.swift */,
-				FF7EFA3A1D4954BD00261B24 /* EpisodesViewController.swift */,
+				FF7EFA3A1D4954BD00261B24 /* PlaylistsViewController.swift */,
+				FF5BF5601D5B8A1600A5FED1 /* TracksViewController.swift */,
 				FF3E22C01D3EA30000A1EAD6 /* AddViewController.swift */,
 				FFBC13FA1D4ABB890060FEA7 /* AddFromPlaylistViewController.swift */,
 				FFBC14001D4B19970060FEA7 /* PageViewController.swift */,
-				FFBC13FE1D4B188A0060FEA7 /* ContentViewController.swift */,
-				FFBC14021D4FB7850060FEA7 /* File.swift */,
-				FF5BF5501D57C8F100A5FED1 /* ListPlaylistTableViewController.swift */,
+				FF5BF5581D5A4A3700A5FED1 /* PageViewContentViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = SOURCE_ROOT;
@@ -101,9 +93,9 @@
 		FFBF220B1D46AA2E0060FE1D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FFBF220D1D46AA2E0060FE1D /* Episode.swift */,
+				FFBF220D1D46AA2E0060FE1D /* Playlist.swift */,
+				FF5BF55C1D5B89F600A5FED1 /* Track.swift */,
 				FFBF220E1D46AA2E0060FE1D /* NetworkService.swift */,
-				FFBF220C1D46AA2E0060FE1D /* Example.json */,
 			);
 			path = Model;
 			sourceTree = SOURCE_ROOT;
@@ -111,7 +103,8 @@
 		FFBF22121D46AA3D0060FE1D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FFBF22131D46AA3D0060FE1D /* EpisodeTableViewCell.swift */,
+				FFBF22131D46AA3D0060FE1D /* PlaylistTableViewCell.swift */,
+				FF5BF55E1D5B89FD00A5FED1 /* TrackTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = SOURCE_ROOT;
@@ -141,8 +134,6 @@
 				FFBF22121D46AA3D0060FE1D /* View */,
 				FF3E22BB1D3E8F9F00A1EAD6 /* Controllers */,
 				FFECBA091D35898100FAC7F1 /* AppDelegate.swift */,
-				FFECBA0B1D35898100FAC7F1 /* ViewController.swift */,
-				FF3E22C21D3FE42900A1EAD6 /* User.swift */,
 				FFECBA0D1D35898100FAC7F1 /* Main.storyboard */,
 				FFECBA101D35898100FAC7F1 /* Assets.xcassets */,
 				FFECBA121D35898100FAC7F1 /* LaunchScreen.storyboard */,
@@ -214,7 +205,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFECBA141D35898100FAC7F1 /* LaunchScreen.storyboard in Resources */,
-				FFBF220F1D46AA2E0060FE1D /* Example.json in Resources */,
 				FFECBA111D35898100FAC7F1 /* Assets.xcassets in Resources */,
 				FFECBA0F1D35898100FAC7F1 /* Main.storyboard in Resources */,
 			);
@@ -275,20 +265,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF7EFA3B1D4954BD00261B24 /* EpisodesViewController.swift in Sources */,
-				FFBF22141D46AA3D0060FE1D /* EpisodeTableViewCell.swift in Sources */,
+				FF5BF5611D5B8A1600A5FED1 /* TracksViewController.swift in Sources */,
+				FF7EFA3B1D4954BD00261B24 /* PlaylistsViewController.swift in Sources */,
+				FF5BF55D1D5B89F600A5FED1 /* Track.swift in Sources */,
+				FFBF22141D46AA3D0060FE1D /* PlaylistTableViewCell.swift in Sources */,
 				FF3E22C11D3EA30000A1EAD6 /* AddViewController.swift in Sources */,
-				FF3E22C31D3FE42900A1EAD6 /* User.swift in Sources */,
-				FFBC13FF1D4B188A0060FEA7 /* ContentViewController.swift in Sources */,
 				FFBF22111D46AA2E0060FE1D /* NetworkService.swift in Sources */,
-				FFBF22101D46AA2E0060FE1D /* Episode.swift in Sources */,
-				FF5BF5511D57C8F100A5FED1 /* ListPlaylistTableViewController.swift in Sources */,
-				FFECBA0C1D35898100FAC7F1 /* ViewController.swift in Sources */,
+				FFBF22101D46AA2E0060FE1D /* Playlist.swift in Sources */,
+				FF5BF5591D5A4A3700A5FED1 /* PageViewContentViewController.swift in Sources */,
 				FFECBA0A1D35898100FAC7F1 /* AppDelegate.swift in Sources */,
-				FFBC14031D4FB7850060FEA7 /* File.swift in Sources */,
 				FFBC14011D4B19970060FEA7 /* PageViewController.swift in Sources */,
-				FFBF22161D46AA870060FE1D /* EpisodesTableViewController.swift in Sources */,
 				FFBC13FB1D4ABB890060FEA7 /* AddFromPlaylistViewController.swift in Sources */,
+				FF5BF55F1D5B89FD00A5FED1 /* TrackTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,5 +1,5 @@
 //
-//  EpisodeTableViewCell
+//  PlaylistTableViewCell
 //  Mix.me
 //
 //  Created by Savion Sample on 7/19/16.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class EpisodeTableViewCell: UITableViewCell
+class PlaylistTableViewCell: UITableViewCell
 {
-    var episode: Episode! {
+    var playlist: Playlist! {
         didSet {
             self.updateUI()
         }
@@ -25,8 +25,8 @@ class EpisodeTableViewCell: UITableViewCell
     
     func updateUI()
     {
-        titleLabel.text = episode.title
-        descriptionLabel.text = episode.description
+        titleLabel.text = playlist.title
+        descriptionLabel.text = playlist.description
         
         backgroundCardView.backgroundColor = UIColor.whiteColor()
         contentView.backgroundColor = UIColor(red: 240/255.0, green: 240/255.0, blue: 240/255.0, alpha: 1.0)

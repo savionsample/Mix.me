@@ -1,5 +1,5 @@
 //
-//  Episode.swift
+//  Playlist
 //  Mix.me
 //
 //  Created by Savion Sample on 7/19/16.
@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 
-class Episode
+class Playlist
 {
     var title: String?
     var description: String
@@ -35,9 +35,9 @@ class Episode
         
     }
     
-    typealias EpisodeDictionary = [String : AnyObject]
+    typealias PlaylistDictionary = [String : AnyObject]
     
-    init(espDictionary: EpisodeDictionary)
+    init(espDictionary: PlaylistDictionary)
     {
         self.title = espDictionary["name"] as? String
         
@@ -84,7 +84,7 @@ class Episode
         return userID
     }
     
-    static func downloadAllEpisodes(acc: String, id: String, completionBlock: ([Episode]) -> Void)
+    static func downloadAllPlaylists(acc: String, id: String, completionBlock: ([Playlist]) -> Void)
     {
         let apiURL = "https://api.spotify.com/v1/users/" + id + "/playlists"
         let headers = [
@@ -92,16 +92,16 @@ class Episode
         ]
         
         Alamofire.request(.GET, apiURL, headers: headers).response { _, _, data, _ in
-            var episodes = [Episode]()
+            var playlists = [Playlist]()
             if let jsonDictionary = NetworkService.parseJSONFromData(data) {
-                let espDictionaries = jsonDictionary["items"] as! [EpisodeDictionary]
-                for dict in espDictionaries {
-                    let episode = Episode(espDictionary: dict)
-                    episodes.append(episode)
+                let playlistDictionaries = jsonDictionary["items"] as! [PlaylistDictionary]
+                for dict in playlistDictionaries {
+                    let playlist = Playlist(espDictionary: dict)
+                    playlists.append(playlist)
                 }
             }
             
-            completionBlock(episodes)
+            completionBlock(playlists)
         }
     }
 

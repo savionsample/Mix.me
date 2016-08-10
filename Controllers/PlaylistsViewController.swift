@@ -1,5 +1,5 @@
 //
-//  EpisodesViewController
+//  PlaylistsViewController
 //  Mix.me
 //
 //  Created by Savion Sample on 7/19/16.
@@ -7,46 +7,23 @@
 //
 
 import UIKit
-import SafariServices
 import LiquidFloatingActionButton
 
-class EpisodesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
+class PlaylistsViewController: UIViewController
 {
     var count = 0
-    
-    var episodes = [Episode]()
+    var playlists = [Playlist]()
     var cells = [LiquidFloatingCell]() // data source
-    
     var floatingActionButton: LiquidFloatingActionButton!
-
 
     @IBOutlet weak var spinner: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
-    @IBAction func reloadButton(sender: AnyObject)
-    {
-        self.spinner.rotate360Degrees()
-        count += 1
-        
-        let ep = Episode(title: "",description: "",thumbnailURL: NSURL(fileURLWithPath: "a"),createdAt: "",author: "")
-        
-        ep.getAccToken()
-        ep.getUserID()
-        
-        Episode.downloadAllEpisodes(ep.returnAccToken(), id: ep.returnID()) { (episodes: [Episode]) in
-            self.episodes = episodes
-            
-            if (self.count == 1) {
-              self.goToNext()
-            }
-        }
-    }
-
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
-        tableView.allowsSelection = true
+        tableView.allowsSelection = false
         //cell.selectionStyle = UITableViewCellSelectionStyle.None
         
         UIApplication.sharedApplication().statusBarStyle = .Default
@@ -57,14 +34,56 @@ class EpisodesViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.separatorStyle = .None
-        
-        //self.tableView.backgroundView = UIImageView(image: UIImage(named: "spaceGray")!)
-        
-
     }
     
+    @IBAction func reloadButton(sender: AnyObject)
+    {
+        self.spinner.rotate360Degrees()
+        count += 1
+        
+        let ep = Playlist(title: "",description: "",thumbnailURL: NSURL(fileURLWithPath: "a"),createdAt: "",author: "")
+        
+        ep.getAccToken()
+        ep.getUserID()
+        
+        Playlist.downloadAllPlaylists(ep.returnAccToken(), id: ep.returnID()) { (playlists: [Playlist]) in
+            self.playlists = playlists
+            
+            if (self.count == 1) {
+              self.goToNext()
+            }
+        }
+    }
     
-    func goToNext() {
+//    @IBAction func unwindToListNotesViewController(segue: UIStoryboardSegue)
+//    {
+//        
+//        // for now, simply defining the method is sufficient.
+//        // we'll add code later
+//        
+//    }
+    
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+//    {
+//        if let identifier = segue.identifier {
+//            if identifier == "gotoTracks" {
+//                print("Table view cell tapped")
+//
+//                let indexPath = tableView.indexPathForSelectedRow!
+//                let playlist = playlists[indexPath.row]
+//                let displayNoteViewController = segue.destinationViewController as! DisplayNoteViewController
+//                displayNoteViewController.playlist = playlist
+//                
+//            } else if identifier == "addNote" {
+//                print("+ button tapped")
+//            }
+//        }
+//    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    func goToNext()
+    {
         self.tableView.reloadData()
         self.tableView.backgroundColor = UIColor(red: 240/255.0, green: 240/255.0, blue: 240/255.0, alpha: 1.0)
         
@@ -74,7 +93,6 @@ class EpisodesViewController: UIViewController, UITableViewDelegate, UITableView
     {
         cells.append(createButtonCell("addFromPlaylist"))
         cells.append(createButtonCell("addFromArtist"))
-        //cells.append(createButtonCell("ic_place"))
         
         let floatingFrame = CGRect(x: self.view.frame.width - 56 - 16, y: self.view.frame.height - 56 - 16, width: 56, height: 56)
         let floatingButton = createButton(floatingFrame, style: .Up)
@@ -107,7 +125,9 @@ class EpisodesViewController: UIViewController, UITableViewDelegate, UITableView
     {
         return .Default
     }
-    
+}
+
+extension PlaylistsViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
         return 1
@@ -115,20 +135,20 @@ class EpisodesViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return episodes.count
+        return playlists.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Episode Cell", forIndexPath: indexPath) as! EpisodeTableViewCell
-        let episode = self.episodes[indexPath.row]
-        cell.episode = episode
+        let cell = tableView.dequeueReusableCellWithIdentifier("Episode Cell", forIndexPath: indexPath) as! PlaylistTableViewCell
+        let playlist = self.playlists[indexPath.row]
+        cell.playlist = playlist
         
         return cell
     }
 }
 
-extension EpisodesViewController: LiquidFloatingActionButtonDataSource
+extension PlaylistsViewController: LiquidFloatingActionButtonDataSource
 {
     func numberOfCells(liquidFloatingActionButton: LiquidFloatingActionButton) -> Int
     {
@@ -141,7 +161,7 @@ extension EpisodesViewController: LiquidFloatingActionButtonDataSource
     }
 }
 
-extension EpisodesViewController: LiquidFloatingActionButtonDelegate
+extension PlaylistsViewController: LiquidFloatingActionButtonDelegate
 {
     func liquidFloatingActionButton(liquidFloatingActionButton: LiquidFloatingActionButton, didSelectItemAtIndex index: Int)
     {

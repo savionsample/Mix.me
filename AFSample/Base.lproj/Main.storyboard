@@ -6,74 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Mix_me" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" opaque="NO" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="backgroundCity" translatesAutoresizingMaskIntoConstraints="NO" id="wfu-pR-PHT" userLabel="background">
-                                <rect key="frame" x="0.0" y="0.0" width="595" height="535"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="ehE-eH-qkm">
-                                <rect key="frame" x="194" y="68" width="212" height="128"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="your every day timer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sS4-0b-nO2">
-                                <rect key="frame" x="187" y="220" width="220" height="36"/>
-                                <fontDescription key="fontDescription" name="Copperplate-Bold" family="Copperplate" pointSize="19"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="The Spotify alternative to" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XvJ-O5-Suo">
-                                <rect key="frame" x="162" y="204" width="271" height="36"/>
-                                <fontDescription key="fontDescription" name="Copperplate-Bold" family="Copperplate" pointSize="19"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GAH-Qb-foW" userLabel="likeButtonTapped">
-                                <rect key="frame" x="56" y="256" width="488" height="88"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="2000" id="GkQ-au-5sd"/>
-                                    <constraint firstAttribute="height" constant="160" id="Qgd-OF-EMp"/>
-                                </constraints>
-                                <state key="normal" image="loginButton"/>
-                                <connections>
-                                    <action selector="likeButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rT5-K4-AB2"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="sS4-0b-nO2" firstAttribute="centerX" secondItem="wfu-pR-PHT" secondAttribute="centerX" id="4Ys-ER-UDK"/>
-                            <constraint firstItem="ehE-eH-qkm" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" priority="999" constant="60" id="6tm-Tq-v1Z"/>
-                            <constraint firstItem="XvJ-O5-Suo" firstAttribute="top" secondItem="ehE-eH-qkm" secondAttribute="bottom" constant="20" id="7xl-Ie-n3j"/>
-                            <constraint firstItem="sS4-0b-nO2" firstAttribute="top" secondItem="XvJ-O5-Suo" secondAttribute="bottom" constant="10" id="BsY-gj-Z2U"/>
-                            <constraint firstItem="XvJ-O5-Suo" firstAttribute="centerX" secondItem="wfu-pR-PHT" secondAttribute="centerX" id="II0-Id-ZPP"/>
-                            <constraint firstItem="GAH-Qb-foW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" priority="999" id="UTg-d7-Dzj"/>
-                            <constraint firstItem="GAH-Qb-foW" firstAttribute="top" secondItem="ehE-eH-qkm" secondAttribute="bottom" constant="100" id="Ve4-Lg-FdR"/>
-                            <constraint firstItem="wfu-pR-PHT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cXY-6c-gX0"/>
-                            <constraint firstItem="wfu-pR-PHT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="lqx-4d-Ep3"/>
-                            <constraint firstItem="ehE-eH-qkm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vko-FE-APo"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <segue destination="WIS-aC-wBb" kind="show" identifier="gotoTabFromSingleView" id="OCl-52-jxI"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="205" y="112"/>
-        </scene>
-        <!--Content View Controller-->
+        <!--Page View Content View Controller-->
         <scene sceneID="nHA-3c-TOy">
             <objects>
-                <viewController storyboardIdentifier="ContentViewController" id="nlq-0Q-SFC" customClass="ContentViewController" customModule="Mix_me" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PageViewContentViewController" id="nlq-0Q-SFC" customClass="PageViewContentViewController" customModule="Mix_me" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MlF-pw-Rrk"/>
                         <viewControllerLayoutGuide type="bottom" id="P7c-am-YaI"/>
@@ -83,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3La-Z7-jwQ">
-                                <rect key="frame" x="20" y="57" width="560" height="523"/>
+                                <rect key="frame" x="20" y="62" width="560" height="523"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DD7-VZ-06Q">
                                 <rect key="frame" x="273" y="28" width="54" height="21"/>
@@ -109,7 +45,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k7j-GN-oeC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="943" y="781"/>
+            <point key="canvasLocation" x="1459" y="833"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="fXx-LV-puy">
@@ -117,7 +53,7 @@
                 <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="9fR-CW-vbe" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b0y-V5-a1n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1673" y="781"/>
+            <point key="canvasLocation" x="2189" y="833"/>
         </scene>
         <!--Add View Controller-->
         <scene sceneID="Aab-dP-sXc">
@@ -143,12 +79,6 @@
                                             <action selector="hiddenButton:" destination="XzH-xP-taT" eventType="touchUpInside" id="cOv-Nh-aJj"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="How many minutes?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ftg-CR-0hR">
-                                        <rect key="frame" x="213" y="278" width="215" height="26"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="21"/>
-                                        <color key="textColor" red="0.16862745100000001" green="0.18823529410000001" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of Artist" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v4P-9x-ST4" customClass="AkiraTextField" customModule="TextFieldEffects">
                                         <rect key="frame" x="187" y="124" width="267" height="54"/>
                                         <constraints>
@@ -172,18 +102,6 @@
                                             <action selector="hideKeyboard:" destination="XzH-xP-taT" eventType="editingDidEndOnExit" id="KIG-X5-Noy"/>
                                         </connections>
                                     </textField>
-                                    <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cog-2J-YP9">
-                                        <rect key="frame" x="20" y="317" width="600" height="201"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="160" id="Dnb-cv-3hG"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                                <color key="value" red="0.12941176470588237" green="0.14117647058823529" blue="0.16078431372549021" alpha="1" colorSpace="calibratedRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </pickerView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="create a playlist of any artist's top tracks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Mx-79-4cS">
                                         <rect key="frame" x="137" y="80" width="366" height="26"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
@@ -214,7 +132,7 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JW3-mQ-VmF" userLabel="playlistButton">
-                                        <rect key="frame" x="221" y="541" width="199" height="50"/>
+                                        <rect key="frame" x="221" y="397" width="199" height="50"/>
                                         <state key="normal" image="createPlaylist"/>
                                         <connections>
                                             <action selector="playlistButtonPressed:" destination="XzH-xP-taT" eventType="touchUpInside" id="xpX-ET-NzF"/>
@@ -222,21 +140,16 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="Cog-2J-YP9" firstAttribute="top" secondItem="ftg-CR-0hR" secondAttribute="bottom" constant="13" id="2Y7-mR-jYg"/>
                                     <constraint firstItem="6gI-yT-hYP" firstAttribute="top" secondItem="PGA-Ei-XLa" secondAttribute="top" constant="84" id="4eM-Mh-bnt"/>
-                                    <constraint firstItem="Cog-2J-YP9" firstAttribute="top" secondItem="PGA-Ei-XLa" secondAttribute="top" constant="250" id="7r8-pE-gPH"/>
                                     <constraint firstAttribute="trailing" secondItem="6gI-yT-hYP" secondAttribute="trailing" constant="20" id="86e-T8-A9B"/>
                                     <constraint firstItem="8Iy-yd-DnC" firstAttribute="centerX" secondItem="6gI-yT-hYP" secondAttribute="centerX" id="AGX-NB-V7Q"/>
                                     <constraint firstItem="6gI-yT-hYP" firstAttribute="centerX" secondItem="PGA-Ei-XLa" secondAttribute="centerX" id="Awi-aF-wKK"/>
                                     <constraint firstAttribute="bottom" secondItem="6gI-yT-hYP" secondAttribute="bottom" constant="-414" id="B0E-qP-4ra"/>
                                     <constraint firstItem="v4P-9x-ST4" firstAttribute="top" secondItem="7Mx-79-4cS" secondAttribute="bottom" constant="8" id="N6r-cM-dbh"/>
-                                    <constraint firstItem="6gI-yT-hYP" firstAttribute="centerX" secondItem="ftg-CR-0hR" secondAttribute="centerX" id="PYe-q2-qHO"/>
-                                    <constraint firstItem="6gI-yT-hYP" firstAttribute="leading" secondItem="Cog-2J-YP9" secondAttribute="leading" id="W6X-4W-Csj"/>
                                     <constraint firstItem="6gI-yT-hYP" firstAttribute="centerX" secondItem="JW3-mQ-VmF" secondAttribute="centerX" id="agK-CU-IYH"/>
+                                    <constraint firstItem="JW3-mQ-VmF" firstAttribute="top" secondItem="8Iy-yd-DnC" secondAttribute="bottom" constant="127" id="bZP-DK-3K7"/>
                                     <constraint firstItem="7Mx-79-4cS" firstAttribute="top" secondItem="PGA-Ei-XLa" secondAttribute="top" id="beS-Jr-Rcz"/>
-                                    <constraint firstItem="JW3-mQ-VmF" firstAttribute="top" secondItem="Cog-2J-YP9" secondAttribute="bottom" constant="50" id="bwd-HX-7It"/>
                                     <constraint firstItem="6gI-yT-hYP" firstAttribute="centerX" secondItem="7Mx-79-4cS" secondAttribute="centerX" id="cWh-26-JDR"/>
-                                    <constraint firstItem="6gI-yT-hYP" firstAttribute="trailing" secondItem="Cog-2J-YP9" secondAttribute="trailing" id="gFr-8Z-Eub"/>
                                     <constraint firstItem="v4P-9x-ST4" firstAttribute="centerX" secondItem="6gI-yT-hYP" secondAttribute="centerX" id="m3D-ez-fUG"/>
                                     <constraint firstItem="8Iy-yd-DnC" firstAttribute="top" secondItem="v4P-9x-ST4" secondAttribute="bottom" constant="8" id="yXC-RS-WPb"/>
                                     <constraint firstItem="6gI-yT-hYP" firstAttribute="leading" secondItem="PGA-Ei-XLa" secondAttribute="leading" constant="20" id="ytn-jJ-9Mq"/>
@@ -257,7 +170,6 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="600"/>
                     <connections>
-                        <outlet property="myTimePicker" destination="Cog-2J-YP9" id="aAe-rq-mIW"/>
                         <outlet property="theScrollView" destination="PGA-Ei-XLa" id="P6E-Aq-TgL"/>
                         <outlet property="userTextField" destination="v4P-9x-ST4" id="BrI-8Z-RnR"/>
                         <outlet property="userTextField2" destination="8Iy-yd-DnC" id="AKP-hx-Cph"/>
@@ -265,7 +177,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KH7-Ev-dsC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2429" y="-226"/>
+            <point key="canvasLocation" x="2945" y="-174"/>
         </scene>
         <!--Add From Playlist View Controller-->
         <scene sceneID="VON-3a-J6v">
@@ -409,24 +321,98 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5aJ-RC-xUt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2429" y="448"/>
+            <point key="canvasLocation" x="2945" y="500"/>
         </scene>
-        <!--List Playlist Table View Controller-->
+        <!--Tracks Table View Controller-->
         <scene sceneID="yRg-Bo-RvZ">
             <objects>
-                <tableViewController id="2bj-an-juT" customClass="ListPlaylistTableViewController" customModule="Mix_me" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="TracksViewController" title="Tracks Table View Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2bj-an-juT" customClass="TracksViewController" customModule="Mix_me" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="eav-xa-57X">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="HYJ-Oh-zPc">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HYJ-Oh-zPc" id="0qS-zI-vEz">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Playlist Cell" rowHeight="104" id="4uF-Ik-Nww" customClass="TrackTableViewCell" customModule="Mix_me" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="104"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4uF-Ik-Nww" id="xXR-iZ-DBx">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="103"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ePd-mw-TlF">
+                                            <rect key="frame" x="8" y="8" width="584" height="86"/>
+                                            <color key="backgroundColor" red="0.35200773619999998" green="0.81557423200000001" blue="0.42627138219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="57-61: Introduction to 3D Touch" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iaf-cJ-mQ4">
+                                            <rect key="frame" x="116" y="16" width="476" height="20"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="thumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="KvG-Qr-zar">
+                                            <rect key="frame" x="12" y="16" width="96" height="27"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="54" id="a1d-SD-zWO"/>
+                                                <constraint firstAttribute="width" constant="96" id="wzd-f5-BJK"/>
+                                            </constraints>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" misplaced="YES" image="duc" translatesAutoresizingMaskIntoConstraints="NO" id="4cp-hF-O6k">
+                                            <rect key="frame" x="116" y="78" width="16" height="16"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="16" id="1Gc-wG-5U0"/>
+                                                <constraint firstAttribute="width" constant="16" id="XGO-Ee-C3i"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ioi-wu-ut6">
+                                            <rect key="frame" x="140" y="78" width="452" height="0.0"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="10"/>
+                                            <color key="textColor" red="0.1176470588" green="0.12549019610000001" blue="0.2156862745" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" misplaced="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jws-Jt-ts9">
+                                            <rect key="frame" x="326" y="9" width="260" height="34"/>
+                                            <string key="text">3D touch is the future of multi-touch! It adds a whole new experience and layer of interaction to your app. In this episode, we are going to learn how to use Peek in 3D touch to display a preview for our app.</string>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
+                                            <color key="textColor" red="0.1176470588" green="0.12549019610000001" blue="0.2156862745" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="ePd-mw-TlF" firstAttribute="top" secondItem="xXR-iZ-DBx" secondAttribute="top" constant="8" id="2gb-Rr-Qay"/>
+                                        <constraint firstAttribute="bottom" secondItem="ePd-mw-TlF" secondAttribute="bottom" constant="8" id="4uD-cd-4d3"/>
+                                        <constraint firstItem="jws-Jt-ts9" firstAttribute="top" secondItem="iaf-cJ-mQ4" secondAttribute="bottom" constant="8" id="8Np-tV-415"/>
+                                        <constraint firstItem="ioi-wu-ut6" firstAttribute="leading" secondItem="4cp-hF-O6k" secondAttribute="trailing" constant="8" id="8c0-9j-iwY"/>
+                                        <constraint firstItem="iaf-cJ-mQ4" firstAttribute="top" secondItem="xXR-iZ-DBx" secondAttribute="top" constant="16" id="ATb-L0-Ixx"/>
+                                        <constraint firstAttribute="bottom" secondItem="4cp-hF-O6k" secondAttribute="bottom" constant="55" id="Ai7-vS-8of"/>
+                                        <constraint firstAttribute="trailing" secondItem="ioi-wu-ut6" secondAttribute="trailing" constant="8" id="FX9-1W-plm"/>
+                                        <constraint firstItem="jws-Jt-ts9" firstAttribute="top" secondItem="iaf-cJ-mQ4" secondAttribute="bottom" constant="4" id="JMR-qb-2pY"/>
+                                        <constraint firstItem="KvG-Qr-zar" firstAttribute="leading" secondItem="xXR-iZ-DBx" secondAttribute="leading" constant="12" id="MAr-Ti-5CZ"/>
+                                        <constraint firstAttribute="trailing" secondItem="jws-Jt-ts9" secondAttribute="trailing" constant="8" id="PLC-CD-pk6"/>
+                                        <constraint firstItem="ioi-wu-ut6" firstAttribute="top" secondItem="jws-Jt-ts9" secondAttribute="bottom" constant="4" id="Q9f-P4-G8d"/>
+                                        <constraint firstItem="4cp-hF-O6k" firstAttribute="top" secondItem="jws-Jt-ts9" secondAttribute="bottom" constant="4" id="Sqk-gL-tA1"/>
+                                        <constraint firstItem="ePd-mw-TlF" firstAttribute="leading" secondItem="xXR-iZ-DBx" secondAttribute="leading" constant="8" id="Udv-SV-5fR"/>
+                                        <constraint firstAttribute="trailing" secondItem="iaf-cJ-mQ4" secondAttribute="trailing" constant="8" id="ccx-1r-5Uw"/>
+                                        <constraint firstAttribute="trailing" secondItem="ePd-mw-TlF" secondAttribute="trailing" constant="8" id="g4B-ef-xSK"/>
+                                        <constraint firstAttribute="bottom" secondItem="4cp-hF-O6k" secondAttribute="bottom" constant="16" id="ieB-g8-8Nw"/>
+                                        <constraint firstItem="KvG-Qr-zar" firstAttribute="top" secondItem="xXR-iZ-DBx" secondAttribute="top" constant="16" id="kO4-qo-pNL"/>
+                                        <constraint firstItem="iaf-cJ-mQ4" firstAttribute="leading" secondItem="KvG-Qr-zar" secondAttribute="trailing" constant="8" id="lR9-eh-9zB"/>
+                                        <constraint firstItem="4cp-hF-O6k" firstAttribute="leading" secondItem="jws-Jt-ts9" secondAttribute="leading" id="pAv-jl-oR4"/>
+                                        <constraint firstItem="ioi-wu-ut6" firstAttribute="leading" secondItem="4cp-hF-O6k" secondAttribute="trailing" constant="8" id="pS3-Sa-GPk"/>
+                                        <constraint firstItem="jws-Jt-ts9" firstAttribute="leading" secondItem="KvG-Qr-zar" secondAttribute="trailing" constant="8" id="y3v-aV-qFZ"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="8Np-tV-415"/>
+                                            <exclude reference="Ai7-vS-8of"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="backgroundCardView" destination="ePd-mw-TlF" id="yA8-xF-ZrS"/>
+                                    <outlet property="descriptionLabel" destination="jws-Jt-ts9" id="SD3-yo-v61"/>
+                                    <outlet property="titleLabel" destination="iaf-cJ-mQ4" id="BFQ-0y-WaE"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -437,12 +423,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QyX-fO-dcE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2429" y="-873"/>
+            <point key="canvasLocation" x="2945" y="-821"/>
         </scene>
-        <!-- -->
+        <!--Playlists View Controller-->
         <scene sceneID="XKz-m0-c0R">
             <objects>
-                <viewController storyboardIdentifier="EpisodesViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="brM-CC-ETD" customClass="EpisodesViewController" customModule="Mix_me" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlaylistsViewController" title="Playlists View Controller" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="brM-CC-ETD" customClass="PlaylistsViewController" customModule="Mix_me" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Hdn-5A-iJ5"/>
                         <viewControllerLayoutGuide type="bottom" id="WyH-pU-c4Y"/>
@@ -455,7 +441,7 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Episode Cell" rowHeight="111" id="QPY-K7-VVm" customClass="EpisodeTableViewCell" customModule="Mix_me" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Episode Cell" rowHeight="111" id="QPY-K7-VVm" customClass="PlaylistTableViewCell" customModule="Mix_me" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="111"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QPY-K7-VVm" id="zVI-Dl-iRI">
@@ -538,7 +524,7 @@
                                             <outlet property="descriptionLabel" destination="HkW-ek-SgR" id="Rcb-yF-Qqb"/>
                                             <outlet property="thumbnailImageView" destination="LuL-sD-LA2" id="Mn1-IO-hIf"/>
                                             <outlet property="titleLabel" destination="59b-zs-9eU" id="Bpj-sr-v9Y"/>
-                                            <segue destination="2bj-an-juT" kind="show" id="RzO-mF-Bj5"/>
+                                            <segue destination="2bj-an-juT" kind="show" identifier="gotoTracks" id="RzO-mF-Bj5"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -578,7 +564,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kGj-rU-Hnu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1673" y="112"/>
+            <point key="canvasLocation" x="2189" y="164"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2bE-kB-qoD">
@@ -601,7 +587,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0kh-bg-ujS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="943" y="112"/>
+            <point key="canvasLocation" x="1459" y="164"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="uKm-wd-M5r">
@@ -646,15 +632,10 @@
     </scenes>
     <resources>
         <image name="add-1" width="42" height="42"/>
-        <image name="backgroundCity" width="835" height="1485"/>
         <image name="createPlaylist" width="382" height="85"/>
         <image name="duc" width="396" height="385"/>
         <image name="loginButton" width="488" height="88"/>
-        <image name="logo" width="488" height="488"/>
         <image name="reload" width="25" height="25"/>
         <image name="thumbnail" width="235" height="235"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="nLg-Sc-DtS"/>
-    </inferredMetricsTieBreakers>
 </document>

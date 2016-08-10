@@ -138,7 +138,6 @@ class AddFromPlaylistViewController: UIViewController
                     }
                     else
                     {
-                        self.whisperMessage("Spotify playlist created!")
                         self.getPlaylistsTracks()
                     }
                 }
@@ -171,14 +170,29 @@ class AddFromPlaylistViewController: UIViewController
                         let trackJSON = subJSON["track"]
                         return trackJSON["duration_ms"].int
                     }
-                    print("die")
+                    
                     for i in 0..<self.arrOfURIPlaylist.count
                     {
                         self.songLinks.append(SongLink(uri: self.arrOfURIPlaylist[i], songLength: self.arrOfTracks[i]))
                     }
                     
-                    self.shuffle()
-                    self.calculateClosestTime()
+                    var totalLength = 0
+                    
+                    for i in 0..<self.arrOfTracks.count
+                    {
+                        totalLength += self.songLinks[i].songLength
+                    }
+                    
+                    if ( (self.length * 60000) > totalLength)
+                    {
+                        self.whisperMessage("Requested length exceeds playlist's length")
+                    }
+                    else
+                    {
+                        self.whisperMessage("Spotify playlist created!")
+                        self.shuffle()
+                        self.calculateClosestTime()
+                    }
                 }
             case .Failure(let error):
                 print(error)
