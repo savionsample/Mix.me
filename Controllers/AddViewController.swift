@@ -11,48 +11,37 @@ import Alamofire
 import SwiftyJSON
 import Whisper
 
-class AddViewController: UIViewController, UIPickerViewDelegate
-{
+class AddViewController: UIViewController, UIPickerViewDelegate {
+    
     var accToken = ""
     var artistID = ""
     var userID = ""
-    var playlistName = ""
-    var artist = ""
     var newPlaylistID = ""
-    var arrOfURIArtist = [String]()
-    var arrOfURIPlaylist = [String]()
-    var arrOfTracks = [Int]()
+    var artist = ""
+    var playlistName = ""
     
-    var double = [String: Int]()
+    var arrOfURI = [String]()
     
-    var currentPickerItem = 0
-    
-    private var foregroundNotification: NSObjectProtocol!
-    
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var userTextField: UITextField!
-    @IBOutlet weak var userTextField2: UITextField!
-    @IBOutlet weak var theScrollView: UIScrollView!
     
+    @IBOutlet weak var userTextField2: UITextField!
     @IBAction func hideKeyboard(sender: AnyObject) {
         userTextField.resignFirstResponder()
     }
     
-    @IBAction func hideKeyBoard2(sender: AnyObject) {
-        userTextField.resignFirstResponder()
-    }
-
+    
     @IBAction func hiddenButton(sender: AnyObject) {
         userTextField.resignFirstResponder()
         userTextField2.resignFirstResponder()
     }
-    
-    @IBAction func playlistButtonPressed(sender: AnyObject)
-    {
 
+    @IBAction func playlistButtonPressed(sender: AnyObject) {
+        
         artist = self.userTextField.text!
         playlistName = self.userTextField2.text!
         
-
+        
         let replaced = String(artist.characters.map {
             $0 == " " ? "+" : $0
         })
@@ -69,13 +58,14 @@ class AddViewController: UIViewController, UIPickerViewDelegate
                     {
                         self.whisperMessage("Spotify playlist created!")
                         self.artistID = json["artists"]["items"][0]["id"].stringValue
-                        self.getUserID()
+                        self.retrieveUriOfArtistsTracks()
+                        
                     }
                     else
                     {
                         self.whisperMessage("Make sure there's a valid artist and a name for the playlist")
                     }
-
+                    
                 }
             case .Failure(_):
                 self.whisperMessage("There was an error in creating your playlist. Please try again.")
@@ -83,28 +73,40 @@ class AddViewController: UIViewController, UIPickerViewDelegate
         }
     }
     
+
+    
+
+    
     func retrieveUriOfArtistsTracks()
     {
         Alamofire.request(.GET, "https://api.spotify.com/v1/artists/\(artistID)/top-tracks?country=US").validate().responseJSON { response in
             switch response.result {
             case .Success:
+                print("2")
                 if let value = response.result.value {
                     let json = JSON(value)
+                    
                     for (_, subJson) in json["tracks"] {
                         if let uri = subJson["uri"].string {
-                            self.arrOfURIArtist.append(uri)
+                            self.arrOfURI.append(uri)
                         }
                     }
+                    
                     self.getUserID()
+                    
+                    
                 }
             case .Failure(let error):
                 print(error)
             }
         }
+        
+        
     }
     
-    func getUserID()
-    {
+    
+    func getUserID() {
+        
         let apiURL = "https://api.spotify.com/v1/me"
         let headers = [
             "Authorization" : "Bearer \(accToken)"
@@ -113,7 +115,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate
         Alamofire.request(.GET, apiURL, parameters: nil, encoding: .URL, headers: headers).responseJSON { response in
             switch response.result {
             case .Success:
-                
+                print("3")
                 
                 if let value = response.result.value {
                     let json = JSON(value)
@@ -121,36 +123,13 @@ class AddViewController: UIViewController, UIPickerViewDelegate
                     self.userID = json["id"].stringValue
                     //self.addTracksToPlaylistUsingUri()
                     self.createPlaylist()
-                    self.getUsersPlaylists()
                     
                 }
             case .Failure(let error):
                 print(error)
             }
         }
-    }
-    
-    func getUsersPlaylists()
-    {
-        let apiURL = "https://api.spotify.com/v1/users/\(userID)/playlists"
-        let headers = [
-            "Authorization" : "Bearer \(accToken)"
-        ]
         
-        Alamofire.request(.GET, apiURL, parameters: nil, encoding: .URL, headers: headers).responseJSON { response in
-            switch response.result {
-            case .Success:
-                
-                
-                if let value = response.result.value {
-                    let _ = JSON(value)
-                        //print(json)
-                    
-                }
-            case .Failure(let error):
-                print(error)
-            }
-        }
     }
     
     
@@ -168,60 +147,57 @@ class AddViewController: UIViewController, UIPickerViewDelegate
         Alamofire.request(.POST, apiURL, parameters: parameters, encoding: .JSON, headers: headers).responseJSON { response in
             switch response.result {
             case .Success:
+                print("4")
                 if let value = response.result.value {
                     let json = JSON(value)
-                    
-                    self.newPlaylistID = json["id"].stringValue
+                     self.newPlaylistID = json["id"].stringValue
                     self.addTracksToPlaylistUsingUri()
+                    
+                    
                 }
             case .Failure(let error):
                 print(error)
             }
         }
+        
     }
     
     
-    func addTracksToPlaylistUsingUri()
-    {
+    func addTracksToPlaylistUsingUri() {
+        print("5")
+        
         let apiURL = "https://api.spotify.com/v1/users/\(userID)/playlists/\(newPlaylistID)/tracks"
         let headers = [
             "Authorization" : "Bearer " + accToken
         ]
         let parameters: [String: AnyObject] = [
-            "uris": arrOfURIArtist
+            "uris": arrOfURI
         ]
         
+        print(arrOfURI)
+
+        
         Alamofire.request(.POST, apiURL, parameters: parameters, encoding: .JSON, headers: headers).responseJSON { response in
-            ///
+            
         }
-        arrOfURIArtist = []
         
-        //getPlaylistsTracks()
+        
     }
-    
-    func sendAlert(message: String)
-    {
-        let alertController = UIAlertController(title: "Proccess completed", message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
-        self.presentViewController(alertController, animated: true, completion: nil)
-    }
-    
 
-    
-    override func viewDidLoad()
-    {
-        //myTimePicker.setValue(UIColor.whiteColor(), forKeyPath: "textColor")
+    override func viewDidLoad() {
         super.viewDidLoad()
-
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        accToken = appDelegate.getAccessToken()
         
-        theScrollView.contentSize.height = 700
-        self.title = "Add From Artist"
+        self.title = "Add from Artist"
+        scrollView.contentSize.height = 300
         
         self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "exit")
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "exit")
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+
+
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        accToken = appDelegate.getAccessToken()
+        
     }
     
     func whisperMessage(message: String)
@@ -229,10 +205,9 @@ class AddViewController: UIViewController, UIPickerViewDelegate
         let message = Message(title: message, backgroundColor: UIColor(red: 110/255.0, green: 185/255.0, blue: 159/255.0, alpha: 1.0))
         Whisper(message, to: navigationController!, action: .Show)
     }
-    
-    // The number of columns of data
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1
-    }
 
+    
+    
+    
+    
 }

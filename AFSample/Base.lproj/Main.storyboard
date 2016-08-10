@@ -99,7 +99,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="hideKeyboard:" destination="XzH-xP-taT" eventType="editingDidEndOnExit" id="KIG-X5-Noy"/>
+                                            <action selector="hideKeyboard:" destination="XzH-xP-taT" eventType="editingDidEnd" id="8EJ-Em-CsO"/>
                                         </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="create a playlist of any artist's top tracks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Mx-79-4cS">
@@ -127,9 +127,6 @@
                                                 <real key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="hideKeyBoard2:" destination="XzH-xP-taT" eventType="editingDidEndOnExit" id="o99-KL-ORW"/>
-                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JW3-mQ-VmF" userLabel="playlistButton">
                                         <rect key="frame" x="221" y="397" width="199" height="50"/>
@@ -145,7 +142,7 @@
                                     <constraint firstItem="8Iy-yd-DnC" firstAttribute="centerX" secondItem="6gI-yT-hYP" secondAttribute="centerX" id="AGX-NB-V7Q"/>
                                     <constraint firstItem="6gI-yT-hYP" firstAttribute="centerX" secondItem="PGA-Ei-XLa" secondAttribute="centerX" id="Awi-aF-wKK"/>
                                     <constraint firstAttribute="bottom" secondItem="6gI-yT-hYP" secondAttribute="bottom" constant="-414" id="B0E-qP-4ra"/>
-                                    <constraint firstItem="v4P-9x-ST4" firstAttribute="top" secondItem="7Mx-79-4cS" secondAttribute="bottom" constant="8" id="N6r-cM-dbh"/>
+                                    <constraint firstItem="v4P-9x-ST4" firstAttribute="top" secondItem="7Mx-79-4cS" secondAttribute="bottom" constant="40" id="N6r-cM-dbh"/>
                                     <constraint firstItem="6gI-yT-hYP" firstAttribute="centerX" secondItem="JW3-mQ-VmF" secondAttribute="centerX" id="agK-CU-IYH"/>
                                     <constraint firstItem="JW3-mQ-VmF" firstAttribute="top" secondItem="8Iy-yd-DnC" secondAttribute="bottom" constant="127" id="bZP-DK-3K7"/>
                                     <constraint firstItem="7Mx-79-4cS" firstAttribute="top" secondItem="PGA-Ei-XLa" secondAttribute="top" id="beS-Jr-Rcz"/>
@@ -170,9 +167,9 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="600"/>
                     <connections>
-                        <outlet property="theScrollView" destination="PGA-Ei-XLa" id="P6E-Aq-TgL"/>
+                        <outlet property="scrollView" destination="PGA-Ei-XLa" id="tkd-lf-gZd"/>
                         <outlet property="userTextField" destination="v4P-9x-ST4" id="BrI-8Z-RnR"/>
-                        <outlet property="userTextField2" destination="8Iy-yd-DnC" id="AKP-hx-Cph"/>
+                        <outlet property="userTextField2" destination="8Iy-yd-DnC" id="q5Y-1v-m0a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KH7-Ev-dsC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -402,8 +399,8 @@
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
-                                            <exclude reference="8Np-tV-415"/>
                                             <exclude reference="Ai7-vS-8of"/>
+                                            <exclude reference="8Np-tV-415"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>

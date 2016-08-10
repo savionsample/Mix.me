@@ -269,7 +269,7 @@ class AddFromPlaylistViewController: UIViewController
         let headers = [
             "Authorization" : "Bearer " + accToken
         ]
-        print("Hi")
+
         let parameters: [String: AnyObject] = [
             "uris": finalUriToAdd
         ]
@@ -302,7 +302,7 @@ class AddFromPlaylistViewController: UIViewController
         accToken = appDelegate.getAccessToken()
         
         //theScrollView.contentSize.height = 700
-        self.title = "Add From Artist"
+        self.title = "Add From Playlist"
         
         self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "exit")
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "exit")
