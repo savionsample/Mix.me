@@ -5,7 +5,7 @@
 //  Created by Savion Sample on 7/19/16.
 //  Copyright © 2016 StereoLabs. All rights reserved.
 //
-/*
+
 import Foundation
 import Alamofire
 import SwiftyJSON
@@ -104,12 +104,9 @@ class Track
 */
 
     
-    static func downloadAllPlaylists(acc: String, id: String, completionBlock: ([Track]) -> Void)
+    static func downloadAllTracks(acc: String, id: String, completionBlock: ([Track]) -> Void)
     {
-        let apiURL = "https://api.spotify.com/v1/users/" + id + "/playlists"
-        let headers = [
-            "Authorization" : "Bearer " + acc
-        ]
+
         
         Alamofire.request(.GET, apiURL, headers: headers).response { _, _, data, _ in
             var tracks = [Track]()
@@ -123,7 +120,56 @@ class Track
             
             completionBlock(tracks)
         }
+        
+        ///////////////////////////////////////////////////
+        let apiURL = "https://api.spotify.com/v1/users/\(userID)/playlists/\(playlistId)/tracks"
+        let headers = [
+            "Authorization" : "Bearer \(accToken)"
+        ]
+        
+        Alamofire.request(.GET, apiURL, parameters: nil, encoding: .URL, headers: headers).responseJSON { response in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let parentJSON = JSON(value)
+                    guard let json = parentJSON["items"].array else { print("\(parentJSON) not an array"); return }
+                    
+                    self.arrOfURIPlaylist = json.flatMap { subJSON in
+                        let trackJSON = subJSON["track"]
+                        return trackJSON["uri"].string
+                    }
+                    
+                    self.arrOfTracks = json.flatMap { subJSON in
+                        let trackJSON = subJSON["track"]
+                        return trackJSON["duration_ms"].int
+                    }
+                    
+                    for i in 0..<self.arrOfURIPlaylist.count
+                    {
+                        self.songLinks.append(SongLink(uri: self.arrOfURIPlaylist[i], songLength: self.arrOfTracks[i]))
+                    }
+                    
+                    self.shuffle()
+                    self.calculateClosestTime()
+                }
+            case .Failure(let error):
+                print(error)
+            }
+        }
+    }
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }
     
 }
-*/
+

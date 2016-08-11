@@ -23,7 +23,7 @@ class PlaylistsViewController: UIViewController
     {
         super.viewDidLoad()
         
-        tableView.allowsSelection = false
+        tableView.allowsSelection = true
         //cell.selectionStyle = UITableViewCellSelectionStyle.None
         
         UIApplication.sharedApplication().statusBarStyle = .Default
@@ -73,30 +73,35 @@ class PlaylistsViewController: UIViewController
         }
     }
     
-//    @IBAction func unwindToListNotesViewController(segue: UIStoryboardSegue)
-//    {
-//        
-//        // for now, simply defining the method is sufficient.
-//        // we'll add code later
-//        
-//    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var chosen = indexPath.row
+        self.performSegueWithIdentifier("yourSegue", sender: self)
+    }
     
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
-//    {
-//        if let identifier = segue.identifier {
-//            if identifier == "gotoTracks" {
-//                print("Table view cell tapped")
-//
-//                let indexPath = tableView.indexPathForSelectedRow!
-//                let playlist = playlists[indexPath.row]
-//                let displayNoteViewController = segue.destinationViewController as! DisplayNoteViewController
-//                displayNoteViewController.playlist = playlist
-//                
-//            } else if identifier == "addNote" {
-//                print("+ button tapped")
-//            }
-//        }
-//    }
+    @IBAction func unwindToListNotesViewController(segue: UIStoryboardSegue)
+    {
+        
+        // for now, simply defining the method is sufficient.
+        // we'll add code later
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        if let identifier = segue.identifier {
+            if identifier == "gotoTracks" {
+                print("Table view cell tapped")
+
+                let indexPath = tableView.indexPathForSelectedRow!
+                let playlist = playlists[indexPath.row]
+                let displayNoteViewController = segue.destinationViewController as! DisplayNoteViewController
+                displayNoteViewController.playlist = playlist
+                
+            } else if identifier == "addNote" {
+                print("+ button tapped")
+            }
+        }
+    }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
