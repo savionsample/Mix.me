@@ -3,7 +3,9 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Page View Content View Controller-->
@@ -45,7 +47,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k7j-GN-oeC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1459" y="833"/>
+            <point key="canvasLocation" x="1530" y="833"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="fXx-LV-puy">
@@ -102,8 +104,8 @@
                                             <action selector="hideKeyboard:" destination="XzH-xP-taT" eventType="editingDidEnd" id="8EJ-Em-CsO"/>
                                         </connections>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="create a playlist of any artist's top tracks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Mx-79-4cS">
-                                        <rect key="frame" x="137" y="80" width="366" height="26"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="create a playlist of any" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Mx-79-4cS">
+                                        <rect key="frame" x="218" y="81" width="205" height="28"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
                                         <color key="textColor" red="0.16862745100000001" green="0.18823529410000001" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -135,14 +137,25 @@
                                             <action selector="playlistButtonPressed:" destination="XzH-xP-taT" eventType="touchUpInside" id="xpX-ET-NzF"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="artist's top 10 tracks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Dy-bP-7cw">
+                                        <rect key="frame" x="230" y="108" width="181" height="28"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                                        <color key="textColor" red="0.16862745100000001" green="0.18823529410000001" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="8Dy-bP-7cw" firstAttribute="top" secondItem="7Mx-79-4cS" secondAttribute="bottom" constant="-1" id="2il-Dn-mJ6"/>
                                     <constraint firstItem="6gI-yT-hYP" firstAttribute="top" secondItem="PGA-Ei-XLa" secondAttribute="top" constant="84" id="4eM-Mh-bnt"/>
+                                    <constraint firstItem="8Dy-bP-7cw" firstAttribute="top" secondItem="7Mx-79-4cS" secondAttribute="bottom" constant="-1" id="55v-r7-6Yy"/>
+                                    <constraint firstItem="8Dy-bP-7cw" firstAttribute="centerX" secondItem="6gI-yT-hYP" secondAttribute="centerX" id="6GO-j4-h3l"/>
                                     <constraint firstAttribute="trailing" secondItem="6gI-yT-hYP" secondAttribute="trailing" constant="20" id="86e-T8-A9B"/>
                                     <constraint firstItem="8Iy-yd-DnC" firstAttribute="centerX" secondItem="6gI-yT-hYP" secondAttribute="centerX" id="AGX-NB-V7Q"/>
                                     <constraint firstItem="6gI-yT-hYP" firstAttribute="centerX" secondItem="PGA-Ei-XLa" secondAttribute="centerX" id="Awi-aF-wKK"/>
                                     <constraint firstAttribute="bottom" secondItem="6gI-yT-hYP" secondAttribute="bottom" constant="-414" id="B0E-qP-4ra"/>
                                     <constraint firstItem="v4P-9x-ST4" firstAttribute="top" secondItem="7Mx-79-4cS" secondAttribute="bottom" constant="40" id="N6r-cM-dbh"/>
+                                    <constraint firstItem="8Dy-bP-7cw" firstAttribute="leading" secondItem="6gI-yT-hYP" secondAttribute="trailing" constant="-380" id="UNx-WV-fKI"/>
+                                    <constraint firstItem="8Dy-bP-7cw" firstAttribute="leading" secondItem="6gI-yT-hYP" secondAttribute="trailing" constant="-380" id="a0q-Nu-DCZ"/>
                                     <constraint firstItem="6gI-yT-hYP" firstAttribute="centerX" secondItem="JW3-mQ-VmF" secondAttribute="centerX" id="agK-CU-IYH"/>
                                     <constraint firstItem="JW3-mQ-VmF" firstAttribute="top" secondItem="8Iy-yd-DnC" secondAttribute="bottom" constant="127" id="bZP-DK-3K7"/>
                                     <constraint firstItem="7Mx-79-4cS" firstAttribute="top" secondItem="PGA-Ei-XLa" secondAttribute="top" id="beS-Jr-Rcz"/>
@@ -151,6 +164,13 @@
                                     <constraint firstItem="8Iy-yd-DnC" firstAttribute="top" secondItem="v4P-9x-ST4" secondAttribute="bottom" constant="8" id="yXC-RS-WPb"/>
                                     <constraint firstItem="6gI-yT-hYP" firstAttribute="leading" secondItem="PGA-Ei-XLa" secondAttribute="leading" constant="20" id="ytn-jJ-9Mq"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="2il-Dn-mJ6"/>
+                                        <exclude reference="UNx-WV-fKI"/>
+                                        <exclude reference="a0q-Nu-DCZ"/>
+                                    </mask>
+                                </variation>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -188,20 +208,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sZB-ok-eza">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sZB-ok-eza">
+                                <rect key="frame" x="0.0" y="285" width="600" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="536" id="Dz1-Lf-BVb"/>
                                     <constraint firstAttribute="width" constant="600" id="Kyx-0W-mbw"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="536" id="d0Y-iW-3qP"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="600" id="zdm-sg-9BP"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Dz1-Lf-BVb"/>
+                                        <exclude reference="Kyx-0W-mbw"/>
+                                        <exclude reference="d0Y-iW-3qP"/>
+                                        <exclude reference="zdm-sg-9BP"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="hideText:" destination="73t-zh-cEE" eventType="touchUpInside" id="Ulv-h2-b2l"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Existing Playlist's Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KGN-Rn-1QQ" userLabel="Text Existing" customClass="AkiraTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="167" y="123" width="267" height="57"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="create a playlist based" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nKN-rz-kvz">
+                                <rect key="frame" x="199" y="77" width="203" height="28"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                                <color key="textColor" red="0.16862745100000001" green="0.18823529410000001" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Your Existing Playlist's Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KGN-Rn-1QQ" userLabel="Text Existing" customClass="AkiraTextField" customModule="TextFieldEffects">
+                                <rect key="frame" x="167" y="122" width="267" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="6Mj-Kt-Ocl"/>
                                     <constraint firstAttribute="width" constant="267" id="ALj-9K-RSs"/>
@@ -220,8 +254,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Playlist's Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9BL-Ng-Okk" userLabel="Text New" customClass="AkiraTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="167" y="187" width="267" height="52"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name Your New Playlist" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9BL-Ng-Okk" userLabel="Text New" customClass="AkiraTextField" customModule="TextFieldEffects">
+                                <rect key="frame" x="167" y="182" width="267" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="267" id="6zV-a8-6Ch"/>
                                     <constraint firstAttribute="height" constant="52" id="kIb-aD-Q0i"/>
@@ -240,8 +274,26 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Length" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3He-vP-KRE" customClass="AkiraTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="167" y="247" width="267" height="52"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OWu-4L-r7a" userLabel="playlistButton">
+                                <rect key="frame" x="60" y="415" width="480" height="85"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="OWu-4L-r7a" secondAttribute="height" multiplier="400:100" id="PuW-UP-ezA"/>
+                                    <constraint firstAttribute="width" secondItem="OWu-4L-r7a" secondAttribute="height" multiplier="199:50" id="pZe-A7-0h8"/>
+                                </constraints>
+                                <state key="normal" image="createPlaylist"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="PuW-UP-ezA"/>
+                                        <exclude reference="pZe-A7-0h8"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="playlistButtonPressed:" destination="73t-zh-cEE" eventType="touchUpInside" id="9D5-EQ-ONC"/>
+                                    <action selector="playlistButtonPressed:" destination="XzH-xP-taT" eventType="touchUpInside" id="ScA-DP-7AR"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Desired Length" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3He-vP-KRE" customClass="AkiraTextField" customModule="TextFieldEffects">
+                                <rect key="frame" x="167" y="242" width="267" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="267" id="MUB-eY-Sdn"/>
                                     <constraint firstAttribute="height" constant="52" id="RUh-ap-EM3"/>
@@ -260,52 +312,44 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OWu-4L-r7a" userLabel="playlistButton">
-                                <rect key="frame" x="201" y="530" width="199" height="50"/>
-                                <state key="normal" image="createPlaylist"/>
-                                <connections>
-                                    <action selector="playlistButtonPressed:" destination="73t-zh-cEE" eventType="touchUpInside" id="9D5-EQ-ONC"/>
-                                    <action selector="playlistButtonPressed:" destination="XzH-xP-taT" eventType="touchUpInside" id="ScA-DP-7AR"/>
-                                </connections>
-                            </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2MW-So-btv">
-                                <rect key="frame" x="0.0" y="395" width="600" height="69"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="s85-8q-mfY">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s85-8q-mfY" id="H7I-MN-hAQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="on time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="10c-Zk-qlW">
+                                <rect key="frame" x="265" y="105" width="70" height="28"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                                <color key="textColor" red="0.16862745100000001" green="0.18823529410000001" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="9BL-Ng-Okk" firstAttribute="centerX" secondItem="IDd-fG-a63" secondAttribute="centerX" id="2CJ-2G-96u"/>
-                            <constraint firstItem="2MW-So-btv" firstAttribute="centerY" secondItem="sZB-ok-eza" secondAttribute="centerY" id="9E0-Rk-uIl"/>
+                            <constraint firstItem="KGN-Rn-1QQ" firstAttribute="top" secondItem="nKN-rz-kvz" secondAttribute="bottom" constant="17" id="3gV-se-INc"/>
+                            <constraint firstItem="KGN-Rn-1QQ" firstAttribute="leading" secondItem="sZB-ok-eza" secondAttribute="trailing" constant="-433" id="CBK-xB-7bA"/>
+                            <constraint firstItem="10c-Zk-qlW" firstAttribute="centerX" secondItem="sZB-ok-eza" secondAttribute="centerX" id="HXb-bE-4AB"/>
+                            <constraint firstItem="10c-Zk-qlW" firstAttribute="top" secondItem="nKN-rz-kvz" secondAttribute="bottom" id="Khn-sZ-rqW"/>
                             <constraint firstItem="3He-vP-KRE" firstAttribute="top" secondItem="9BL-Ng-Okk" secondAttribute="bottom" constant="8" id="LN7-zQ-Dcj"/>
                             <constraint firstItem="9BL-Ng-Okk" firstAttribute="top" secondItem="KGN-Rn-1QQ" secondAttribute="bottom" constant="8" id="MRJ-9q-J7e"/>
-                            <constraint firstItem="OWu-4L-r7a" firstAttribute="top" secondItem="3He-vP-KRE" secondAttribute="bottom" constant="231" id="VZ7-KW-Rvx"/>
+                            <constraint firstItem="nKN-rz-kvz" firstAttribute="centerX" secondItem="sZB-ok-eza" secondAttribute="centerX" id="UeZ-oD-L5c"/>
+                            <constraint firstItem="OWu-4L-r7a" firstAttribute="top" secondItem="3He-vP-KRE" secondAttribute="bottom" constant="175" id="VZ7-KW-Rvx"/>
                             <constraint firstItem="3He-vP-KRE" firstAttribute="centerX" secondItem="IDd-fG-a63" secondAttribute="centerX" id="Vgv-2r-VaV"/>
+                            <constraint firstItem="OWu-4L-r7a" firstAttribute="width" secondItem="sZB-ok-eza" secondAttribute="width" multiplier="0.5" id="YOQ-G3-1dQ"/>
                             <constraint firstItem="KGN-Rn-1QQ" firstAttribute="top" secondItem="3Gh-g8-h3L" secondAttribute="bottom" constant="85" id="aqR-Pm-L4q"/>
+                            <constraint firstItem="OWu-4L-r7a" firstAttribute="top" secondItem="sZB-ok-eza" secondAttribute="bottom" constant="100" id="cIw-PD-HXD"/>
                             <constraint firstItem="KGN-Rn-1QQ" firstAttribute="centerX" secondItem="IDd-fG-a63" secondAttribute="centerX" id="dTG-FU-7t1"/>
                             <constraint firstItem="KGN-Rn-1QQ" firstAttribute="top" secondItem="3Gh-g8-h3L" secondAttribute="bottom" constant="58" id="fU0-f3-cdl"/>
                             <constraint firstItem="sZB-ok-eza" firstAttribute="centerX" secondItem="IDd-fG-a63" secondAttribute="centerX" id="fkS-SD-mq2"/>
                             <constraint firstItem="OWu-4L-r7a" firstAttribute="centerX" secondItem="IDd-fG-a63" secondAttribute="centerX" id="mN6-3b-wvg"/>
                             <constraint firstItem="sZB-ok-eza" firstAttribute="centerY" secondItem="IDd-fG-a63" secondAttribute="centerY" id="nLe-OH-osD"/>
+                            <constraint firstItem="10c-Zk-qlW" firstAttribute="top" secondItem="nKN-rz-kvz" secondAttribute="bottom" id="nfM-X3-XAk"/>
                             <constraint firstItem="KGN-Rn-1QQ" firstAttribute="centerX" secondItem="IDd-fG-a63" secondAttribute="centerX" id="ugd-ut-Sq6"/>
-                            <constraint firstItem="2MW-So-btv" firstAttribute="centerX" secondItem="sZB-ok-eza" secondAttribute="centerX" id="vzZ-zo-SOd"/>
+                            <constraint firstItem="OWu-4L-r7a" firstAttribute="width" secondItem="IDd-fG-a63" secondAttribute="width" multiplier="0.8" id="zre-BI-21D"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="aqR-Pm-L4q"/>
                                 <exclude reference="dTG-FU-7t1"/>
-                                <exclude reference="9E0-Rk-uIl"/>
-                                <exclude reference="vzZ-zo-SOd"/>
+                                <exclude reference="Khn-sZ-rqW"/>
+                                <exclude reference="VZ7-KW-Rvx"/>
+                                <exclude reference="YOQ-G3-1dQ"/>
                             </mask>
                         </variation>
                     </view>
@@ -313,7 +357,6 @@
                         <outlet property="existingPlaylistTextField" destination="KGN-Rn-1QQ" id="7y6-VS-agB"/>
                         <outlet property="lengthText" destination="3He-vP-KRE" id="zIh-EO-fJK"/>
                         <outlet property="newPlaylistTextField" destination="9BL-Ng-Okk" id="0s2-Do-Wff"/>
-                        <outlet property="tableView" destination="2MW-So-btv" id="vee-iV-Gwe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5aJ-RC-xUt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -584,7 +627,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0kh-bg-ujS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1459" y="164"/>
+            <point key="canvasLocation" x="1530" y="164"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="uKm-wd-M5r">
@@ -598,7 +641,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cq0-gW-rdc">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cq0-gW-rdc">
                                 <rect key="frame" x="56" y="492" width="488" height="88"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="488" id="AGm-eA-peg"/>
@@ -607,6 +650,11 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="AGm-eA-peg"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="likeButtonTapped:" destination="T82-FV-uUe" eventType="touchUpInside" id="cvG-3I-1IR"/>
                                 </connections>
@@ -615,8 +663,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="cq0-gW-rdc" firstAttribute="centerX" secondItem="CN9-cs-hNK" secondAttribute="centerX" id="EFc-Qt-2h5"/>
-                            <constraint firstItem="Z2A-3A-g2P" firstAttribute="top" secondItem="cq0-gW-rdc" secondAttribute="bottom" constant="20" id="tPN-Ar-vMD"/>
+                            <constraint firstItem="cq0-gW-rdc" firstAttribute="width" secondItem="CN9-cs-hNK" secondAttribute="width" multiplier="0.8" id="dnA-Bq-ZEl"/>
+                            <constraint firstItem="cq0-gW-rdc" firstAttribute="height" secondItem="CN9-cs-hNK" secondAttribute="height" id="iXX-iM-mAS"/>
+                            <constraint firstItem="Z2A-3A-g2P" firstAttribute="top" secondItem="cq0-gW-rdc" secondAttribute="bottom" constant="15" id="tPN-Ar-vMD"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="iXX-iM-mAS"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <segue destination="WIS-aC-wBb" kind="show" identifier="gotoTabFromMultiView" id="nLg-Sc-DtS"/>
@@ -624,7 +679,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pzP-oO-HZq" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="199" y="781"/>
+            <point key="canvasLocation" x="863" y="164"/>
         </scene>
     </scenes>
     <resources>

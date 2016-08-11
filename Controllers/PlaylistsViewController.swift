@@ -34,6 +34,24 @@ class PlaylistsViewController: UIViewController
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.separatorStyle = .None
+        
+        
+        
+        count += 1
+        
+        let ep = Playlist(title: "",description: "",thumbnailURL: NSURL(fileURLWithPath: "a"),createdAt: "",author: "")
+        
+        ep.getAccToken()
+        ep.getUserID()
+        
+        Playlist.downloadAllPlaylists(ep.returnAccToken(), id: ep.returnID()) { (playlists: [Playlist]) in
+            self.playlists = playlists
+            
+            if (self.count == 1) {
+                self.goToNext()
+            }
+        }
+        
     }
     
     @IBAction func reloadButton(sender: AnyObject)

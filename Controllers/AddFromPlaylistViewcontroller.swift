@@ -44,7 +44,7 @@ class AddFromPlaylistViewController: UIViewController
         let songLength: Int
     }
     
-    @IBOutlet weak var tableView: UITableView!
+    
     @IBOutlet weak var existingPlaylistTextField: UITextField!
     @IBOutlet weak var newPlaylistTextField: UITextField!
     @IBOutlet weak var lengthText: UITextField!
@@ -58,9 +58,27 @@ class AddFromPlaylistViewController: UIViewController
     
     @IBAction func playlistButtonPressed(sender: AnyObject)
     {
-        existingPlaylistName = self.existingPlaylistTextField.text!
-        newPlaylistName = self.newPlaylistTextField.text!
-        length = Int(self.lengthText.text!)!
+        existingPlaylistName = self.existingPlaylistTextField.text! ?? "arandomplaylistnamethatwillcausethistofailsoenteryourdamnnamealready"
+        newPlaylistName = self.newPlaylistTextField.text! ?? "New Playlist"
+        
+        if let input = self.lengthText.text {
+            if input.characters.count == 0 {
+                length == 0
+            }
+            else
+            {
+                length = Int(self.lengthText.text!)!
+            }
+        }
+        
+        
+        
+        if newPlaylistName == ""
+        {
+            newPlaylistName = "Unnamed Playlist"
+        }
+        
+
 
         self.getUserID()
     }
@@ -134,7 +152,7 @@ class AddFromPlaylistViewController: UIViewController
                     // don't continue if the user entered an invalid playlist name
                     if self.playlistId == ""
                     {
-                        self.whisperMessage("Invalid playlist name")
+                        self.whisperMessage("Invalid existing playlist name")
                     }
                     else
                     {
@@ -264,7 +282,6 @@ class AddFromPlaylistViewController: UIViewController
     
     func addTracksToPlaylistUsingUri()
     {
-        print(newPlaylistID)
         let apiURL = "https://api.spotify.com/v1/users/\(userID)/playlists/\(newPlaylistID)/tracks"
         let headers = [
             "Authorization" : "Bearer " + accToken
@@ -296,7 +313,6 @@ class AddFromPlaylistViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        tableView.scrollEnabled = false
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         accToken = appDelegate.getAccessToken()

@@ -41,7 +41,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate {
         artist = self.userTextField.text!
         playlistName = self.userTextField2.text!
         
-        
+        // add a plus in between each word to search on spotify
         let replaced = String(artist.characters.map {
             $0 == " " ? "+" : $0
         })
@@ -82,7 +82,6 @@ class AddViewController: UIViewController, UIPickerViewDelegate {
         Alamofire.request(.GET, "https://api.spotify.com/v1/artists/\(artistID)/top-tracks?country=US").validate().responseJSON { response in
             switch response.result {
             case .Success:
-                print("2")
                 if let value = response.result.value {
                     let json = JSON(value)
                     
@@ -115,8 +114,6 @@ class AddViewController: UIViewController, UIPickerViewDelegate {
         Alamofire.request(.GET, apiURL, parameters: nil, encoding: .URL, headers: headers).responseJSON { response in
             switch response.result {
             case .Success:
-                print("3")
-                
                 if let value = response.result.value {
                     let json = JSON(value)
                     
@@ -147,7 +144,6 @@ class AddViewController: UIViewController, UIPickerViewDelegate {
         Alamofire.request(.POST, apiURL, parameters: parameters, encoding: .JSON, headers: headers).responseJSON { response in
             switch response.result {
             case .Success:
-                print("4")
                 if let value = response.result.value {
                     let json = JSON(value)
                      self.newPlaylistID = json["id"].stringValue
@@ -164,8 +160,6 @@ class AddViewController: UIViewController, UIPickerViewDelegate {
     
     
     func addTracksToPlaylistUsingUri() {
-        print("5")
-        
         let apiURL = "https://api.spotify.com/v1/users/\(userID)/playlists/\(newPlaylistID)/tracks"
         let headers = [
             "Authorization" : "Bearer " + accToken
