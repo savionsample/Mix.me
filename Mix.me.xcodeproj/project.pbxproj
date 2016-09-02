@@ -10,7 +10,6 @@
 		95CEB03C99B19B86260DA5C4 /* Pods_Mix_me.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38486CB4E688B603FB5BCCD2 /* Pods_Mix_me.framework */; };
 		FF3E22C11D3EA30000A1EAD6 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3E22C01D3EA30000A1EAD6 /* AddViewController.swift */; };
 		FF5BF5591D5A4A3700A5FED1 /* PageViewContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5BF5581D5A4A3700A5FED1 /* PageViewContentViewController.swift */; };
-		FF5BF55D1D5B89F600A5FED1 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5BF55C1D5B89F600A5FED1 /* Track.swift */; };
 		FF5BF55F1D5B89FD00A5FED1 /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5BF55E1D5B89FD00A5FED1 /* TrackTableViewCell.swift */; };
 		FF5BF5611D5B8A1600A5FED1 /* TracksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5BF5601D5B8A1600A5FED1 /* TracksViewController.swift */; };
 		FF7EFA3B1D4954BD00261B24 /* PlaylistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7EFA3A1D4954BD00261B24 /* PlaylistsViewController.swift */; };
@@ -31,7 +30,6 @@
 		89E436D4F3C9B2A793E293DB /* Pods-Mix.me.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mix.me.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mix.me/Pods-Mix.me.release.xcconfig"; sourceTree = "<group>"; };
 		FF3E22C01D3EA30000A1EAD6 /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		FF5BF5581D5A4A3700A5FED1 /* PageViewContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewContentViewController.swift; sourceTree = "<group>"; };
-		FF5BF55C1D5B89F600A5FED1 /* Track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		FF5BF55E1D5B89FD00A5FED1 /* TrackTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
 		FF5BF5601D5B8A1600A5FED1 /* TracksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TracksViewController.swift; sourceTree = "<group>"; };
 		FF7EFA3A1D4954BD00261B24 /* PlaylistsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistsViewController.swift; sourceTree = "<group>"; };
@@ -94,7 +92,6 @@
 			isa = PBXGroup;
 			children = (
 				FFBF220D1D46AA2E0060FE1D /* Playlist.swift */,
-				FF5BF55C1D5B89F600A5FED1 /* Track.swift */,
 				FFBF220E1D46AA2E0060FE1D /* NetworkService.swift */,
 			);
 			path = Model;
@@ -267,7 +264,6 @@
 			files = (
 				FF5BF5611D5B8A1600A5FED1 /* TracksViewController.swift in Sources */,
 				FF7EFA3B1D4954BD00261B24 /* PlaylistsViewController.swift in Sources */,
-				FF5BF55D1D5B89F600A5FED1 /* Track.swift in Sources */,
 				FFBF22141D46AA3D0060FE1D /* PlaylistTableViewCell.swift in Sources */,
 				FF3E22C11D3EA30000A1EAD6 /* AddViewController.swift in Sources */,
 				FFBF22111D46AA2E0060FE1D /* NetworkService.swift in Sources */,
@@ -401,6 +397,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.savionsample.Mixme;
 				PRODUCT_NAME = Mix.me;
 				PROVISIONING_PROFILE = "";
+				RESOURCES_TARGETED_DEVICE_FAMILY = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -418,6 +416,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.savionsample.Mixme;
 				PRODUCT_NAME = Mix.me;
 				PROVISIONING_PROFILE = "";
+				RESOURCES_TARGETED_DEVICE_FAMILY = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

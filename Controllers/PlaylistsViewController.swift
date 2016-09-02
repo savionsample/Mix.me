@@ -23,8 +23,7 @@ class PlaylistsViewController: UIViewController
     {
         super.viewDidLoad()
         
-        tableView.allowsSelection = true
-        //cell.selectionStyle = UITableViewCellSelectionStyle.None
+        tableView.allowsSelection = false
         
         UIApplication.sharedApplication().statusBarStyle = .Default
         self.navigationController!.navigationBar.frame = CGRectMake(0, 0, self.view.frame.size.width, 100.0)
@@ -35,21 +34,15 @@ class PlaylistsViewController: UIViewController
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.separatorStyle = .None
         
+        let pl = Playlist(title: "",description: "",thumbnailURL: NSURL(fileURLWithPath: "a"),createdAt: "",author: "")
         
+        pl.getAccToken()
+        pl.getUserID()
         
-        count += 1
-        
-        let ep = Playlist(title: "",description: "",thumbnailURL: NSURL(fileURLWithPath: "a"),createdAt: "",author: "")
-        
-        ep.getAccToken()
-        ep.getUserID()
-        
-        Playlist.downloadAllPlaylists(ep.returnAccToken(), id: ep.returnID()) { (playlists: [Playlist]) in
+        Playlist.downloadAllPlaylists(pl.returnAccToken(), id: pl.returnID()) { (playlists: [Playlist]) in
             self.playlists = playlists
-            
-            if (self.count == 1) {
-                self.goToNext()
-            }
+            self.tableView.reloadData()
+            self.tableView.backgroundColor = UIColor(red: 240/255.0, green: 240/255.0, blue: 240/255.0, alpha: 1.0)
         }
         
     }
@@ -57,59 +50,17 @@ class PlaylistsViewController: UIViewController
     @IBAction func reloadButton(sender: AnyObject)
     {
         self.spinner.rotate360Degrees()
-        count += 1
+
+        let pl = Playlist(title: "",description: "",thumbnailURL: NSURL(fileURLWithPath: "a"),createdAt: "",author: "")
         
-        let ep = Playlist(title: "",description: "",thumbnailURL: NSURL(fileURLWithPath: "a"),createdAt: "",author: "")
+        pl.getAccToken()
+        pl.getUserID()
         
-        ep.getAccToken()
-        ep.getUserID()
-        
-        Playlist.downloadAllPlaylists(ep.returnAccToken(), id: ep.returnID()) { (playlists: [Playlist]) in
+        Playlist.downloadAllPlaylists(pl.returnAccToken(), id: pl.returnID()) { (playlists: [Playlist]) in
             self.playlists = playlists
-            
-            if (self.count == 1) {
-              self.goToNext()
-            }
+            self.tableView.reloadData()
+
         }
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var chosen = indexPath.row
-        self.performSegueWithIdentifier("yourSegue", sender: self)
-    }
-    
-    @IBAction func unwindToListNotesViewController(segue: UIStoryboardSegue)
-    {
-        
-        // for now, simply defining the method is sufficient.
-        // we'll add code later
-        
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
-    {
-        if let identifier = segue.identifier {
-            if identifier == "gotoTracks" {
-                print("Table view cell tapped")
-
-                let indexPath = tableView.indexPathForSelectedRow!
-                let playlist = playlists[indexPath.row]
-                let displayNoteViewController = segue.destinationViewController as! DisplayNoteViewController
-                displayNoteViewController.playlist = playlist
-                
-            } else if identifier == "addNote" {
-                print("+ button tapped")
-            }
-        }
-    }
-
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    func goToNext()
-    {
-        self.tableView.reloadData()
-        self.tableView.backgroundColor = UIColor(red: 240/255.0, green: 240/255.0, blue: 240/255.0, alpha: 1.0)
-        
     }
     
     private func createFloatingButton()

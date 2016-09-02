@@ -42,7 +42,6 @@ class Playlist
         self.title = espDictionary["name"] as? String
         
         let total = espDictionary["tracks"]!["total"]!
-        
         let totalString = String(total!)
         
         if totalString == "1"

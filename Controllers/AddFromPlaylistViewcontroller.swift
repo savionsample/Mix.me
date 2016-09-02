@@ -59,7 +59,7 @@ class AddFromPlaylistViewController: UIViewController
     @IBAction func playlistButtonPressed(sender: AnyObject)
     {
         existingPlaylistName = self.existingPlaylistTextField.text! ?? "arandomplaylistnamethatwillcausethistofailsoenteryourdamnnamealready"
-        newPlaylistName = self.newPlaylistTextField.text! ?? "New Playlist"
+        newPlaylistName = self.newPlaylistTextField.text!
         
         if let input = self.lengthText.text {
             if input.characters.count == 0 {
@@ -313,6 +313,7 @@ class AddFromPlaylistViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         accToken = appDelegate.getAccessToken()
@@ -337,6 +338,17 @@ extension UIView {
             rotateAnimation.delegate = delegate
         }
         self.layer.addAnimation(rotateAnimation, forKey: nil)
+    }
+}
+
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
 

@@ -180,6 +180,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
         
         self.title = "Add from Artist"
         scrollView.contentSize.height = 300
